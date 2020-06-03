@@ -103,6 +103,7 @@ public void testAllGetters() {
 	assertEquals("Gates", _validManager.getLastname());
 	assertEquals(new Address("3ter", "street1", "street2", "city", "zipcode", "country"), _validManager.getAddress());
 	assertEquals("bilou@microsoft.fr", _validManager.getMail());
+	assertEquals(101, _validManager.getStaffnumber());
 }
 
 /**
@@ -114,11 +115,13 @@ public void testAllSetters() {
 	_validManager.setAddress(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"));
 	_validManager.setMail("anotherMail");
 	_validManager.setGender(Gender.FEMALE);
+	_validManager.setStaffnumber(326556);
 	assertEquals("Bill2", _validManager.getFirstname());
 	assertEquals("Gates2", _validManager.getLastname());
 	assertEquals(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"), _validManager.getAddress());
 	assertEquals("anotherMail", _validManager.getMail());
 	assertEquals(Gender.FEMALE, _validManager.getGender());
+	assertEquals(326556, _validManager.getStaffnumber());
 }
 
 }

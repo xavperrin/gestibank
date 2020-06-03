@@ -44,10 +44,11 @@ public final class UserTest extends TestCase {
      */
     public void testCreateValidUser() throws CheckException {
 
-        final User user = new User("bill000", "Bill", "Gates", "password000", "bill@gates.com");
+        final User user = new User("bill000", "Bill", "Gates",  "bill@gates.com", "password000");
 		assertEquals("Bill", user.getFirstname());
 		assertEquals("Gates", user.getLastname());
 		user.checkData();
+
     }
 
     /**
