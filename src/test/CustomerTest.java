@@ -8,6 +8,7 @@ import java.util.Date;
 import gestibank.exception.CheckException;
 import gestibank.society.Address;
 import gestibank.society.Gender;
+import gestibank.society.MaritalStatus;
 import gestibank.user.Customer;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -16,6 +17,7 @@ import junit.framework.TestSuite;
  * @author Xavier Perrin
  *
  */
+
 public class CustomerTest extends TestCase {
 	Customer _validCustomer;
 	
@@ -34,7 +36,7 @@ public class CustomerTest extends TestCase {
 	 */
 	public void setUp() throws Exception {
 		Address addr= new Address("3ter", "street1", "street2", "city", "zipcode", "country");
-		_validCustomer=new Customer("bill000", "Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE);
+		_validCustomer=new Customer("bill000", "Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, MaritalStatus.Married  );
 	}
 	 //==================================
     //=            Test cases          =
@@ -103,6 +105,8 @@ public void testAllGetters() {
 	assertEquals("Gates", _validCustomer.getLastname());
 	assertEquals(new Address("3ter", "street1", "street2", "city", "zipcode", "country"), _validCustomer.getAddress());
 	assertEquals("bilou@microsoft.fr", _validCustomer.getMail());
+	assertEquals(MaritalStatus.Married, _validCustomer.getMaritalStatus());
+	
 }
 
 /**
@@ -114,11 +118,13 @@ public void testAllSetters() {
 	_validCustomer.setAddress(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"));
 	_validCustomer.setMail("anotherMail");
 	_validCustomer.setGender(Gender.FEMALE);
+	_validCustomer.setMaritalStatus(MaritalStatus.Divorced);
 	assertEquals("Bill2", _validCustomer.getFirstname());
 	assertEquals("Gates2", _validCustomer.getLastname());
 	assertEquals(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"), _validCustomer.getAddress());
 	assertEquals("anotherMail", _validCustomer.getMail());
 	assertEquals(Gender.FEMALE, _validCustomer.getGender());
+	assertEquals(MaritalStatus.Married, _validCustomer.getMaritalStatus());
 }
 
 
