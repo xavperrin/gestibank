@@ -121,4 +121,63 @@ public void testAllSetters() {
 	assertEquals(Gender.FEMALE, _validCustomer.getGender());
 }
 
+
+/**
+ * The following tests mail contents
+ */
+public void testCheckMailWithValidLength() {
+	Customer customer = _validCustomer;
+    boolean b = customer.checkMail();
+    assertEquals(customer.getMail() + " est une adresse de longueur valide", true, b);
+}
+
+public void testCheckMailWithTooShortLength() {
+	Customer customer = _validCustomer;
+    customer.setMail("x@x.fr");
+    boolean b = customer.checkMail();
+    assertEquals("x@x.fr est une adresse trop courte => Echec", false, b);
+}
+
+public void testCheckMailWithTooLongLength() {
+	Customer customer = _validCustomer;
+    customer.setMail("engagelejeuquejelegagne@duel-de-mots.fr");
+    boolean b = customer.checkMail();
+    assertEquals(customer.getMail() + " est une adresse trop longue => Echec", false, b);
+}
+
+public void testCheckMailWithArrobas() {
+	Customer customer = _validCustomer;
+    boolean b = customer.checkMail();
+    assertEquals(true, b);
+}
+
+public void testCheckMailWithoutArrobas() {
+	Customer customer = _validCustomer;
+    customer.setMail("nobody.nowhere");
+    boolean b = customer.checkMail();
+    assertEquals("Adresse sans @ => Echec", false, b);
+}
+
+public void testCheckMailsWithValidDomain() {
+	Customer customer = _validCustomer;
+    boolean b = customer.checkMail();
+    assertEquals("Adresse should be OK!", true, b);
+    customer.setMail("anyone@cnam.fr");
+    assertEquals("Adresse should be OK!", true, b);
+    customer.setMail("anyone@x.ue");
+    assertEquals("Adresse should be OK!", true, b);
+}
+
+public void testCheckMailsWithInvalidDomain() {
+	Customer customer = _validCustomer;
+    customer.setMail("nobody@x.com");
+    boolean b = customer.checkMail();
+    assertFalse("Forbidden domain!", b);
+    customer.setMail("nobody@x.us");
+    b = customer.checkMail();
+    assertFalse("Forbidden country!", b);
+}
+
+
+
 }
