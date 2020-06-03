@@ -109,18 +109,14 @@ public void testAllGetters() {
  * This test use each setter
  */
 public void testAllSetters() {
-	_validManager.setFirstname("Bill12");
+	_validManager.setFirstname("Bill2");
 	_validManager.setLastname("Gates2");
 	_validManager.setAddress(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"));
 	_validManager.setMail("anotherMail");
 	_validManager.setGender(Gender.FEMALE);
 	assertEquals("Bill2", _validManager.getFirstname());
 	assertEquals("Gates2", _validManager.getLastname());
-	assertEquals("street12", _validManager.getAddress().getStreet1());
-	assertEquals("street22", _validManager.getAddress().getStreet2());
-	assertEquals("city2", _validManager.getAddress().getCity());
-	assertEquals("zipcode2", _validManager.getAddress().getZipcode());
-	assertEquals("country2", _validManager.getAddress().getCountry());
+	assertEquals(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"), _validManager.getAddress());
 	assertEquals("anotherMail", _validManager.getMail());
 	assertEquals(Gender.FEMALE, _validManager.getGender());
 }
