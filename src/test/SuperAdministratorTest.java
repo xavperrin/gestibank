@@ -4,6 +4,7 @@
 package test;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,7 @@ class SuperAdministratorTest extends TestCase {
 	protected
 	void setUp() throws Exception {
 		Address addr= new Address("3ter", "street1", "street2", "city", "zipcode", "country");
-		_validSuperAdmin=new SuperAdministrator("bill000", "Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, 101, new Date());
+		_validSuperAdmin=new SuperAdministrator("bill000", "Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, 101, LocalDate.now());
 		
 	}
 
