@@ -3,6 +3,7 @@
  */
 package test;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import gestibank.exception.CheckException;
@@ -34,7 +35,7 @@ public class ManagerTest extends TestCase {
 	 */
 	public void setUp() throws Exception {
 		Address addr= new Address("3ter", "street1", "street2", "city", "zipcode", "country");
-		_validManager=new Manager("bill000", "Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, 101, new Date());
+		_validManager=new Manager("bill000", "Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, 101, LocalDate.now());
 	}
 	 //==================================
     //=            Test cases          =

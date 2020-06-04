@@ -1,5 +1,6 @@
 package gestibank.user;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import gestibank.society.Address;
@@ -12,8 +13,8 @@ import gestibank.society.Gender;
 public class Manager extends User {
 	
 	private int _staffnumber; 
-	private Date  _beginDate;
-	private Date  _endDate;
+	private LocalDate  _beginDate;
+	private LocalDate  _endDate;
 	private String _phonenumber;
 	
 	
@@ -51,14 +52,14 @@ public class Manager extends User {
 	/**
 	 * @return the beginDate
 	 */
-	public Date getBeginDate() {
+	public LocalDate getBeginDate() {
 		return _beginDate;
 	}
 
 	/**
 	 * @param beginDate the beginDate to set
 	 */
-	public void setBeginDate(Date beginDate) {
+	public void setBeginDate(LocalDate beginDate) {
 		_beginDate = beginDate;
 	}
 	
@@ -66,14 +67,14 @@ public class Manager extends User {
 	/**
 	 * @return the endDate
 	 */
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return _endDate;
 	}
 
 	/**
 	 * @param endDate the endDate to set
 	 */
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		_endDate = endDate;
 	}
 	
@@ -84,7 +85,7 @@ public class Manager extends User {
 	}
 
 	public Manager(String id, String firstname, String lastname, String mail, String password, Address address,
-			Gender gender, int staffnumber, Date begin) {
+			Gender gender, int staffnumber, LocalDate begin) {
 		super(id, firstname, lastname, mail, password);
 		this.setStaffnumber(staffnumber);
 		this.setBeginDate(begin);
