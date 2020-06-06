@@ -1,8 +1,6 @@
 package gestibank.user;
 
 import java.time.LocalDate;
-import java.util.Date;
-
 import gestibank.society.Address;
 import gestibank.society.Gender;
 

@@ -12,7 +12,7 @@ public class Customer extends User {
 	int children;
 
 	public  Customer(String id, String firstname, String lastname, String  mail, String password, Address addr,
-			Gender male, MaritalStatus married) {
+			Gender gender, MaritalStatus maritalstatus) {
 		super(id, firstname, lastname, mail, password);
 		this.setAddress(addr);
 		

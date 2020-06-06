@@ -4,8 +4,6 @@
 package test;
 
 import java.time.LocalDate;
-import java.util.Date;
-
 import gestibank.exception.CheckException;
 import gestibank.society.Address;
 import gestibank.society.Gender;
