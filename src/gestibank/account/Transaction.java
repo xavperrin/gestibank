@@ -1,10 +1,35 @@
 package gestibank.account;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-public class Transaction {
+public abstract class Transaction {
+
+	double _amount;
+	LocalDate _date;
 	
-	double amount;
-	Date date;
+	public double getAmount() {
+		return _amount;
+	}
+
+	public LocalDate getDate() {
+		return _date;
+	}
+
+	
+	public Transaction(double amount){
+		_amount=amount;
+		_date=LocalDate.now();
+	}
+
+	public abstract double getWithdraw();
+
+	public abstract double getDeposit();
+
+	@Override
+	public String toString() {
+		return "[amount:" + _amount + ", date:" + _date + "]";
+	}
+	
+	
 
 }
