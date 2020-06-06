@@ -1,5 +1,7 @@
 package gestibank.user;
 
+import gestibank.society.Address;
+import gestibank.society.Gender;
 import gestibank.society.MaritalStatus;
 
 public class Customer extends User {
@@ -8,6 +10,13 @@ public class Customer extends User {
 	String _phonenumber;
 	int idManager;
 	int children;
+
+	public  Customer(String id, String firstname, String lastname, String  mail, String password, Address addr,
+			Gender male, MaritalStatus married) {
+		super(id, firstname, lastname, mail, password);
+		this.setAddress(addr);
+		
+	}
 
 	public MaritalStatus getMaritalStatus() {
 		return _maritalStatus;
@@ -38,19 +47,8 @@ public class Customer extends User {
 	 * 
 	 */
 
-	/**
-	 * @param id
-	 * @param firstname
-	 * @param lastname
-	 * @param mail
-	 * @param password
-	 * @param phonenumber
-	 */
-	public Customer(String id, String firstname, String lastname, String mail, String password, String phonenumber) {
-		super(id, firstname, lastname, mail, password);
-		_phonenumber = phonenumber;
-	}
-
+	
+	
 	@Override
 	public String toString() {
 		return "Customer [_maritalStatus=" + _maritalStatus + ", _phonenumber=" + _phonenumber + ", idManager="
