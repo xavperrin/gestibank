@@ -21,9 +21,13 @@ public abstract class Transaction {
 		_date=LocalDate.now();
 	}
 
-	public abstract double getWithdraw();
+	public double getWithdraw() {
+	  return 0;	
+	}
 
-	public abstract double getDeposit();
+	public double getDeposit() {
+		return 0;
+	}
 
 	@Override
 	public String toString() {

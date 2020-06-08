@@ -1,202 +1,50 @@
 package gestibank.dao;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
 import gestibank.exception.CheckException;
 import gestibank.exception.DataAccessException;
 import gestibank.exception.DuplicateKeyException;
 import gestibank.exception.ObjectNotFoundException;
 
+/*
+ * T pour le type souhaité
+ * ID pour l'identifiant
+ * CRUD pour Create, Retrieve, Update, Delete
+ * 
+ */
+public interface DataAccessObject<T, ID> {
 
-
-public class DataAccessObject {
-
-    // ======================================
-    // =             Attributes             =
-    // ======================================
-    @SuppressWarnings("rawtypes")
-	private Map _hashmap = new HashMap();
-    private String _hashmapFileName;
-
-    // ======================================
-    // =            Constructors            =
-    // ======================================
-    /**
-     * @param hashmapFileName name of the file saved on disk
-     * @throws DataAccessException     is thrown if there's a persistent problem
+	/**
+     * Database error code when we want to insert an id that already exists.
      */
-    public DataAccessObject(final String hashmapFileName) throws DataAccessException {
-    	_hashmapFileName = hashmapFileName;
-        // Loads the Hastable
-        loadHastable(_hashmapFileName);
-    }
-    
-    /**
-     * @throws DataAccessException     is thrown if there's a persistent problem
-     */
-    public void finalize() throws DataAccessException {
-    	saveHastableOnDisk(_hashmapFileName);
-    }
-    
-    /**
-     * This method gets an available id.
-     *
-     * @return int an available Id (not used already by any domain object)
-     */
-    public int getUniqueId() {
-    	String s = null;
-    	int result = 0;
-    	do {
-    		result = (int) (Math.random() * 100000);
-    		s = Integer.toString(result);
-    		try {
-				select(s);
-			} catch (ObjectNotFoundException e) {
-				return result;
-			}
-    	} while ( true );
-    }
-
-    // ======================================
-    // =           Business methods         =
-    // ======================================
-    /**
-     * This method gets an object from the HashMap.
-     *
-     * @param id                Object identifier to be found in the hastable
-     * @return Object the object with all its attributs set
-     * @throws ObjectNotFoundException is thrown if the object id not found in the hastable
-     */
-    public Object select(final String id) throws ObjectNotFoundException {
-
-        // If the given id doesn't exist we throw a ObjectNotFoundException
-        if (!_hashmap.containsKey(id)) {
-            throw new ObjectNotFoundException();
-        }
-
-        return _hashmap.get(id);
-    }
+    int DATA_ALREADY_EXIST = 1062;
 
     /**
-     * This method return all the objects that are in the serialized hashmap.
-     *
-     * @return collection of objects
-     * @throws ObjectNotFoundException is thrown if the collection is empty
+     * JDBC Driver class to instanciate.
      */
-    
-	@SuppressWarnings("rawtypes")
-	public Collection selectAll() throws ObjectNotFoundException {
-
-        // If the hastable is empty we throw a DataNotFoundException
-        if (_hashmap.isEmpty()) {
-            throw new ObjectNotFoundException();
-        }
-
-        return _hashmap.values();
-    }
+    String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 
     /**
-     * This method inserts an object into a HashMap and serializes the Hastable on disk.
-     *
-     * @param object            Object to be inserted into the hastable
-     * @param id                identifier of the object to be inserted
-     * @throws DuplicateKeyException is thrown when an identical object is already in the hastable
+     * URL of where the database is located.
      */
-    @SuppressWarnings("unchecked")
-	public void insert(final Object object, final String id) throws DuplicateKeyException {
-
-        // If the given id already exists we cannot insert the new object
-        if (_hashmap.containsKey(id)) {
-            throw new DuplicateKeyException();
-        }
-
-        // Puts the object into the hastable
-        _hashmap.put(id, object);
-    }
+    String URL_DB = "jdbc:mysql://localhost:3306/gestibankDB";
 
     /**
-     * This method updates an object of the HashMap and serializes the Hastable on disk.
-     *
-     * @param object            Object to be updated from the hastable
-     * @param id                identifier of the object to be updated
-     * @throws ObjectNotFoundException is thrown if the object id not found in the hastable
-     * @throws DuplicateKeyException is thrown when an identical object is already in the hastable
+     * Username to access the database.
      */
-    public void update(final Object object, final String id) throws ObjectNotFoundException, DuplicateKeyException {
-        remove(id);
-        insert(object, id);
-    }
+    String USER_DB = "root";
 
     /**
-     * This method deletes an object from the HashMap and serializes the Hastable on disk.
-     *
-     * @param id                object identifier to be deleted from the hastable
-     * @throws ObjectNotFoundException is thrown if the object id not found in the hastable
+     * Password to access the database.
      */
-    public void remove(final String id) throws ObjectNotFoundException {
+    String PASSWD_DB = "root";
+	
+	public void create(T t) throws DuplicateKeyException, CheckException, DataAccessException; 
+	public T retrieve(ID id) throws CheckException;
+	public void update(T t) throws ObjectNotFoundException, DuplicateKeyException;
+	public void delete(ID id) throws ObjectNotFoundException, CheckException;
+	void checkId(final ID id) throws CheckException;
+	
+	
 
-        // If the given id does'nt exist we cannot remove the object from the hashmap
-        if (!_hashmap.containsKey(id)) {
-            throw new ObjectNotFoundException();
-        }
-
-        // The object is removed from the hastable
-        _hashmap.remove(id);
-    }
-
-    /**
-     * This method checks that the identifier is valid.
-     *
-     * @param id identifier to check
-     * @throws CheckException if the id is invalid
-     */
-    void checkId(final String id) throws CheckException {
-        if (id == null || "".equals(id))
-            throw new CheckException("Invalid id");
-    }
-    // ======================================
-    // =            Private methods         =
-    // ======================================
-    // This method loads the hastable in the file saved on disk
-    @SuppressWarnings("rawtypes")
-	private void loadHastable(final String hashmapFileName) throws DataAccessException {
-
-        try {
-            final FileInputStream fin = new FileInputStream(hashmapFileName);
-            final ObjectInputStream in = new ObjectInputStream(fin);
-
-            // Reads the values from the file
-            _hashmap = (HashMap) in.readObject();
-
-            in.close();
-        } catch (FileNotFoundException e) {
-            // The first call to this method, the file doesn't exist so nothing is done
-        } catch (Exception e) {
-            throw new DataAccessException("Cannot load " + hashmapFileName + " !!!", e);
-        }
-    }
-
-    // This method saves the hastable on disk
-    private void saveHastableOnDisk(final String hashmapFileName) throws DataAccessException {
-
-        try {
-            final FileOutputStream fout = new FileOutputStream(hashmapFileName);
-            final ObjectOutputStream out = new ObjectOutputStream(fout);
-
-            // Saves the hashmap to disk
-            out.writeObject(_hashmap);
-
-            out.close();
-        } catch (IOException e) {
-            throw new DataAccessException("Cannot save " + hashmapFileName + " !!!", e);
-        }
-    }
+   
 }
