@@ -1,12 +1,64 @@
 package gestibank.user;
 
-public class SuperAdministrator extends User {
+import java.time.LocalDate;
+import java.util.ArrayList;
 
-	public SuperAdministrator(String id, String firstname, String lastname,  String mail, String password) {
-		super(id, firstname, lastname, mail, password);
-		
+import gestibank.society.Address;
+import gestibank.society.Gender;
+
+public class SuperAdministrator extends User {
+	
+	private int _staffNumber;
+	private LocalDate _beginDate;
+	private ArrayList<Manager> _listManagers;
+
+	
+	// Constructeur basique (listManagers non précisé)
+	public SuperAdministrator(String id, String firstname, String lastname,  String mail, String password, Address address, Gender gender, int staffNumber) {
+		super(id, firstname, lastname, mail, password, address, gender);
+		this.setStaffNumber(staffNumber);
 	}
 	
+	// Constructeur basique (listManagers non précisé)
+	public SuperAdministrator(String id, String firstname, String lastname,  String mail, String password, Address address, Gender gender, int staffNumber, LocalDate beginDate) {
+		super(id, firstname, lastname, mail, password, address, gender);
+		this.setStaffNumber(staffNumber);
+		this.setBeginDate(beginDate);
+	}
+	
+	// Constructeur avec listManagers
+	public SuperAdministrator(String id, String firstname, String lastname,  String mail, String password, Address address, Gender gender, int staffNumber, LocalDate beginDate, ArrayList<Manager> listManagers) {
+		super(id, firstname, lastname, mail, password, address, gender);
+		this.setStaffNumber(staffNumber);
+		this.setBeginDate(beginDate);
+		this.setListManagers(listManagers);
+	}
+
+	// test
+
+	public int getStaffNumber() {
+		return _staffNumber;
+	}
+
+	public void setStaffNumber(int staffNumber) {
+		_staffNumber = staffNumber;
+	}
+
+	public LocalDate getBeginDate() {
+		return _beginDate;
+	}
+
+	public void setBeginDate(LocalDate beginDate) {
+		_beginDate = beginDate;
+	}
+
+	public ArrayList<Manager> getListManagers() {
+		return _listManagers;
+	}
+
+	public void setListManagers(ArrayList<Manager> listManagers) {
+		_listManagers = listManagers;
+	}
 	
 	
 
