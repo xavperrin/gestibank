@@ -99,7 +99,7 @@ class SuperAdministratorTest extends TestCase {
 		assertEquals("Gates", _validSuperAdmin.getLastname());
 		assertEquals(new Address("3ter", "street1", "street2", "city", "zipcode", "country"), _validSuperAdmin.getAddress());
 		assertEquals("bilou@microsoft.fr", _validSuperAdmin.getMail());
-		assertEquals(101, _validSuperAdmin.getStaffnumber());
+		assertEquals(101, _validSuperAdmin.getStaffNumber());
 	}
 
 	/**
@@ -111,13 +111,13 @@ class SuperAdministratorTest extends TestCase {
 		_validSuperAdmin.setAddress(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"));
 		_validSuperAdmin.setMail("anotherMail");
 		_validSuperAdmin.setGender(Gender.FEMALE);
-		_validSuperAdmin.setStaffnumber(326556);
+		_validSuperAdmin.setStaffNumber(326556);
 		assertEquals("Bill2", _validSuperAdmin.getFirstname());
 		assertEquals("Gates2", _validSuperAdmin.getLastname());
 		assertEquals(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"), _validSuperAdmin.getAddress());
 		assertEquals("anotherMail", _validSuperAdmin.getMail());
 		assertEquals(Gender.FEMALE, _validSuperAdmin.getGender());
-		assertEquals(326556, _validSuperAdmin.getStaffnumber());
+		assertEquals(326556, _validSuperAdmin.getStaffNumber());
 	}
 
 
