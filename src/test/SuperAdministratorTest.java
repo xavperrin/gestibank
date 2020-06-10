@@ -20,8 +20,12 @@ import junit.framework.TestCase;
  * @author Jean-Francois
  *
  */
-class SuperAdministratorTest extends TestCase {
+public class SuperAdministratorTest extends TestCase {
 
+	
+	   public SuperAdministratorTest(final String s) {
+	        super(s);
+	    }
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -38,11 +42,15 @@ class SuperAdministratorTest extends TestCase {
 	 * Test method for {@link gestibank.user.SuperAdministrator#SuperAdministrator(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)}.
 	 */
 	@Test
-	void testCreateValidSuperAdmin() {
+	public void testCreateValidSuperAdmin() {
 		final SuperAdministrator finalsuperadmin = new SuperAdministrator("bill000", "Bill", "Gates", "bill@gates.com", "password000", 6654);
 		assertEquals("Bill", finalsuperadmin.getFirstname());
 		assertEquals("Gates", finalsuperadmin.getLastname());
-		finalsuperadmin.checkData();
+		try {
+			finalsuperadmin.checkData();
+		} catch (CheckException e) {
+			assertEquals("testCreateValidSuperAdmin not working", e.getMessage());
+		}
 		
 		
 	}

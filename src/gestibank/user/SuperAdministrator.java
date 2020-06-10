@@ -14,8 +14,8 @@ public class SuperAdministrator extends User {
 
 	
 	// Constructeur basique (listManagers non précisé)
-	public SuperAdministrator(String id, String firstname, String lastname,  String mail, String password, Address address, Gender gender, int staffNumber) {
-		super(id, firstname, lastname, mail, password, address, gender);
+	public SuperAdministrator(String id, String firstname, String lastname,  String mail, String password, int staffNumber) {
+		super(id, firstname, lastname, mail, password);
 		this.setStaffNumber(staffNumber);
 	}
 	
@@ -59,6 +59,14 @@ public class SuperAdministrator extends User {
 	public void setListManagers(ArrayList<Manager> listManagers) {
 		_listManagers = listManagers;
 	}
+
+	@Override
+	public String toString() {
+		return "SuperAdministrator [ staffNumber = " + _staffNumber + ", beginDate = " + _beginDate + ", listManagers = "
+				+ _listManagers + " ]";
+	}
+	
+	
 	
 	
 
