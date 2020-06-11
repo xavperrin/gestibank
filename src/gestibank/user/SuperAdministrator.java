@@ -13,7 +13,7 @@ public class SuperAdministrator extends User {
 	private ArrayList<Manager> _listManagers;
 
 	
-	// Constructeur basique (listManagers non précisé)
+	// Constructeur basique (address, gender, begindate, listManagers non précisé)
 	public SuperAdministrator(String id, String firstname, String lastname,  String mail, String password, int staffNumber) {
 		super(id, firstname, lastname, mail, password);
 		this.setStaffNumber(staffNumber);
@@ -34,7 +34,6 @@ public class SuperAdministrator extends User {
 		this.setListManagers(listManagers);
 	}
 
-	// test
 
 	public int getStaffNumber() {
 		return _staffNumber;
