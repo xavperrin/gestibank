@@ -12,9 +12,10 @@ import gestibank.society.Address;
 import gestibank.society.Gender;
 import gestibank.user.SuperAdministrator;
 import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
 /**
- * @author Jean-Francois
+ * @author Xavier
  *
  */
 public class SuperAdministratorTest extends TestCase {
@@ -23,13 +24,17 @@ public class SuperAdministratorTest extends TestCase {
 	   public SuperAdministratorTest(final String s) {
 	        super(s);
 	    }
+	   
+	   public static TestSuite suite() {
+	        return new TestSuite(SuperAdministratorTest.class);
+	    }
+	
+	private SuperAdministrator _validSuperAdmin;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
-	private SuperAdministrator _validSuperAdmin;
-	
-	protected
-	void setUp() throws Exception {
+	public void setUp() throws Exception {
 		Address addr= new Address("3ter", "street1", "street2", "city", "zipcode", "country");
 		_validSuperAdmin=new SuperAdministrator("bill000", "Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, 101, LocalDate.now());
 		
