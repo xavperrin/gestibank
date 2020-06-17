@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-
 import gestibank.exception.CheckException;
 import gestibank.exception.DataAccessException;
 import gestibank.exception.DuplicateKeyException;
@@ -15,11 +13,7 @@ import gestibank.util.uidgen.UniqueIdGenerator;
 
 public class CustomerDAO implements DataAccessObject<Customer, String> {
 	
-	  // Used for logging
-    private final transient String _cname = this.getClass().getName();
-    private static final String sname = DataAccessObject.class.getName();
-    
-    // ======================================
+	  // ======================================
     // =             Attributes             =
     // ======================================
     private static final String _TABLE = "T_CUSTOMER";

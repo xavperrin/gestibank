@@ -3,8 +3,6 @@
  */
 package test;
 
-import java.util.Date;
-
 import gestibank.exception.CheckException;
 import gestibank.society.Address;
 import gestibank.society.Gender;
@@ -125,7 +123,7 @@ public void testAllSetters() {
 	assertEquals(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"), _validCustomer.getAddress());
 	assertEquals("anotherMail", _validCustomer.getMail());
 	assertEquals(Gender.FEMALE, _validCustomer.getGender());
-	assertEquals(MaritalStatus.Married, _validCustomer.getMaritalStatus());
+	assertEquals(MaritalStatus.Divorced, _validCustomer.getMaritalStatus());
 }
 
 

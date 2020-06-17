@@ -5,14 +5,11 @@ package test;
 
 
 import java.time.LocalDate;
-import java.util.Date;
-
 import org.junit.jupiter.api.Test;
 
 import gestibank.exception.CheckException;
 import gestibank.society.Address;
 import gestibank.society.Gender;
-import gestibank.user.Manager;
 import gestibank.user.SuperAdministrator;
 import junit.framework.TestCase;
 

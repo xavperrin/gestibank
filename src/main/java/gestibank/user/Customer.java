@@ -11,12 +11,31 @@ public class Customer extends User {
 	int idManager;
 	int children;
 
+	
+	
+	/**
+	 * @param id
+	 * @param firstname
+	 * @param lastname
+	 * @param mail
+	 * @param password
+	 */
+	public Customer(String id, String firstname, String lastname, String mail, String password) {
+		super(id, firstname, lastname, mail, password);
+	}
+
+
+
 	public  Customer(String id, String firstname, String lastname, String  mail, String password, Address addr,
 			Gender gender, MaritalStatus maritalstatus) {
 		super(id, firstname, lastname, mail, password);
 		this.setAddress(addr);
+		this.setGender(gender);
+		this.setMaritalStatus(maritalstatus);
 		
 	}
+
+
 
 	public MaritalStatus getMaritalStatus() {
 		return _maritalStatus;
