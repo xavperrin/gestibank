@@ -22,7 +22,7 @@ import fr.gestibank.entity.society.Gender;
 public class User implements Serializable {
 	
 	@Id @GeneratedValue @Column(length=70)
-	private String _id;
+	private Long _id;
 	
 	@Column(length=30)
 	private String _firstname;
@@ -39,10 +39,10 @@ public class User implements Serializable {
 	
 	
 	
-	public String getId() {
+	public Long getId() {
 		return _id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		_id = id;
 	}
 	public String getFirstname() {
@@ -80,15 +80,13 @@ public class User implements Serializable {
 	}
 	
 	/**
-	 * @param id
 	 * @param firstname
 	 * @param lastname
 	 * @param mail
 	 * @param password
 	 */
-	public User(String id, String firstname, String lastname,  String mail, String password) {
+	public User(String firstname, String lastname,  String mail, String password) {
 		super();
-		_id = id;
 		_firstname = firstname;
 		_lastname = lastname;
 		_mail = mail;
@@ -97,7 +95,6 @@ public class User implements Serializable {
 	 
 
 	/**
-	 * @param id
 	 * @param firstname
 	 * @param lastname
 	 * @param mail
@@ -105,10 +102,9 @@ public class User implements Serializable {
 	 * @param address
 	 * @param gender
 	 */
-	public User(String id, String firstname, String lastname, String mail, String password, Address address,
+	public User(String firstname, String lastname, String mail, String password, Address address,
 			Gender gender) {
 		super();
-		_id = id;
 		_firstname = firstname;
 		_lastname = lastname;
 		_mail = mail;

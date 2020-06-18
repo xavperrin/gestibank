@@ -29,14 +29,14 @@ public class Customer extends User {
 	 * @param password
 	 */
 	public Customer(String id, String firstname, String lastname, String mail, String password) {
-		super(id, firstname, lastname, mail, password);
+		super(firstname, lastname, mail, password);
 	}
 
 
 
 	public  Customer(String id, String firstname, String lastname, String  mail, String password, Address addr,
 			Gender gender, MaritalStatus maritalstatus) {
-		super(id, firstname, lastname, mail, password);
+		super(firstname, lastname, mail, password);
 		this.setAddress(addr);
 		this.setGender(gender);
 		this.setMaritalStatus(maritalstatus);
@@ -86,5 +86,4 @@ public class Customer extends User {
 }	
 	
 	
-
 

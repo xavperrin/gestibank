@@ -82,21 +82,21 @@ public class Manager extends User {
 	}
 	
 	public Manager(String id, String firstname, String lastname, String mail, String password, int staffnumber, String phonenumber) {
-		super(id, firstname, lastname, mail, password);
+		super(firstname, lastname, mail, password);
 		setStaffnumber(staffnumber);
 		setPhonenumber(phonenumber);
 	}
 
 	public Manager(String id, String firstname, String lastname, String mail, String password, Address address,
 			Gender gender, int staffnumber, LocalDate begin) {
-		super(id, firstname, lastname, mail, password);
+		super(firstname, lastname, mail, password);
 		this.setStaffnumber(staffnumber);
 		this.setBeginDate(begin);
 		this.setAddress(address);
 	}
 
 	public Manager(String id, String firstname, String lastname, String mail, String password, int staffnumber) {
-		super(id, firstname, lastname, mail, password);
+		super(firstname, lastname, mail, password);
 		this._staffnumber=staffnumber;
 		
 	}

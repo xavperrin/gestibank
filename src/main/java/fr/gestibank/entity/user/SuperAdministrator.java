@@ -22,20 +22,20 @@ public class SuperAdministrator extends User {
 	
 	// Constructeur basique (address, gender, begindate, listManagers non pr�cis�)
 	public SuperAdministrator(String id, String firstname, String lastname,  String mail, String password, int staffNumber) {
-		super(id, firstname, lastname, mail, password);
+		super(firstname, lastname, mail, password);
 		this.setStaffNumber(staffNumber);
 	}
 	
 	// Constructeur basique (listManagers non pr�cis�)
 	public SuperAdministrator(String id, String firstname, String lastname,  String mail, String password, Address address, Gender gender, int staffNumber, LocalDate beginDate) {
-		super(id, firstname, lastname, mail, password, address, gender);
+		super(firstname, lastname, mail, password, address, gender);
 		this.setStaffNumber(staffNumber);
 		this.setBeginDate(beginDate);
 	}
 	
 	// Constructeur avec listManagers
 	public SuperAdministrator(String id, String firstname, String lastname,  String mail, String password, Address address, Gender gender, int staffNumber, LocalDate beginDate, ArrayList<Manager> listManagers) {
-		super(id, firstname, lastname, mail, password, address, gender);
+		super(firstname, lastname, mail, password, address, gender);
 		this.setStaffNumber(staffNumber);
 		this.setBeginDate(beginDate);
 		this.setListManagers(listManagers);
