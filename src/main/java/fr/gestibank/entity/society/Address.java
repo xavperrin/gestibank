@@ -1,16 +1,27 @@
 package fr.gestibank.entity.society;
 
-/**
- * @author Jean-Francois
- *
- */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Address {
 	
+	@Id @GeneratedValue @Column(length=70)
+	private String _id;
+	
+	@Column(length=10)
 	private String _streetNumber;
+	@Column(length=70)
 	private String _street1;
+	@Column(length=70)
 	private String _street2;
+	@Column(length=30)
 	private String _city;
+	@Column(length=10)
 	private String _zipcode;
+	@Column(length=30)
 	private String _country;
 	
 	public String getStreetNumber() {

@@ -3,6 +3,7 @@ package fr.gestibank.entity.user;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
@@ -11,6 +12,7 @@ import fr.gestibank.entity.society.Gender;
 
 
 @Entity
+@PrimaryKeyJoinColumn(name="_id")
 public class Manager extends User {
 	
 	private int _staffnumber; 

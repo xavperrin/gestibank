@@ -1,6 +1,7 @@
 package fr.gestibank.entity.user;
 
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
@@ -10,6 +11,7 @@ import fr.gestibank.entity.society.MaritalStatus;
 
 
 @Entity
+@PrimaryKeyJoinColumn(name="_id")
 public class Customer extends User {
 	
 	MaritalStatus _maritalStatus;	

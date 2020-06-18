@@ -6,6 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Address;
@@ -15,16 +18,21 @@ import fr.gestibank.entity.society.Gender;
 
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User implements Serializable {
 	
-	@Id @GeneratedValue
+	@Id @GeneratedValue @Column(length=70)
 	private String _id;
 	
-	@Column(length=70)
+	@Column(length=30)
 	private String _firstname;
+	@Column(length=30)
 	private String _lastname;
+	@Column(length=70)
 	private String _mail;
+	@Column(length=30)
 	private String _password;
+	@ManyToOne
 	private Address _address;
 	private Gender _gender;
 
@@ -63,6 +71,12 @@ public class User implements Serializable {
 	}
 	public void setPassword(String password) {
 		_password = password;
+	}
+	
+	
+	// Constructeur sans paramètre
+	public User() {
+		super();
 	}
 	
 	/**

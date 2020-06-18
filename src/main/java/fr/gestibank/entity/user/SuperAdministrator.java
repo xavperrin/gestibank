@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
@@ -11,6 +12,7 @@ import fr.gestibank.entity.society.Gender;
 
 
 @Entity
+@PrimaryKeyJoinColumn(name="_id")
 public class SuperAdministrator extends User {
 	
 	private int _staffNumber;
