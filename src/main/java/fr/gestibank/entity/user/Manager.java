@@ -15,6 +15,10 @@ import fr.gestibank.entity.society.Gender;
 @PrimaryKeyJoinColumn(name="_id")
 public class Manager extends User {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4533222629834744029L;
 	private int _staffnumber; 
 	private LocalDate  _beginDate;
 	private LocalDate  _endDate;
@@ -81,13 +85,13 @@ public class Manager extends User {
 		_endDate = endDate;
 	}
 	
-	public Manager(String id, String firstname, String lastname, String mail, String password, int staffnumber, String phonenumber) {
+	public Manager(String firstname, String lastname, String mail, String password, int staffnumber, String phonenumber) {
 		super(firstname, lastname, mail, password);
 		setStaffnumber(staffnumber);
 		setPhonenumber(phonenumber);
 	}
 
-	public Manager(String id, String firstname, String lastname, String mail, String password, Address address,
+	public Manager(String firstname, String lastname, String mail, String password, Address address,
 			Gender gender, int staffnumber, LocalDate begin) {
 		super(firstname, lastname, mail, password);
 		this.setStaffnumber(staffnumber);
@@ -95,7 +99,7 @@ public class Manager extends User {
 		this.setAddress(address);
 	}
 
-	public Manager(String id, String firstname, String lastname, String mail, String password, int staffnumber) {
+	public Manager(String firstname, String lastname, String mail, String password, int staffnumber) {
 		super(firstname, lastname, mail, password);
 		this._staffnumber=staffnumber;
 		

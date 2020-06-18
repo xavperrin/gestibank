@@ -15,26 +15,30 @@ import fr.gestibank.entity.society.Gender;
 @PrimaryKeyJoinColumn(name="_id")
 public class SuperAdministrator extends User {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1560638527837467307L;
 	private int _staffNumber;
 	private LocalDate _beginDate;
 	private ArrayList<Manager> _listManagers;
 
 	
 	// Constructeur basique (address, gender, begindate, listManagers non pr�cis�)
-	public SuperAdministrator(String id, String firstname, String lastname,  String mail, String password, int staffNumber) {
+	public SuperAdministrator(String firstname, String lastname,  String mail, String password, int staffNumber) {
 		super(firstname, lastname, mail, password);
 		this.setStaffNumber(staffNumber);
 	}
 	
 	// Constructeur basique (listManagers non pr�cis�)
-	public SuperAdministrator(String id, String firstname, String lastname,  String mail, String password, Address address, Gender gender, int staffNumber, LocalDate beginDate) {
+	public SuperAdministrator(String firstname, String lastname,  String mail, String password, Address address, Gender gender, int staffNumber, LocalDate beginDate) {
 		super(firstname, lastname, mail, password, address, gender);
 		this.setStaffNumber(staffNumber);
 		this.setBeginDate(beginDate);
 	}
 	
 	// Constructeur avec listManagers
-	public SuperAdministrator(String id, String firstname, String lastname,  String mail, String password, Address address, Gender gender, int staffNumber, LocalDate beginDate, ArrayList<Manager> listManagers) {
+	public SuperAdministrator(String firstname, String lastname,  String mail, String password, Address address, Gender gender, int staffNumber, LocalDate beginDate, ArrayList<Manager> listManagers) {
 		super(firstname, lastname, mail, password, address, gender);
 		this.setStaffNumber(staffNumber);
 		this.setBeginDate(beginDate);

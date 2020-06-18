@@ -14,6 +14,10 @@ import fr.gestibank.entity.society.MaritalStatus;
 @PrimaryKeyJoinColumn(name="_id")
 public class Customer extends User {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3111697784484041650L;
 	MaritalStatus _maritalStatus;	
 	String _phonenumber;
 	int idManager;
@@ -28,13 +32,13 @@ public class Customer extends User {
 	 * @param mail
 	 * @param password
 	 */
-	public Customer(String id, String firstname, String lastname, String mail, String password) {
+	public Customer(String firstname, String lastname, String mail, String password) {
 		super(firstname, lastname, mail, password);
 	}
 
 
 
-	public  Customer(String id, String firstname, String lastname, String  mail, String password, Address addr,
+	public  Customer(String firstname, String lastname, String  mail, String password, Address addr,
 			Gender gender, MaritalStatus maritalstatus) {
 		super(firstname, lastname, mail, password);
 		this.setAddress(addr);

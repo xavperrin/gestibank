@@ -34,7 +34,7 @@ public class ManagerTest extends TestCase {
 	 */
 	public void setUp() throws Exception {
 		Address addr= new Address("3ter", "street1", "street2", "city", "zipcode", "country");
-		_validManager=new Manager("bill000", "Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, 101, LocalDate.now());
+		_validManager=new Manager("Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, 101, LocalDate.now());
 	}
 	 //==================================
     //=            Test cases          =
@@ -45,7 +45,7 @@ public class ManagerTest extends TestCase {
   */
  public void testCreateValidManager() throws CheckException {
 
-     final Manager manager = new Manager("bill000", "Bill", "Gates", "bill@gates.com", "password000", 6654);
+     final Manager manager = new Manager("Bill", "Gates", "bill@gates.com", "password000", 6654);
 		assertEquals("Bill", manager.getFirstname());
 		assertEquals("Gates", manager.getLastname());
 		manager.checkData();
@@ -55,14 +55,14 @@ public class ManagerTest extends TestCase {
 public void testCreateManagerWithInvalidValues() throws Exception{
  	
  	try {
- 		final Manager manager = new Manager("1234", "", "Gates", "bill@gates.com", "pass1234", 1523);
+ 		final Manager manager = new Manager("", "Gates", "bill@gates.com", "pass1234", 1523);
  		manager.checkData();
  		fail("Object with empty values should not be created");
  	} catch (CheckException e) {
      	assertEquals("Invalid user first name", e.getMessage());
      }
      try {
-     	final Manager manager = new Manager("1234", "Bill", "", "bill@gates.com", "pass1234", 1523);
+     	final Manager manager = new Manager("Bill", "", "bill@gates.com", "pass1234", 1523);
          manager.checkData();
          fail("Object with empty values should not be created");
      } catch (CheckException e) {
@@ -71,14 +71,14 @@ public void testCreateManagerWithInvalidValues() throws Exception{
 
      // Creates objects with null values
      try {
-     	final Manager manager = new Manager("1234", null, "Gates", "bill@gates.com", "pass1234", 1523);
+     	final Manager manager = new Manager(null, "Gates", "bill@gates.com", "pass1234", 1523);
          manager.checkData();
          fail("Object with null values should not be created");
      } catch (CheckException e) {
      	assertEquals("Invalid user first name", e.getMessage());
      }
      try {
-     	final Manager manager = new Manager("1234", "Bill", null, "bill@gates.com", "pass1234", 1523);
+     	final Manager manager = new Manager("Bill", null, "bill@gates.com", "pass1234", 1523);
          manager.checkData();
          fail("Object with null values should not be created");
      } catch (CheckException e) {
@@ -86,7 +86,7 @@ public void testCreateManagerWithInvalidValues() throws Exception{
      }
      
      try {
-     	final Manager manager = new Manager("1234", "Bill", "Gates", null, "pass1234", 1523);
+     	final Manager manager = new Manager("Bill", "Gates", null, "pass1234", 1523);
          manager.checkData();
          fail("Object with null values should not be created");
      } catch (CheckException e) {
@@ -98,7 +98,6 @@ public void testCreateManagerWithInvalidValues() throws Exception{
  * This test use each getter
  */
 public void testAllGetters() {
-	assertEquals("bill000", _validManager.getId());
 	assertEquals("Bill", _validManager.getFirstname());
 	assertEquals("Gates", _validManager.getLastname());
 	assertEquals(new Address("3ter", "street1", "street2", "city", "zipcode", "country"), _validManager.getAddress());

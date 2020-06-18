@@ -21,6 +21,11 @@ import fr.gestibank.entity.society.Gender;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 724866210217217496L;
+
 	@Id @GeneratedValue @Column(length=70)
 	private Long _id;
 	
@@ -126,8 +131,6 @@ public class User implements Serializable {
             throw new CheckException("Invalid user first name");
         if (_lastname == null || "".equals(_lastname))
             throw new CheckException("Invalid user last name");
-        if (_id == null || "".equals(_id))
-            throw new CheckException("Invalid user id");
         if (_mail == null || "".equals(_mail))
             throw new CheckException("Invalid user mail");
 		return true;

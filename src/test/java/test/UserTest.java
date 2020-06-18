@@ -24,7 +24,7 @@ public final class UserTest extends TestCase {
     public void setUp() {
 		// Creates a valid customer
 		
-		_validUser = new User("bill000", "Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
+		_validUser = new User("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
 				new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
 				Gender.MALE);
 	}
@@ -43,7 +43,7 @@ public final class UserTest extends TestCase {
      */
     public void testCreateValidUser() throws CheckException {
 
-        final User user = new User("bill000", "Bill", "Gates",  "bill@gates.com", "password000");
+        final User user = new User("Bill", "Gates",  "bill@gates.com", "password000");
 		assertEquals("Bill", user.getFirstname());
 		assertEquals("Gates", user.getLastname());
 		user.checkData();
@@ -56,14 +56,14 @@ public final class UserTest extends TestCase {
     public void testCreateUserWithInvalidValues() throws Exception{
     	
     	try {
-    		final User user = new User("1234", "", "Gates", "bill@gates.com", "pass1234");
+    		final User user = new User("", "Gates", "bill@gates.com", "pass1234");
     		user.checkData();
     		fail("Object with empty values should not be created");
     	} catch (CheckException e) {
         	assertEquals("Invalid user first name", e.getMessage());
         }
         try {
-        	final  User user = new User("1234", "Bill", "", "bill@gates.com", "pass1234");
+        	final  User user = new User("Bill", "", "bill@gates.com", "pass1234");
             user.checkData();
             fail("Object with empty values should not be created");
         } catch (CheckException e) {
@@ -72,14 +72,14 @@ public final class UserTest extends TestCase {
 
         // Creates objects with null values
         try {
-        	final  User user = new User("1234", null, "Gates", "bill@gates.com", "pass1234");
+        	final  User user = new User(null, "Gates", "bill@gates.com", "pass1234");
             user.checkData();
             fail("Object with null values should not be created");
         } catch (CheckException e) {
         	assertEquals("Invalid user first name", e.getMessage());
         }
         try {
-        	final User user = new User("1234", "Bill", null, "bill@gates.com", "pass1234");
+        	final User user = new User("Bill", null, "bill@gates.com", "pass1234");
             user.checkData();
             fail("Object with null values should not be created");
         } catch (CheckException e) {
@@ -87,7 +87,7 @@ public final class UserTest extends TestCase {
         }
         
         try {
-        	final User user = new User("1234", "Bill", "Gates", null, "pass1234");
+        	final User user = new User("Bill", "Gates", null, "pass1234");
             user.checkData();
             fail("Object with null values should not be created");
         } catch (CheckException e) {
@@ -99,7 +99,6 @@ public final class UserTest extends TestCase {
 	 * This test use each getter
 	 */
 	public void testAllGetters() {
-		assertEquals("bill000", _validUser.getId());
 		assertEquals("Bill", _validUser.getFirstname());
 		assertEquals("Gates", _validUser.getLastname());
 		assertEquals("3ter", _validUser.getAddress().getStreetNumber());

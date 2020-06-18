@@ -1,12 +1,18 @@
 package fr.gestibank.entity.user;
 
+import java.io.Serializable;
+
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Gender;
 
-public class PendingSubscribe {
+public class PendingSubscribe implements Serializable {
 
 	
-    Long _id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2754459759946458555L;
+	Long _id;
 	String _firstname;
 	String _lastname;
 	String _mail;

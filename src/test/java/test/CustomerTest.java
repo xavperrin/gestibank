@@ -35,7 +35,7 @@ public class CustomerTest extends TestCase {
 	 */
 	public void setUp() throws Exception {
 		Address addr= new Address("3ter", "street1", "street2", "city", "zipcode", "country");
-		_validCustomer=new Customer("bill000", "Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, MaritalStatus.Married  );
+		_validCustomer=new Customer("Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, MaritalStatus.Married  );
 	}
 	 //==================================
     //=            Test cases          =
@@ -46,7 +46,7 @@ public class CustomerTest extends TestCase {
   */
  public void testCreateValidCustomer() throws CheckException {
 
-     final Customer customer = new Customer("bill000", "Bill", "Gates", "bill@gates.com", "password000");
+     final Customer customer = new Customer("Bill", "Gates", "bill@gates.com", "password000");
 		assertEquals("Bill", customer.getFirstname());
 		assertEquals("Gates", customer.getLastname());
 		customer.checkData();
@@ -56,14 +56,14 @@ public class CustomerTest extends TestCase {
 public void testCreateManagerWithInvalidValues() throws Exception{
  	
  	try {
- 		final Customer customer = new Customer("1234", "", "Gates", "bill@gates.com", "pass1234");
+ 		final Customer customer = new Customer("", "Gates", "bill@gates.com", "pass1234");
  		customer.checkData();
  		fail("Object with empty values should not be created");
  	} catch (CheckException e) {
      	assertEquals("Invalid user first name", e.getMessage());
      }
      try {
-     	final Customer customer = new Customer("1234", "Bill", "", "bill@gates.com", "pass1234");
+     	final Customer customer = new Customer("Bill", "", "bill@gates.com", "pass1234");
          customer.checkData();
          fail("Object with empty values should not be created");
      } catch (CheckException e) {
@@ -72,14 +72,14 @@ public void testCreateManagerWithInvalidValues() throws Exception{
 
      // Creates objects with null values
      try {
-     	final Customer customer = new Customer("1234", null, "Gates", "bill@gates.com", "pass1234");
+     	final Customer customer = new Customer(null, "Gates", "bill@gates.com", "pass1234");
          customer.checkData();
          fail("Object with null values should not be created");
      } catch (CheckException e) {
      	assertEquals("Invalid user first name", e.getMessage());
      }
      try {
-     	final Customer customer = new Customer("1234", "Bill", null, "bill@gates.com", "pass1234");
+     	final Customer customer = new Customer("Bill", null, "bill@gates.com", "pass1234");
          customer.checkData();
          fail("Object with null values should not be created");
      } catch (CheckException e) {
@@ -87,7 +87,7 @@ public void testCreateManagerWithInvalidValues() throws Exception{
      }
      
      try {
-     	final Customer customer = new Customer("1234", "Bill", "Gates", null, "pass1234");
+     	final Customer customer = new Customer("Bill", "Gates", null, "pass1234");
          customer.checkData();
          fail("Object with null values should not be created");
      } catch (CheckException e) {
@@ -99,7 +99,6 @@ public void testCreateManagerWithInvalidValues() throws Exception{
  * This test use each getter
  */
 public void testAllGetters() {
-	assertEquals("bill000", _validCustomer.getId());
 	assertEquals("Bill", _validCustomer.getFirstname());
 	assertEquals("Gates", _validCustomer.getLastname());
 	assertEquals(new Address("3ter", "street1", "street2", "city", "zipcode", "country"), _validCustomer.getAddress());
