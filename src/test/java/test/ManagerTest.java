@@ -5,9 +5,13 @@ package test;
 
 import java.time.LocalDate;
 
+import org.junit.Test;
+import org.springframework.util.SerializationUtils;
+
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
+import fr.gestibank.entity.user.Customer;
 import fr.gestibank.entity.user.Manager;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -124,6 +128,11 @@ public void testAllSetters() {
 	assertEquals(326556, _voidManager.getStaffnumber());
 }
 
-
+@Test
+public void managerIsSerializable() {
+    final byte[] serializedValidManager = SerializationUtils.serialize(_validManager);
+    final Manager deserializedValidManager = (Manager) SerializationUtils.deserialize(serializedValidManager);
+    assertEquals(_validManager, deserializedValidManager);
+}
 
 }

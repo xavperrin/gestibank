@@ -1,8 +1,12 @@
 package test;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.util.SerializationUtils;
+
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
+import fr.gestibank.entity.user.SuperAdministrator;
 import fr.gestibank.entity.user.User;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -211,6 +215,11 @@ public final class UserTest extends TestCase {
     }
 	
 	
-	
+	@Test
+	public void userIsSerializable() {
+	    final byte[] serializedValidUser = SerializationUtils.serialize(_validUser);
+	    final SuperAdministrator deserializedValidUser = (SuperAdministrator) SerializationUtils.deserialize(serializedValidUser);
+	    assertEquals(_validUser, deserializedValidUser);
+	}
 
 }

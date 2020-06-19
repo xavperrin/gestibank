@@ -6,10 +6,12 @@ package test;
 
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
+import org.springframework.util.SerializationUtils;
 
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
+import fr.gestibank.entity.user.PendingSubscribe;
 import fr.gestibank.entity.user.SuperAdministrator;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -144,6 +146,13 @@ public class SuperAdministratorTest extends TestCase {
 		assertEquals("anotherMail", _voidSuperAdmin.getMail());
 		assertEquals(Gender.FEMALE, _voidSuperAdmin.getGender());
 		assertEquals(326556, _voidSuperAdmin.getStaffNumber());
+	}
+	
+	@Test
+	public void superAdminIsSerializable() {
+	    final byte[] serializedValidSuperAdmin = SerializationUtils.serialize(_validSuperAdmin);
+	    final SuperAdministrator deserializedValidSuperAdmin = (SuperAdministrator) SerializationUtils.deserialize(serializedValidSuperAdmin);
+	    assertEquals(_validSuperAdmin, deserializedValidSuperAdmin);
 	}
 
 }

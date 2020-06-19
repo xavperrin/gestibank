@@ -4,8 +4,12 @@
 package test;
 
 
+import org.junit.Test;
+import org.springframework.util.SerializationUtils;
+
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Gender;
+import fr.gestibank.entity.user.Manager;
 import fr.gestibank.entity.user.PendingSubscribe;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -193,6 +197,11 @@ public void testCheckMailsWithInvalidDomain() {
     assertFalse("Forbidden country!", b);
 }
 
-
+@Test
+public void pendingSubscribeIsSerializable() {
+    final byte[] serializedValidPendingSubscribe = SerializationUtils.serialize(_validPendingSubscribe);
+    final PendingSubscribe deserializedValidPendingSubscribe = (PendingSubscribe) SerializationUtils.deserialize(serializedValidPendingSubscribe);
+    assertEquals(_validPendingSubscribe, deserializedValidPendingSubscribe);
+}
 
 }

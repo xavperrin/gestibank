@@ -3,6 +3,9 @@
  */
 package test;
 
+import org.junit.Test;
+import org.springframework.util.SerializationUtils;
+
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
@@ -202,6 +205,13 @@ public void testCheckMailsWithInvalidDomain() {
     assertFalse("Forbidden country!", b);
 }
 
+
+@Test
+public void customerIsSerializable() {
+    final byte[] serializedValidCustomer = SerializationUtils.serialize(_validCustomer);
+    final Customer deserializedValidCustomer = (Customer) SerializationUtils.deserialize(serializedValidCustomer);
+    assertEquals(_validCustomer, deserializedValidCustomer);
+}
 
 
 }
