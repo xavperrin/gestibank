@@ -1,5 +1,10 @@
 package fr.gestibank.entity.account;
 
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+@Entity
+@PrimaryKeyJoinColumn(name="_id")
 public class Credit extends Transaction {
 
 	public Credit(double amount) {

@@ -2,9 +2,24 @@ package fr.gestibank.entity.account;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Transaction {
 
+	
+	@Id @GeneratedValue @Column(name="id")
+	private Long _id;
+	@Column(name="amount")
 	double _amount;
+	@Column(name="date")
 	LocalDate _date;
 	
 	public double getAmount() {
