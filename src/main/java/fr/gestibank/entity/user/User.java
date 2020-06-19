@@ -8,7 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.ColumnTransformer;
 
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Address;
@@ -26,19 +29,20 @@ public class User implements Serializable {
 	 */
 	private static final long serialVersionUID = 724866210217217496L;
 
-	@Id @GeneratedValue @Column(length=70)
+	@Id @GeneratedValue @Column(length=70, name="id")
 	private Long _id;
-	
-	@Column(length=30)
+	@Column(length=30, name="firstname")
 	private String _firstname;
-	@Column(length=30)
+	@Column(length=30, name="lastname")
 	private String _lastname;
-	@Column(length=70)
+	@Column(length=70, name="mail")
 	private String _mail;
-	@Column(length=30)
+	@Column(length=250, name="password")
 	private String _password;
 	@ManyToOne
+	@JoinColumn(name="fk_address_id")
 	private Address _address;
+	@Column(name="gender")
 	private Gender _gender;
 
 	

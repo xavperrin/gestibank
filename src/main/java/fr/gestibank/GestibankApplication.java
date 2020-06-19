@@ -1,12 +1,14 @@
 package fr.gestibank;
 
 
+import java.time.Instant;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import fr.gestibank.entity.user.User;
-import fr.gestibank.repository.UserRepository;
+import fr.gestibank.entity.user.Customer;
+import fr.gestibank.repository.CustomerRepository;
 
 @SpringBootApplication
 public class GestibankApplication {
@@ -14,10 +16,12 @@ public class GestibankApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(GestibankApplication.class, args);
 		
-		UserRepository userDao = ctx.getBean(UserRepository.class);
+		CustomerRepository customerDao = ctx.getBean(CustomerRepository.class);
 		
 		// Sauvegarde en dur pour tester
-		userDao.save(new User("Jean","Valjean","pasdechance@gmail.com","jeanjeanPW"));
+		Long timestamp =Instant.now().toEpochMilli();
+		
+		customerDao.save(new Customer("Jean"+timestamp,"Valjean"+timestamp,"jeanvaljean"+timestamp+"@gmail.com","jeanjeanPW"));
 	}
 
 }

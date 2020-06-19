@@ -18,6 +18,8 @@ public class Customer extends User {
 	 * 
 	 */
 	private static final long serialVersionUID = -3111697784484041650L;
+	
+	
 	MaritalStatus _maritalStatus;	
 	String _phonenumber;
 	int idManager;

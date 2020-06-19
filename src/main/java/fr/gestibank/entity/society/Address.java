@@ -1,14 +1,21 @@
 package fr.gestibank.entity.society;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Address {
+public class Address implements Serializable {
 	
-	@Id @GeneratedValue @Column(length=70)
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8673505740708109244L;
+
+	@Id @GeneratedValue @Column(length=70, name="id")
 	private String _id;
 	
 	@Column(length=10)
