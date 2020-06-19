@@ -3,6 +3,7 @@ package fr.gestibank.entity.user;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -19,8 +20,12 @@ public class SuperAdministrator extends User {
 	 * 
 	 */
 	private static final long serialVersionUID = 1560638527837467307L;
+	
+	@Column(name ="staffNumber")
 	private int _staffNumber;
+	@Column(name ="beginDate")
 	private LocalDate _beginDate;
+	@Column(name ="listManagers")
 	private ArrayList<Manager> _listManagers;
 
 	

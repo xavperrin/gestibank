@@ -2,6 +2,7 @@ package fr.gestibank.entity.user;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -19,10 +20,15 @@ public class Manager extends User {
 	 * 
 	 */
 	private static final long serialVersionUID = -4533222629834744029L;
-	private int _staffnumber; 
+	
+	@Column(name ="staffNumber")
+	private int _staffNumber;
+	@Column(name ="beginDate")
 	private LocalDate  _beginDate;
+	@Column(name ="endDate")
 	private LocalDate  _endDate;
-	private String _phonenumber;
+	@Column(name ="phoneNumber")
+	private String _phoneNumber;
 	
 	
 
@@ -30,14 +36,14 @@ public class Manager extends User {
 	 * @return the staffnumber
 	 */
 	public int getStaffnumber() {
-		return _staffnumber;
+		return _staffNumber;
 	}
 
 	/**
 	 * @param staffnumber the staffnumber to set
 	 */
 	public void setStaffnumber(int staffnumber) {
-		_staffnumber = staffnumber;
+		_staffNumber = staffnumber;
 	}
 
 	
@@ -45,14 +51,14 @@ public class Manager extends User {
 	 * @return the phonenumber
 	 */
 	public String getPhonenumber() {
-		return _phonenumber;
+		return _phoneNumber;
 	}
 
 	/**
 	 * @param phonenumber the phonenumber to set
 	 */
 	public void setPhonenumber(String phonenumber) {
-		_phonenumber = phonenumber;
+		_phoneNumber = phonenumber;
 	}
 	
 	
@@ -101,7 +107,7 @@ public class Manager extends User {
 
 	public Manager(String firstname, String lastname, String mail, String password, int staffnumber) {
 		super(firstname, lastname, mail, password);
-		this._staffnumber=staffnumber;
+		this._staffNumber=staffnumber;
 		
 	}
 
