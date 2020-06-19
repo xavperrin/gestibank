@@ -26,6 +26,15 @@ public abstract class DepositAccount {
 	private Vector<Transaction> history;
 	
 
+	public DepositAccount() {
+		//on crée notre contructeurs sans args lié à SavingAccount
+	}
+	
+	/**
+	 * 
+	 * @param iBAN
+	 * @param starteramount
+	 */
 	public DepositAccount(String iBAN, double starteramount) {
 		super();
 		_IBAN = iBAN;
@@ -34,9 +43,7 @@ public abstract class DepositAccount {
 		this.history = new Vector<Transaction>();
 		this.history.add(new Credit(starteramount));
 	}
-	public DepositAccount() {
-		//on crée notre contrccteurs sans args lié à SavingAccount
-	}
+
 	public void withdraw(double amount) {
 		
 	}

@@ -31,6 +31,14 @@ public abstract class Transaction {
 	}
 
 	
+	public Transaction() {
+		super();
+	}
+
+	/**
+	 * 
+	 * @param amount
+	 */
 	public Transaction(double amount){
 		_amount=amount;
 		_date=LocalDate.now();

@@ -69,6 +69,21 @@ public class Address implements Serializable {
 		_country = country;
 	}
 	
+	public Address() {
+		super();
+		// notre constructeur sans args afin de valider les passages de hibernates
+	}
+	
+	
+	/**
+	 * 
+	 * @param streetNumber
+	 * @param street1
+	 * @param street2
+	 * @param city
+	 * @param zipcode
+	 * @param country
+	 */
 	public Address(String streetNumber, String street1, String street2, String city, String zipcode, String country) {
 		super();
 		_streetNumber =streetNumber;
@@ -131,10 +146,4 @@ public class Address implements Serializable {
 			return false;
 		return true;
 	}
-	public Address() {
-		super();
-		// notre constructeur sans args afin de valider les passages de hibernates
-	}
-
-
 }
