@@ -15,8 +15,10 @@ public final class UserTest extends TestCase {
 	// ======================================
 	// =             Attributes             =
 	// ======================================
-	User _validUser;
-
+	private User _validUser;
+	private User _voidUser;
+	
+	
     public UserTest(final String s) {
         super(s);
     }
@@ -27,6 +29,7 @@ public final class UserTest extends TestCase {
 		_validUser = new User("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
 				new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
 				Gender.MALE);
+		_voidUser=new User();
 	}
     
 
@@ -114,22 +117,42 @@ public final class UserTest extends TestCase {
 	 * This test use each setter
 	 */
 	public void testAllSetters() {
-		_validUser.setFirstname("Bill2");
-		_validUser.setLastname("Gates2");
+		_validUser.setFirstname("Ada");
+		_validUser.setLastname("Lovelace");
 		_validUser.setAddress(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"));
-		_validUser.setMail("anotherMail");
+		_validUser.setMail("anothermail@gmail.com");
 		_validUser.setGender(Gender.FEMALE);
-		assertEquals("Bill2", _validUser.getFirstname());
-		assertEquals("Gates2", _validUser.getLastname());
+		assertEquals("Ada", _validUser.getFirstname());
+		assertEquals("Lovelace", _validUser.getLastname());
 		assertEquals("street12", _validUser.getAddress().getStreet1());
 		assertEquals("street22", _validUser.getAddress().getStreet2());
 		assertEquals("city2", _validUser.getAddress().getCity());
 		assertEquals("zipcode2", _validUser.getAddress().getZipcode());
 		assertEquals("country2", _validUser.getAddress().getCountry());
-		assertEquals("anotherMail", _validUser.getMail());
+		assertEquals("anothermail@gmail.com", _validUser.getMail());
 		assertEquals(Gender.FEMALE, _validUser.getGender());
 	}
     
+	
+	/**
+	 * This test use each setter
+	 */
+	public void testAllSettersWithDefaultConstructor() {
+		_voidUser.setFirstname("Katherine");
+		_voidUser.setLastname("Johnson");
+		_voidUser.setAddress(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"));
+		_validUser.setMail("katherine.johnson@gmail.com");
+		_validUser.setGender(Gender.FEMALE);
+		assertEquals("Katherine", _validUser.getFirstname());
+		assertEquals("Johnson", _validUser.getLastname());
+		assertEquals("street12", _validUser.getAddress().getStreet1());
+		assertEquals("street22", _validUser.getAddress().getStreet2());
+		assertEquals("city2", _validUser.getAddress().getCity());
+		assertEquals("zipcode2", _validUser.getAddress().getZipcode());
+		assertEquals("country2", _validUser.getAddress().getCountry());
+		assertEquals("katherine.johnson@gmail.com", _validUser.getMail());
+		assertEquals(Gender.FEMALE, _validUser.getGender());
+	}
     
 	/**
 	 * The following tests mail contents

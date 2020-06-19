@@ -18,7 +18,8 @@ import junit.framework.TestSuite;
  */
 
 public class CustomerTest extends TestCase {
-	Customer _validCustomer;
+	private Customer _validCustomer;
+	private Customer _voidCustomer;
 	
 	
 	   public CustomerTest(final String s) {
@@ -36,6 +37,7 @@ public class CustomerTest extends TestCase {
 	public void setUp() throws Exception {
 		Address addr= new Address("3ter", "street1", "street2", "city", "zipcode", "country");
 		_validCustomer=new Customer("Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, MaritalStatus.Married  );
+		_voidCustomer=new Customer();
 	}
 	 //==================================
     //=            Test cases          =
@@ -125,6 +127,24 @@ public void testAllSetters() {
 	assertEquals(MaritalStatus.Divorced, _validCustomer.getMaritalStatus());
 }
 
+
+/**
+ * This test use each setter
+ */
+public void testAllSettersWithDefaultConstructor() {
+	_voidCustomer.setFirstname("Ada");
+	_voidCustomer.setLastname("Lovelace");
+	_voidCustomer.setAddress(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"));
+	_voidCustomer.setMail("anotherMail");
+	_voidCustomer.setGender(Gender.FEMALE);
+	_voidCustomer.setMaritalStatus(MaritalStatus.Divorced);
+	assertEquals("Bill2", _voidCustomer.getFirstname());
+	assertEquals("Gates2", _voidCustomer.getLastname());
+	assertEquals(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"), _voidCustomer.getAddress());
+	assertEquals("anotherMail", _voidCustomer.getMail());
+	assertEquals(Gender.FEMALE, _voidCustomer.getGender());
+	assertEquals(MaritalStatus.Divorced, _voidCustomer.getMaritalStatus());
+}
 
 /**
  * The following tests mail contents
