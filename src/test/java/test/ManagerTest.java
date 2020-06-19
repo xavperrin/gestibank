@@ -116,10 +116,10 @@ public void testAllSetters() {
 	_voidManager.setMail("anothermail@gmail.com");
 	_voidManager.setGender(Gender.FEMALE);
 	_voidManager.setStaffnumber(326556);
-	assertEquals("Ada", _validManager.getFirstname());
+	assertEquals("Ada", _voidManager.getFirstname());
 	assertEquals("Lovelace", _voidManager.getLastname());
-	assertEquals(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"), _validManager.getAddress());
-	assertEquals("anothermail@gmail.com", _validManager.getMail());
+	assertEquals(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"), _voidManager.getAddress());
+	assertEquals("anothermail@gmail.com", _voidManager.getMail());
 	assertEquals(Gender.FEMALE, _voidManager.getGender());
 	assertEquals(326556, _voidManager.getStaffnumber());
 }

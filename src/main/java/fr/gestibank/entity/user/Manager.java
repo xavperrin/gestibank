@@ -92,7 +92,7 @@ public class Manager extends User {
 	}
 	
 	public Manager() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 	
 	public Manager(String firstname, String lastname, String mail, String password, int staffnumber, String phonenumber) {
