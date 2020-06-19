@@ -42,6 +42,10 @@ public class PendingSubscribe implements Serializable {
 		_gender = gender;
 	}
 
+	public PendingSubscribe() {
+		super();
+	}
+
 	public Long getId() {
 		return _id;
 	}
