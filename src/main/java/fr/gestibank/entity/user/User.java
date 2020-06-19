@@ -18,8 +18,6 @@ import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
 
 
-
-
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User implements Serializable {
@@ -50,9 +48,6 @@ public class User implements Serializable {
 	@Column(name="gender")
 	private Gender _gender;
 
-	
-	
-	
 	public Long getId() {
 		return _id;
 	}
@@ -143,8 +138,7 @@ public class User implements Serializable {
         if (_mail == null || "".equals(_mail))
             throw new CheckException("Invalid user mail");
 		return true;
-	
-}
+	}
 
 
 public boolean checkMail() {
