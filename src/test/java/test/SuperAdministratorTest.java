@@ -30,6 +30,7 @@ public class SuperAdministratorTest extends TestCase {
 	    }
 	
 	private SuperAdministrator _validSuperAdmin;
+	private SuperAdministrator _voidSuperAdmin;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -37,7 +38,7 @@ public class SuperAdministratorTest extends TestCase {
 	public void setUp() throws Exception {
 		Address addr= new Address("3ter", "street1", "street2", "city", "zipcode", "country");
 		_validSuperAdmin=new SuperAdministrator("Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, 101, LocalDate.now());
-		
+		_voidSuperAdmin=new SuperAdministrator();
 	}
 
 	/**
@@ -129,5 +130,20 @@ public class SuperAdministratorTest extends TestCase {
 		assertEquals(326556, _validSuperAdmin.getStaffNumber());
 	}
 
+	
+	public void testAllSettersWithDefaultConstructor() {
+		_voidSuperAdmin.setFirstname("Bill2");
+		_voidSuperAdmin.setLastname("Gates2");
+		_voidSuperAdmin.setAddress(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"));
+		_voidSuperAdmin.setMail("anotherMail");
+		_voidSuperAdmin.setGender(Gender.FEMALE);
+		_voidSuperAdmin.setStaffNumber(326556);
+		assertEquals("Bill2", _voidSuperAdmin.getFirstname());
+		assertEquals("Gates2", _voidSuperAdmin.getLastname());
+		assertEquals(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"), _voidSuperAdmin.getAddress());
+		assertEquals("anotherMail", _voidSuperAdmin.getMail());
+		assertEquals(Gender.FEMALE, _voidSuperAdmin.getGender());
+		assertEquals(326556, _voidSuperAdmin.getStaffNumber());
+	}
 
 }
