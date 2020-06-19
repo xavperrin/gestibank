@@ -2,11 +2,27 @@ package fr.gestibank.entity.account;
 
 import java.util.Vector;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class DepositAccount {
 	
+	
+	@Id @GeneratedValue @Column(name="id")
+	private Long _id;
+	@Column(length=50, name="IBAN")
 	private String _IBAN;
+	@Column(name="balance")
 	private double _balance;
+	@Column(name="overdraftFacility")
 	private double _overdraftFacility;
+	@Column(name="history")
 	private Vector<Transaction> history;
 	
 

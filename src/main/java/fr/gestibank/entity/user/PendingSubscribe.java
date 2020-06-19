@@ -1,6 +1,7 @@
 package fr.gestibank.entity.user;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +32,7 @@ public class PendingSubscribe implements Serializable {
 	@Column(name="gender")
 	Gender _gender;
 	@Column(name="date")
-	String _date;
+	LocalDate _date;
 
 	public PendingSubscribe(String firstname, String lastname, String mail, Gender gender) {
 		super();
@@ -81,11 +82,11 @@ public class PendingSubscribe implements Serializable {
 		_gender = gender;
 	}
 
-	public String getDate() {
+	public LocalDate getDate() {
 		return _date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(LocalDate date) {
 		_date = date;
 	}
 	
