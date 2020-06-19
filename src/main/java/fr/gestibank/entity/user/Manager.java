@@ -91,6 +91,10 @@ public class Manager extends User {
 		_endDate = endDate;
 	}
 	
+	public Manager() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Manager(String firstname, String lastname, String mail, String password, int staffnumber, String phonenumber) {
 		super(firstname, lastname, mail, password);
 		setStaffnumber(staffnumber);
@@ -110,6 +114,8 @@ public class Manager extends User {
 		this._staffNumber=staffnumber;
 		
 	}
+
+
 
 
 
