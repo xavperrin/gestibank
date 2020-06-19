@@ -80,6 +80,11 @@ public class SuperAdministrator extends User {
 		return "SuperAdministrator [ staffNumber = " + _staffNumber + ", beginDate = " + _beginDate + ", listManagers = "
 				+ _listManagers + " ]";
 	}
+
+	public SuperAdministrator() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	

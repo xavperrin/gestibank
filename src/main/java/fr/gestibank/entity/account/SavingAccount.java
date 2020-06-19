@@ -8,7 +8,13 @@ import javax.persistence.PrimaryKeyJoinColumn;
 public class SavingAccount extends DepositAccount {
 
 	public SavingAccount(String iBAN, double starter) {
-		super(iBAN, starter);
+		//super();
 		setOverdraftFacility(0);
 	}
+
+	public SavingAccount() {
+		super();
+		// on crée notre contrccteurs sans args et pareil dans DepositAccount afin de les reliers
+	}
+	
 }

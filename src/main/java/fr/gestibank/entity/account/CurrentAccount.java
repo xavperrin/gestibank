@@ -8,7 +8,13 @@ import javax.persistence.PrimaryKeyJoinColumn;
 public class CurrentAccount extends DepositAccount {
 
 	public CurrentAccount(String iBAN, double starter) {
-		super(iBAN, starter);
+		//super(iBAN, starter);
 		setOverdraftFacility(0);
 	}
+
+	public CurrentAccount() {
+		super();
+		// le contr vide nous permet d'appeler les méthodes afin d'instancer des nouveaux "account"
+	}
+	
 }
