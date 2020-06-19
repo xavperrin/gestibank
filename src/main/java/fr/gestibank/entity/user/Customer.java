@@ -1,5 +1,6 @@
 package fr.gestibank.entity.user;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -19,10 +20,13 @@ public class Customer extends User {
 	 */
 	private static final long serialVersionUID = -3111697784484041650L;
 	
-	
+	@Column(name ="maritalStatus")
 	MaritalStatus _maritalStatus;	
-	String _phonenumber;
+	@Column(name ="phoneNumber")
+	String _phoneNumber;
+	@Column(name ="idManager")
 	int idManager;
+	@Column(name ="children")
 	int children;
 
 	
@@ -60,11 +64,11 @@ public class Customer extends User {
 	}
 
 	public String getPhonenumber() {
-		return _phonenumber;
+		return _phoneNumber;
 	}
 
 	public void setPhonenumber(String phoneNumber) {
-		_phonenumber = phoneNumber;
+		_phoneNumber = phoneNumber;
 	}
 
 	public int getIdManager() {
@@ -84,7 +88,7 @@ public class Customer extends User {
 	
 	@Override
 	public String toString() {
-		return "Customer [_maritalStatus=" + _maritalStatus + ", _phonenumber=" + _phonenumber + ", idManager="
+		return "Customer [_maritalStatus=" + _maritalStatus + ", _phonenumber=" + _phoneNumber + ", idManager="
 				+ idManager + ", getId()=" + getId() + ", getFirstname()=" + getFirstname() + ", getLastname()="
 				+ getLastname() + ", getMail()=" + getMail() + ", getPassword()=" + getPassword() + ", getAddress()=" + getAddress() + ", getGender()="
 				+ getGender() + "]";

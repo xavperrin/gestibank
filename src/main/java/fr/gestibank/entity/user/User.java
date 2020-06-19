@@ -27,7 +27,7 @@ public class User implements Serializable {
 	 */
 	private static final long serialVersionUID = 724866210217217496L;
 
-	@Id @GeneratedValue @Column(length=70, name="id")
+	@Id @GeneratedValue @Column(name="id")
 	private Long _id;
 	@Column(length=30, name="firstname")
 	private String _firstname;

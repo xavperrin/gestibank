@@ -15,20 +15,20 @@ public class Address implements Serializable {
 	 */
 	private static final long serialVersionUID = -8673505740708109244L;
 
-	@Id @GeneratedValue @Column(length=70, name="id")
-	private String _id;
+	@Id @GeneratedValue @Column(name="id")
+	private Long _id;
 	
-	@Column(length=10)
+	@Column(length=10, name="streetNumber")
 	private String _streetNumber;
-	@Column(length=70)
+	@Column(length=70, name="street1")
 	private String _street1;
-	@Column(length=70)
+	@Column(length=70, name="street2")
 	private String _street2;
-	@Column(length=30)
+	@Column(length=30, name="city")
 	private String _city;
-	@Column(length=10)
+	@Column(length=10, name="zipcode")
 	private String _zipcode;
-	@Column(length=30)
+	@Column(length=30, name="country")
 	private String _country;
 	
 	public String getStreetNumber() {

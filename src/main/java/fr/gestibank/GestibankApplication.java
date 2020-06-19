@@ -21,7 +21,8 @@ public class GestibankApplication {
 		// Sauvegarde en dur pour tester
 		Long timestamp =Instant.now().toEpochMilli();
 		
-		customerDao.save(new Customer("Jean"+timestamp,"Valjean"+timestamp,"jeanvaljean"+timestamp+"@gmail.com","jeanjeanPW"));
+		customerDao.save(new Customer("Jean","Valjean","jeanvaljean@gmail.com","jeanjeanPW"));
+		customerDao.save(new Customer("Johnny","Hallyday","aquecoucou@gmail.com","allumélefe"));
 	}
 
 }

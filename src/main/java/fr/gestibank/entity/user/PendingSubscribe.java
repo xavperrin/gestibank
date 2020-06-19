@@ -2,9 +2,16 @@ package fr.gestibank.entity.user;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Gender;
 
+
+@Entity
 public class PendingSubscribe implements Serializable {
 
 	
@@ -12,11 +19,18 @@ public class PendingSubscribe implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 2754459759946458555L;
+	
+	@Id @GeneratedValue @Column(name="id")
 	Long _id;
+	@Column(name="firstname")
 	String _firstname;
+	@Column(name="lastname")
 	String _lastname;
+	@Column(name="mail")
 	String _mail;
+	@Column(name="gender")
 	Gender _gender;
+	@Column(name="date")
 	String _date;
 
 	public PendingSubscribe(String firstname, String lastname, String mail, Gender gender) {
