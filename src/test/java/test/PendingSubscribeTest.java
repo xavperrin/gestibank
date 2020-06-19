@@ -18,7 +18,7 @@ import junit.framework.TestSuite;
 
 public class PendingSubscribeTest extends TestCase {
 	PendingSubscribe _validPendingSubscribe;
-	
+	PendingSubscribe _voidPendingSubscribe;
 	
 	   public PendingSubscribeTest(final String s) {
 	        super(s);
@@ -35,6 +35,7 @@ public class PendingSubscribeTest extends TestCase {
 	public void setUp() throws Exception {
 		
 		_validPendingSubscribe=new PendingSubscribe("Ada", "Lovelace", "adalovelace@lovelace.fr", Gender.FEMALE);
+		_voidPendingSubscribe=new PendingSubscribe();
 	}
 	 //==================================
     //=            Test cases          =
@@ -117,6 +118,21 @@ public void testAllSetters() {
 	assertEquals("Gates2", _validPendingSubscribe.getLastname());
 	assertEquals("anotherMail", _validPendingSubscribe.getMail());
 	assertEquals(Gender.MALE, _validPendingSubscribe.getGender());
+	
+}
+
+/**
+ * This test use each setter
+ */
+public void testAllSettersWithDefaultConstructor() {
+	_voidPendingSubscribe.setFirstname("Ada");
+	_voidPendingSubscribe.setLastname("Lovelace");
+	_voidPendingSubscribe.setMail("anothermail@gmail.com");
+	_voidPendingSubscribe.setGender(Gender.FEMALE);
+	assertEquals("Ada", _voidPendingSubscribe.getFirstname());
+	assertEquals("Lovelace", _voidPendingSubscribe.getLastname());
+	assertEquals("anothermail@gmail.com", _voidPendingSubscribe.getMail());
+	assertEquals(Gender.FEMALE, _voidPendingSubscribe.getGender());
 	
 }
 
