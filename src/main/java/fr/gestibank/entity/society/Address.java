@@ -131,6 +131,10 @@ public class Address implements Serializable {
 			return false;
 		return true;
 	}
+	public Address() {
+		super();
+		// notre constructeur sans args afin de valider les passages de hibernates
+	}
 
 
 }

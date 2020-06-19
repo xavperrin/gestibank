@@ -93,6 +93,13 @@ public class Customer extends User {
 				+ getLastname() + ", getMail()=" + getMail() + ", getPassword()=" + getPassword() + ", getAddress()=" + getAddress() + ", getGender()="
 				+ getGender() + "]";
 	}
+
+
+
+	public Customer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 }	
 	
 	
