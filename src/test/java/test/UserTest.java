@@ -141,17 +141,17 @@ public final class UserTest extends TestCase {
 		_voidUser.setFirstname("Katherine");
 		_voidUser.setLastname("Johnson");
 		_voidUser.setAddress(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"));
-		_validUser.setMail("katherine.johnson@gmail.com");
-		_validUser.setGender(Gender.FEMALE);
-		assertEquals("Katherine", _validUser.getFirstname());
-		assertEquals("Johnson", _validUser.getLastname());
-		assertEquals("street12", _validUser.getAddress().getStreet1());
-		assertEquals("street22", _validUser.getAddress().getStreet2());
-		assertEquals("city2", _validUser.getAddress().getCity());
-		assertEquals("zipcode2", _validUser.getAddress().getZipcode());
-		assertEquals("country2", _validUser.getAddress().getCountry());
-		assertEquals("katherine.johnson@gmail.com", _validUser.getMail());
-		assertEquals(Gender.FEMALE, _validUser.getGender());
+		_voidUser.setMail("katherine.johnson@gmail.com");
+		_voidUser.setGender(Gender.FEMALE);
+		assertEquals("Katherine", _voidUser.getFirstname());
+		assertEquals("Johnson", _voidUser.getLastname());
+		assertEquals("street12", _voidUser.getAddress().getStreet1());
+		assertEquals("street22", _voidUser.getAddress().getStreet2());
+		assertEquals("city2", _voidUser.getAddress().getCity());
+		assertEquals("zipcode2", _voidUser.getAddress().getZipcode());
+		assertEquals("country2", _voidUser.getAddress().getCountry());
+		assertEquals("katherine.johnson@gmail.com", _voidUser.getMail());
+		assertEquals(Gender.FEMALE, _voidUser.getGender());
 	}
     
 	/**

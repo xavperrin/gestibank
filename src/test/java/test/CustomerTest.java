@@ -135,13 +135,13 @@ public void testAllSettersWithDefaultConstructor() {
 	_voidCustomer.setFirstname("Ada");
 	_voidCustomer.setLastname("Lovelace");
 	_voidCustomer.setAddress(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"));
-	_voidCustomer.setMail("anotherMail");
+	_voidCustomer.setMail("ada.lovelace@live.com");
 	_voidCustomer.setGender(Gender.FEMALE);
 	_voidCustomer.setMaritalStatus(MaritalStatus.Divorced);
-	assertEquals("Bill2", _voidCustomer.getFirstname());
-	assertEquals("Gates2", _voidCustomer.getLastname());
+	assertEquals("Ada", _voidCustomer.getFirstname());
+	assertEquals("Lovelace", _voidCustomer.getLastname());
 	assertEquals(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"), _voidCustomer.getAddress());
-	assertEquals("anotherMail", _voidCustomer.getMail());
+	assertEquals("ada.lovelace@live.com", _voidCustomer.getMail());
 	assertEquals(Gender.FEMALE, _voidCustomer.getGender());
 	assertEquals(MaritalStatus.Divorced, _voidCustomer.getMaritalStatus());
 }
