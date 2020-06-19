@@ -18,7 +18,7 @@ import junit.framework.TestSuite;
  */
 public class ManagerTest extends TestCase {
 	Manager _validManager;
-	
+	Manager _voidManager;
 	
 	   public ManagerTest(final String s) {
 	        super(s);
@@ -33,6 +33,7 @@ public class ManagerTest extends TestCase {
 	 * @throws java.lang.Exception
 	 */
 	public void setUp() throws Exception {
+		_voidManager=new Manager();
 		Address addr= new Address("3ter", "street1", "street2", "city", "zipcode", "country");
 		_validManager=new Manager("Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, 101, LocalDate.now());
 	}
@@ -109,18 +110,20 @@ public void testAllGetters() {
  * This test use each setter
  */
 public void testAllSetters() {
-	_validManager.setFirstname("Bill2");
-	_validManager.setLastname("Gates2");
-	_validManager.setAddress(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"));
-	_validManager.setMail("anotherMail");
-	_validManager.setGender(Gender.FEMALE);
-	_validManager.setStaffnumber(326556);
-	assertEquals("Bill2", _validManager.getFirstname());
-	assertEquals("Gates2", _validManager.getLastname());
+	_voidManager.setFirstname("Ada");
+	_voidManager.setLastname("Lovelace");
+	_voidManager.setAddress(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"));
+	_voidManager.setMail("anothermail@gmail.com");
+	_voidManager.setGender(Gender.FEMALE);
+	_voidManager.setStaffnumber(326556);
+	assertEquals("Ada", _validManager.getFirstname());
+	assertEquals("Lovelace", _voidManager.getLastname());
 	assertEquals(new Address("2bis", "street12", "street22", "city2", "zipcode2", "country2"), _validManager.getAddress());
-	assertEquals("anotherMail", _validManager.getMail());
-	assertEquals(Gender.FEMALE, _validManager.getGender());
-	assertEquals(326556, _validManager.getStaffnumber());
+	assertEquals("anothermail@gmail.com", _validManager.getMail());
+	assertEquals(Gender.FEMALE, _voidManager.getGender());
+	assertEquals(326556, _voidManager.getStaffnumber());
 }
+
+
 
 }
