@@ -38,7 +38,7 @@ public class User implements Serializable {
 	private String _mail;
 	@Column(name = "password", columnDefinition="BLOB")
 	@ColumnTransformer(
-			read = "cast(aes_decrypt(password, 'my secret') as char(255))", 
+			read = "cast(aes_decrypt(password, 'mysecret') as char(255))", 
 			write = "aes_encrypt(?, 'mysecret')"
 			)  
 	private String _password;
