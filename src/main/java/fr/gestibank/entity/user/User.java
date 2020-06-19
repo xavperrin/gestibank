@@ -36,8 +36,13 @@ public class User implements Serializable {
 	@Column(length=30, name="lastname")
 	private String _lastname;
 	@Column(length=70, name="mail")
+
 	private String _mail;
-	@Column(length=250, name="password")
+	@Column(name = "password", columnDefinition="BLOB")
+	@ColumnTransformer(
+			read = "cast(aes_decrypt(password, 'my secret') as char(255))", 
+			write = "aes_encrypt(?, 'mysecret')"
+			)  
 	private String _password;
 	@ManyToOne
 	@JoinColumn(name="fk_address_id")
