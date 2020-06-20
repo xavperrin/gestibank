@@ -2,6 +2,9 @@ package fr.gestibank.entity.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 import fr.gestibank.entity.society.Address;
@@ -12,27 +15,27 @@ import fr.gestibank.entity.society.MaritalStatus;
 
 
 @Entity
-@PrimaryKeyJoinColumn(name="_id")
+@PrimaryKeyJoinColumn(name="id")
 public class Customer extends User {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3111697784484041650L;
-	
+	@Id @GeneratedValue @Column(name="id")
+	private Long _id;
 	@Column(name ="maritalStatus")
-	MaritalStatus _maritalStatus;	
+	private MaritalStatus _maritalStatus;	
 	@Column(length=20, name ="phoneNumber")
-	String _phoneNumber;
-	@Column(name ="idManager")
-	Long idManager;
+	private String _phoneNumber;
+	@JoinColumn(name="fk_manager_id")
+	private Manager _manager;
 	@Column(name ="children")
-	int children;
+	private int _children;
 
 	
 	
 	/**
-	 * @param id
 	 * @param firstname
 	 * @param lastname
 	 * @param mail
@@ -81,12 +84,12 @@ public class Customer extends User {
 		_phoneNumber = phoneNumber;
 	}
 
-	public Long getIdManager() {
-		return idManager;
+	public Manager getManager() {
+		return _manager;
 	}
 
-	public void setIdManager(Long idManager) {
-		this.idManager = idManager;
+	public void setManager(Manager manager) {
+		this._manager = manager;
 	}
 
 	/**
@@ -99,7 +102,7 @@ public class Customer extends User {
 	@Override
 	public String toString() {
 		return "Customer [_maritalStatus=" + _maritalStatus + ", _phonenumber=" + _phoneNumber + ", idManager="
-				+ idManager + ", getId()=" + getId() + ", getFirstname()=" + getFirstname() + ", getLastname()="
+				+ _manager + ", getId()=" + getId() + ", getFirstname()=" + getFirstname() + ", getLastname()="
 				+ getLastname() + ", getMail()=" + getMail() + ", getPassword()=" + getPassword() + ", getAddress()=" + getAddress() + ", getGender()="
 				+ getGender() + "]";
 	}
