@@ -1,5 +1,7 @@
 package fr.gestibank.entity.user;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -113,6 +115,37 @@ public class Customer extends User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(_children, _id, _manager, _maritalStatus, _phoneNumber);
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof Customer)) {
+			return false;
+		}
+		Customer other = (Customer) obj;
+		return _children == other._children && Objects.equals(_id, other._id)
+				&& Objects.equals(_manager, other._manager) && _maritalStatus == other._maritalStatus
+				&& Objects.equals(_phoneNumber, other._phoneNumber);
+	}
+	
+	
 }	
 	
 	

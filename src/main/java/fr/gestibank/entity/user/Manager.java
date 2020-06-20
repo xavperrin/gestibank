@@ -1,6 +1,7 @@
 package fr.gestibank.entity.user;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,8 +31,6 @@ public class Manager extends User {
 	@Column(length=20, name ="phoneNumber")
 	private String _phoneNumber;
 	
-	
-
 	/**
 	 * @return the staffnumber
 	 */
@@ -123,10 +122,9 @@ public class Manager extends User {
 	 */
 	public Manager(String firstname, String lastname, String mail, String password, Address address,
 			Gender gender, int staffnumber, LocalDate begin) {
-		super(firstname, lastname, mail, password);
+		super(firstname, lastname, mail, password, address, gender);
 		this.setStaffnumber(staffnumber);
 		this.setBeginDate(begin);
-		this.setAddress(address);
 	}
 
 	
@@ -144,5 +142,36 @@ public class Manager extends User {
 		
 	}
 
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(_beginDate, _endDate, _phoneNumber, _staffNumber);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof Manager)) {
+			return false;
+		}
+		Manager other = (Manager) obj;
+		return Objects.equals(_beginDate, other._beginDate) && Objects.equals(_endDate, other._endDate)
+				&& Objects.equals(_phoneNumber, other._phoneNumber) && _staffNumber == other._staffNumber;
+	}
+
+	
+	
+
+
+	
 
 }

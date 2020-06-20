@@ -3,6 +3,8 @@
  */
 package test;
 
+import static org.junit.Assert.assertNotEquals;
+
 import java.time.LocalDate;
 
 import org.junit.Test;
@@ -12,6 +14,7 @@ import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
 import fr.gestibank.entity.user.Manager;
+import fr.gestibank.entity.user.User;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
@@ -39,6 +42,7 @@ public class ManagerTest extends TestCase {
 		_voidManager=new Manager();
 		Address addr= new Address("3ter", "street1", "street2", "city", "zipcode", "country");
 		_validManager=new Manager("Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, 101, LocalDate.now());
+		
 	}
 	 //==================================
     //=            Test cases          =
@@ -132,6 +136,21 @@ public void managerIsSerializable() {
     final byte[] serializedValidManager = SerializationUtils.serialize(_validManager);
     final Manager deserializedValidManager = (Manager) SerializationUtils.deserialize(serializedValidManager);
     assertEquals(_validManager, deserializedValidManager);
+}
+
+@Test
+public void testEquals() {
+
+  assertEquals( new Manager("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
+			new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
+			Gender.MALE, 101, LocalDate.now()), new Manager("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
+					new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
+					Gender.MALE, 101, LocalDate.now())  );
+  assertNotEquals( new Manager("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
+			new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
+			Gender.MALE, 101, LocalDate.now()), new Manager("Ada", "Lovelace",   "ada.lovelace@gmail.com", "passwordada", 
+					new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
+					Gender.FEMALE, 101, LocalDate.now()) );
 }
 
 }
