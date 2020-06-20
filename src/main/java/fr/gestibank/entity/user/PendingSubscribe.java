@@ -23,27 +23,36 @@ public class PendingSubscribe implements Serializable {
 	
 	@Id @GeneratedValue @Column(name="id")
 	Long _id;
-	@Column(name="firstname")
+	@Column(length=30, name="firstname")
 	String _firstname;
-	@Column(name="lastname")
+	@Column(length=30, name="lastname")
 	String _lastname;
-	@Column(name="mail")
+	@Column(length=70, name="mail")
 	String _mail;
 	@Column(name="gender")
 	Gender _gender;
 	@Column(name="date")
 	LocalDate _date;
 
+	
+	
+	public PendingSubscribe() {
+		super();
+	}
+	
+	/**
+	 * 
+	 * @param firstname
+	 * @param lastname
+	 * @param mail
+	 * @param gender
+	 */
 	public PendingSubscribe(String firstname, String lastname, String mail, Gender gender) {
 		super();
 		_firstname = firstname;
 		_lastname = lastname;
 		_mail = mail;
 		_gender = gender;
-	}
-
-	public PendingSubscribe() {
-		super();
 	}
 
 	public Long getId() {

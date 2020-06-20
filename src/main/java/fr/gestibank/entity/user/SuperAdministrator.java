@@ -25,30 +25,43 @@ public class SuperAdministrator extends User {
 	private int _staffNumber;
 	@Column(name ="beginDate")
 	private LocalDate _beginDate;
-	@Column(name ="listManagers")
-	private ArrayList<Manager> _listManagers;
 
 	
-	// Constructeur basique (address, gender, begindate, listManagers non pr�cis�)
+	public SuperAdministrator() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	/**
+	 * 
+	 * @param firstname
+	 * @param lastname
+	 * @param mail
+	 * @param password
+	 * @param staffNumber
+	 */
 	public SuperAdministrator(String firstname, String lastname,  String mail, String password, int staffNumber) {
 		super(firstname, lastname, mail, password);
 		this.setStaffNumber(staffNumber);
 	}
 	
-	// Constructeur basique (listManagers non pr�cis�)
+	/**
+	 * 
+	 * @param firstname
+	 * @param lastname
+	 * @param mail
+	 * @param password
+	 * @param address
+	 * @param gender
+	 * @param staffNumber
+	 * @param beginDate
+	 */
 	public SuperAdministrator(String firstname, String lastname,  String mail, String password, Address address, Gender gender, int staffNumber, LocalDate beginDate) {
 		super(firstname, lastname, mail, password, address, gender);
 		this.setStaffNumber(staffNumber);
 		this.setBeginDate(beginDate);
 	}
 	
-	// Constructeur avec listManagers
-	public SuperAdministrator(String firstname, String lastname,  String mail, String password, Address address, Gender gender, int staffNumber, LocalDate beginDate, ArrayList<Manager> listManagers) {
-		super(firstname, lastname, mail, password, address, gender);
-		this.setStaffNumber(staffNumber);
-		this.setBeginDate(beginDate);
-		this.setListManagers(listManagers);
-	}
 
 
 	public int getStaffNumber() {
@@ -67,27 +80,8 @@ public class SuperAdministrator extends User {
 		_beginDate = beginDate;
 	}
 
-	public ArrayList<Manager> getListManagers() {
-		return _listManagers;
-	}
-
-	public void setListManagers(ArrayList<Manager> listManagers) {
-		_listManagers = listManagers;
-	}
-
 	@Override
 	public String toString() {
-		return "SuperAdministrator [ staffNumber = " + _staffNumber + ", beginDate = " + _beginDate + ", listManagers = "
-				+ _listManagers + " ]";
+		return "SuperAdministrator [ staffNumber = " + _staffNumber + ", beginDate = " + _beginDate;
 	}
-
-	public SuperAdministrator() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	
-	
-
 }

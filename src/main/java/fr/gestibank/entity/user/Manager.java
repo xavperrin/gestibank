@@ -27,7 +27,7 @@ public class Manager extends User {
 	private LocalDate  _beginDate;
 	@Column(name ="endDate")
 	private LocalDate  _endDate;
-	@Column(name ="phoneNumber")
+	@Column(length=20, name ="phoneNumber")
 	private String _phoneNumber;
 	
 	
@@ -95,12 +95,32 @@ public class Manager extends User {
 		super();
 	}
 	
+	/**
+	 * 
+	 * @param firstname
+	 * @param lastname
+	 * @param mail
+	 * @param password
+	 * @param staffnumber
+	 * @param phonenumber
+	 */
 	public Manager(String firstname, String lastname, String mail, String password, int staffnumber, String phonenumber) {
 		super(firstname, lastname, mail, password);
 		setStaffnumber(staffnumber);
 		setPhonenumber(phonenumber);
 	}
 
+	/**
+	 * 
+	 * @param firstname
+	 * @param lastname
+	 * @param mail
+	 * @param password
+	 * @param address
+	 * @param gender
+	 * @param staffnumber
+	 * @param begin
+	 */
 	public Manager(String firstname, String lastname, String mail, String password, Address address,
 			Gender gender, int staffnumber, LocalDate begin) {
 		super(firstname, lastname, mail, password);
@@ -109,20 +129,20 @@ public class Manager extends User {
 		this.setAddress(address);
 	}
 
+	
+	/**
+	 * 
+	 * @param firstname
+	 * @param lastname
+	 * @param mail
+	 * @param password
+	 * @param staffnumber
+	 */
 	public Manager(String firstname, String lastname, String mail, String password, int staffnumber) {
 		super(firstname, lastname, mail, password);
 		this._staffNumber=staffnumber;
 		
 	}
-
-
-
-
-
-
-
-	
-	
 
 
 }

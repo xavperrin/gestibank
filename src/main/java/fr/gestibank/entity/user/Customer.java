@@ -22,10 +22,10 @@ public class Customer extends User {
 	
 	@Column(name ="maritalStatus")
 	MaritalStatus _maritalStatus;	
-	@Column(name ="phoneNumber")
+	@Column(length=20, name ="phoneNumber")
 	String _phoneNumber;
 	@Column(name ="idManager")
-	int idManager;
+	Long idManager;
 	@Column(name ="children")
 	int children;
 
@@ -44,6 +44,16 @@ public class Customer extends User {
 
 
 
+	/**
+	 * 
+	 * @param firstname
+	 * @param lastname
+	 * @param mail
+	 * @param password
+	 * @param addr
+	 * @param gender
+	 * @param maritalstatus
+	 */
 	public  Customer(String firstname, String lastname, String  mail, String password, Address addr,
 			Gender gender, MaritalStatus maritalstatus) {
 		super(firstname, lastname, mail, password);
@@ -71,11 +81,11 @@ public class Customer extends User {
 		_phoneNumber = phoneNumber;
 	}
 
-	public int getIdManager() {
+	public Long getIdManager() {
 		return idManager;
 	}
 
-	public void setIdManager(int idManager) {
+	public void setIdManager(Long idManager) {
 		this.idManager = idManager;
 	}
 
