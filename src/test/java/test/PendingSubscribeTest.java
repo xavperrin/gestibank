@@ -9,7 +9,6 @@ import org.springframework.util.SerializationUtils;
 
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Gender;
-import fr.gestibank.entity.user.Manager;
 import fr.gestibank.entity.user.PendingSubscribe;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;

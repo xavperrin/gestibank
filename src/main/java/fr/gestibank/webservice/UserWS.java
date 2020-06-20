@@ -1,4 +1,4 @@
-package fr.gestibank.ws;
+package fr.gestibank.webservice;
 
 import java.util.List;
 

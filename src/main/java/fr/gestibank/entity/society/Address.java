@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import fr.gestibank.entity.exception.CheckException;
+
 @Entity
 public class Address implements Serializable {
 	
@@ -134,6 +136,20 @@ public class Address implements Serializable {
 	public Address() {
 		super();
 		// notre constructeur sans args afin de valider les passages de hibernates
+	}
+	public boolean checkData() throws CheckException {
+		if (_streetNumber == null || "".equals(_streetNumber))
+            throw new CheckException("Invalid address street number");
+        if (_street1 == null || "".equals(_street1))
+            throw new CheckException("Invalid street name");
+        if (_city == null || "".equals(_city))
+            throw new CheckException("Invalid city name");
+        if (_zipcode == null || "".equals(_zipcode))
+            throw new CheckException("Invalid zipcode");
+        if (_country == null || "".equals(_country))
+            throw new CheckException("Invalid country");
+        return true;
+		
 	}
 
 
