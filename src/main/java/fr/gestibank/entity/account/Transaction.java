@@ -1,5 +1,6 @@
 package fr.gestibank.entity.account;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -10,10 +11,15 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Transaction {
-
+public abstract class Transaction implements Serializable {
+		
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2338603225689523544L;
 	
 	@Id @GeneratedValue @Column(name="id")
 	private Long _id;

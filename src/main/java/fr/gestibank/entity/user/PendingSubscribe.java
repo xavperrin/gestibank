@@ -15,7 +15,6 @@ import fr.gestibank.entity.society.Gender;
 @Entity
 public class PendingSubscribe implements Serializable {
 
-	
     /**
 	 * 
 	 */

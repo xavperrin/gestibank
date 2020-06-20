@@ -1,5 +1,6 @@
 package fr.gestibank.entity.account;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import javax.persistence.Column;
@@ -11,8 +12,12 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class DepositAccount {
-	
+public abstract class DepositAccount implements Serializable {
+		
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2724010856906507822L;
 	
 	@Id @GeneratedValue @Column(name="id")
 	private Long _id;

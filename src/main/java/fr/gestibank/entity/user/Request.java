@@ -10,6 +10,10 @@ import javax.persistence.Id;
 @Entity
 public class Request implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2413972612816001625L;
 	
 	@Id @GeneratedValue @Column(name="id")	
 	Long _id;
