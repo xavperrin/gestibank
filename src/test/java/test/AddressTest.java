@@ -8,9 +8,6 @@ import org.springframework.util.SerializationUtils;
 
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Address;
-import fr.gestibank.entity.society.Gender;
-import fr.gestibank.entity.society.MaritalStatus;
-import fr.gestibank.entity.user.Customer;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
