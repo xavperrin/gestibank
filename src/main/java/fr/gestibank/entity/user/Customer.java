@@ -68,7 +68,13 @@ public class Customer extends User {
 		
 	}
 
+	public Long getId() {
+		return _id;
+	}
 
+	public void setId(Long id) {
+		_id = id;
+	}
 
 	public MaritalStatus getMaritalStatus() {
 		return _maritalStatus;

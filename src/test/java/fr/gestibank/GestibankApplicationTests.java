@@ -8,9 +8,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
+import fr.gestibank.entity.user.Customer;
 import fr.gestibank.entity.user.User;
 import fr.gestibank.repository.UserRepository;
 import fr.gestibank.repository.AddressRepository;
+import fr.gestibank.repository.CustomerRepository;
 
 @SpringBootTest
 class GestibankApplicationTests {
@@ -19,6 +21,8 @@ class GestibankApplicationTests {
 	private UserRepository userDao;
 	@Autowired
 	private AddressRepository addrDao;
+	@Autowired
+	private CustomerRepository customerDao;
 	
 	@Test
 	void contextLoads() {
@@ -27,7 +31,6 @@ class GestibankApplicationTests {
 	@Test
 	public void testSaveUser() {
 		User user=getUser();
-		
 		Address addr=getAddress();
 		user.setAddress(addr);
 	    Address savedAddressInDb=addrDao.save(addr);
@@ -52,16 +55,41 @@ class GestibankApplicationTests {
 	}
 	
 	
-	
 	@Test
-	public void testSaveUserWithAddress() {
-		User user=getUserWithAddress();
+	public void testSaveCustomer() {
+		Customer customer=getCustomer();
+		Address addr=getAddress();
+		customer.setAddress(addr);
+	    Address savedAddressInDb=addrDao.save(addr);
+	   Customer savedCustomerInDb =customerDao.save(customer);
+	    Address getAddressFromDb = addrDao.findById(savedAddressInDb.getId()).get();
+		Customer getCustomerFromDb = customerDao.findById(savedCustomerInDb.getId()).get();
+		assertEquals(getAddressFromDb, savedAddressInDb);
+		assertEquals(getCustomerFromDb, savedCustomerInDb);
+	}
+
+	
+	/*
+	 * 
+	 * Private methods for tests
+	 * 
+	 * 
+	 */
+	
+	/**
+	 *  
+	 * @return Customer
+	 */
+	private Customer getCustomer() {
+		Customer _customer= new Customer();
+		_customer.setFirstname("Katherine");
+		_customer.setLastname("Johnson");
+		_customer.setMail("katherine.johnson@gmail.com");
+		_customer.setGender(Gender.FEMALE);
+		_customer.setPassword("superwoman123");
 		
 		
-	    User savedUserInDb =userDao.save(user);
-	    User getFromDb = userDao.findById(savedUserInDb.getId()).get();
-		
-		assertEquals(getFromDb, savedUserInDb);
+		return _customer;
 	}
 
 	private Address getAddress() {
