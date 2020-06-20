@@ -148,11 +148,7 @@ public class Address implements Serializable {
 			return false;
 		return true;
 	}
-<<<<<<< HEAD
-	public Address() {
-		super();
-		// notre constructeur sans args afin de valider les passages de hibernates
-	}
+
 	public boolean checkData() throws CheckException {
 		if (_streetNumber == null || "".equals(_streetNumber))
             throw new CheckException("Invalid address street number");
@@ -169,6 +165,4 @@ public class Address implements Serializable {
 	}
 
 
-=======
->>>>>>> e70a2a409c36445d4c289c0ea4296978c24594be
 }
