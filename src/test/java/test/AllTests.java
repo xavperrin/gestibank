@@ -30,6 +30,7 @@ public final class AllTests extends TestCase {
         suite.addTest(SuperAdministratorTest.suite());
         suite.addTest(UserTest.suite());
         suite.addTest(PendingSubscribeTest.suite());
+        suite.addTest(AddressTest.suite());
 
         return suite;
     }
