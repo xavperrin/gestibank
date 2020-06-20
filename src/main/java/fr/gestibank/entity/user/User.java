@@ -1,6 +1,7 @@
 package fr.gestibank.entity.user;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -173,4 +174,24 @@ public Gender getGender() {
 public void setGender(Gender gender) {
 	_gender = gender;
 }
+@Override
+public int hashCode() {
+	return Objects.hash(_address, _firstname, _gender, _id, _lastname, _mail, _password);
+}
+@Override
+public boolean equals(Object obj) {
+	if (this == obj) {
+		return true;
+	}
+	if (!(obj instanceof User)) {
+		return false;
+	}
+	User other = (User) obj;
+	return Objects.equals(_address, other._address) && Objects.equals(_firstname, other._firstname)
+			&& _gender == other._gender && Objects.equals(_id, other._id) && Objects.equals(_lastname, other._lastname)
+			&& Objects.equals(_mail, other._mail) && Objects.equals(_password, other._password);
+}
+
+
+
 }

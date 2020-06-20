@@ -9,6 +9,10 @@ import javax.persistence.Id;
 
 import fr.gestibank.entity.exception.CheckException;
 
+/**
+ * @author Jean-Francois
+ *
+ */
 @Entity
 public class Address implements Serializable {
 	
@@ -67,10 +71,26 @@ public class Address implements Serializable {
 	public String getCountry() {
 		return _country;
 	}
+	/**
+	 * @param country the _country to set
+	 */
 	public void setCountry(String country) {
 		_country = country;
 	}
 	
+	/**
+	 * @return the _id
+	 */
+	public Long getId() {
+		return _id;
+	}
+		
+	/**
+	 * @param id the _id to set
+	 */
+	public void set_id(Long id) {
+		this._id = id;
+	}
 	public Address() {
 		super();
 		// notre constructeur sans args afin de valider les passages de hibernates
@@ -163,6 +183,9 @@ public class Address implements Serializable {
         return true;
 		
 	}
+	
+	
+	
 
 
 }
