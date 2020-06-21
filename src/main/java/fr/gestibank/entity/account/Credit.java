@@ -7,6 +7,11 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name="_id")
 public class Credit extends Transaction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 764722307528988772L;
+
 	public Credit(double amount) {
 		super(amount);
 		// TODO Auto-generated constructor stub

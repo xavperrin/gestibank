@@ -7,6 +7,11 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name="_id")
 public class Debit extends Transaction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7534687563299060222L;
+
 	public Debit(double amount) {
 		super(amount);
 		// TODO Auto-generated constructor stub

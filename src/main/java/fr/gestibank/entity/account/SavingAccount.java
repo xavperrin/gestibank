@@ -7,6 +7,11 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name="_id")
 public class SavingAccount extends DepositAccount {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7889254707628514344L;
+
 	public SavingAccount(String iBAN, double starter) {
 		//super();
 		setOverdraftFacility(0);

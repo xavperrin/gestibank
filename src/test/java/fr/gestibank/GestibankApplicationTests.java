@@ -126,19 +126,7 @@ class GestibankApplicationTests {
 		_user.setPassword("superwoman123");
 		return _user;
 	}
-	
-	
-	
-	private User getUserWithAddress() {
-		User _user= new User();
-		_user.setFirstname("Katherine");
-		_user.setLastname("Johnson");
-		_user.setMail("katherine.johnson@gmail.com");
-		_user.setGender(Gender.FEMALE);
-		_user.setPassword("superwoman123");
-		_user.setAddress(new Address("72", "Sömmeringstr.", "Straße 27", "Elchingen", "89270", "Germany"));
-		return _user;
-	}
+
 	
 	
 	
