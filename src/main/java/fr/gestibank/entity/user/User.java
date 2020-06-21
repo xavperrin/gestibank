@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ColumnTransformer;
 
+import fr.gestibank.entity.AbstractEntity;
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
@@ -21,7 +22,7 @@ import fr.gestibank.entity.society.Gender;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User implements Serializable {
+public class User extends AbstractEntity<Long> implements Serializable {
 	
 	/**
 	 * 

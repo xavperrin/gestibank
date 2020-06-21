@@ -1,6 +1,9 @@
 package fr.gestibank;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
+import java.time.Instant;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +40,13 @@ class GestibankApplicationTests {
 	    User savedUserInDb =userDao.save(user);
 	    Address getAddressFromDb = addrDao.findById(savedAddressInDb.getId()).get();
 		User getFromDb = userDao.findById(savedUserInDb.getId()).get();
+			
 		assertEquals(getAddressFromDb, savedAddressInDb);
 		assertEquals(getFromDb, savedUserInDb);
+		
+		getFromDb.setMail(getFromDb.getMail()+Instant.now().toEpochMilli());
+		User updatedUser =userDao.save(getFromDb);
+		assertNotEquals(savedUserInDb, updatedUser);
 	}
 	
 	
@@ -81,10 +89,11 @@ class GestibankApplicationTests {
 	 * @return Customer
 	 */
 	private Customer getCustomer() {
+		Long timestamp=Instant.now().toEpochMilli();
 		Customer _customer= new Customer();
-		_customer.setFirstname("Katherine");
-		_customer.setLastname("Johnson");
-		_customer.setMail("katherine.johnson@gmail.com");
+		_customer.setFirstname("Customer");
+		_customer.setLastname("Johnson"+timestamp);
+		_customer.setMail("customer.johnson+"+timestamp+"@gmail.com");
 		_customer.setGender(Gender.FEMALE);
 		_customer.setPassword("superwoman123");
 		
@@ -104,10 +113,11 @@ class GestibankApplicationTests {
 	}
 
 	private User getUser() {
+		Long timestamp=Instant.now().toEpochMilli();
 		User _user= new User();
-		_user.setFirstname("Katherine");
+		_user.setFirstname("User"+timestamp);
 		_user.setLastname("Johnson");
-		_user.setMail("katherine.johnson@gmail.com");
+		_user.setMail("user.johnson"+timestamp+"@gmail.com");
 		_user.setGender(Gender.FEMALE);
 		_user.setPassword("superwoman123");
 		return _user;
