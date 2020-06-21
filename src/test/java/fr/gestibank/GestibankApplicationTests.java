@@ -16,6 +16,7 @@ import fr.gestibank.entity.user.User;
 import fr.gestibank.repository.UserRepository;
 import fr.gestibank.repository.AddressRepository;
 import fr.gestibank.repository.CustomerRepository;
+import fr.gestibank.repository.ManagerRepository;
 
 @SpringBootTest
 class GestibankApplicationTests {
@@ -26,6 +27,9 @@ class GestibankApplicationTests {
 	private AddressRepository addrDao;
 	@Autowired
 	private CustomerRepository customerDao;
+	
+	@Autowired
+	private ManagerRepository managerDao;
 	
 	@Test
 	void contextLoads() {

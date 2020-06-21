@@ -1,10 +1,16 @@
 package fr.gestibank.entity.user;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 import fr.gestibank.entity.society.Address;
@@ -14,14 +20,15 @@ import fr.gestibank.entity.society.Gender;
 
 
 @Entity
-@PrimaryKeyJoinColumn(name="_id")
+@PrimaryKeyJoinColumn(name="id")
 public class Manager extends User {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -4533222629834744029L;
-	
+	@Id @GeneratedValue @Column(name="id")
+	private Long _id;
 	@Column(name ="staffNumber")
 	private int _staffNumber;
 	@Column(name ="beginDate")
@@ -30,6 +37,17 @@ public class Manager extends User {
 	private LocalDate  _endDate;
 	@Column(length=20, name ="phoneNumber")
 	private String _phoneNumber;
+	@OneToMany
+	private Collection<Customer> _customers;
+	
+	
+	public Long getId() {
+		return _id;
+	}
+
+	public void setId(Long id) {
+		_id = id;
+	}
 	
 	/**
 	 * @return the staffnumber

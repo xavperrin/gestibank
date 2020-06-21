@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 import fr.gestibank.entity.society.Address;
@@ -30,10 +31,13 @@ public class Customer extends User {
 	private MaritalStatus _maritalStatus;	
 	@Column(length=20, name ="phoneNumber")
 	private String _phoneNumber;
-	@JoinColumn(name="fk_manager_id")
+	@ManyToOne
+	@JoinColumn(name="ID_MAN")
 	private Manager _manager;
+
 	@Column(name ="children")
 	private int _children;
+	
 
 	
 	
@@ -66,6 +70,27 @@ public class Customer extends User {
 		this.setGender(gender);
 		this.setMaritalStatus(maritalstatus);
 		
+	}
+	
+	
+	/**
+	 * 
+	 * @param firstname
+	 * @param lastname
+	 * @param mail
+	 * @param password
+	 * @param addr
+	 * @param gender
+	 * @param maritalstatus
+	 * @param manager
+	 */
+	public  Customer(String firstname, String lastname, String  mail, String password, Address addr,
+			Gender gender, MaritalStatus maritalstatus, Manager manager) {
+		super(firstname, lastname, mail, password);
+		this.setAddress(addr);
+		this.setGender(gender);
+		this.setMaritalStatus(maritalstatus);
+		_manager=manager;
 	}
 
 	public Long getId() {
