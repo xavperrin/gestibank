@@ -31,6 +31,7 @@ public final class AllTests extends TestCase {
         suite.addTest(UserTest.suite());
         suite.addTest(PendingSubscribeTest.suite());
         suite.addTest(AddressTest.suite());
+        suite.addTest(CurrentAccountTest.suite());
 
         return suite;
     }
