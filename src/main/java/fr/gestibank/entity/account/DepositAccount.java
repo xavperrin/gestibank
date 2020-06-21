@@ -44,7 +44,6 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 	}
 	
 	/**
-	 * 
 	 * @param iBAN
 	 * @param starteramount
 	 */
@@ -53,10 +52,21 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 		_IBAN = iBAN;
 		_balance=starteramount;
 		_overdraftFacility = 0;
-		this._history.add(new Credit(starteramount));
+		_history.add(new Credit(starteramount));
 	}
 	
+	/**
+	 * @param iBAN
+	 * @param starteramount
+	 */
+	public DepositAccount(String iBAN, double starteramount, Customer customer) {
+		super();
+		_customer=customer;
+		_IBAN = iBAN;
+		_balance=starteramount;
+		_overdraftFacility = 0;
 	
+	}
 
 	public void withdraw(double amount) {
 		
@@ -101,6 +111,10 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 	}
 	public String getIBAN() {
 		return _IBAN;
+	}
+	
+	public void setIBAN(String iBAN) {
+		_iBAN=iBAN;
 	}
 
 	
