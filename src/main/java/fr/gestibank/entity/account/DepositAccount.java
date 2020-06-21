@@ -1,18 +1,21 @@
 package fr.gestibank.entity.account;
 
 import java.io.Serializable;
-import java.util.Vector;
-
+import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import fr.gestibank.entity.AbstractEntity;
+import fr.gestibank.entity.user.Customer;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class DepositAccount implements Serializable {
+public abstract class DepositAccount extends AbstractEntity<Long> implements Serializable {
 		
 	/**
 	 * 
@@ -28,11 +31,16 @@ public abstract class DepositAccount implements Serializable {
 	@Column(name="overdraftFacility")
 	private double _overdraftFacility;
 	@Column(name="history")
-	private Vector<Transaction> history;
-	
+	private Collection<Transaction> _history;
+	@ManyToOne
+	@JoinColumn(name="ID_CUST")
+	private Customer _customer;
 
+	/**
+	 * Creates an empty DepositAccount.
+	 */
 	public DepositAccount() {
-		//on crée notre contructeurs sans args lié à SavingAccount
+		super();
 	}
 	
 	/**
@@ -45,9 +53,10 @@ public abstract class DepositAccount implements Serializable {
 		_IBAN = iBAN;
 		_balance=starteramount;
 		_overdraftFacility = 0;
-		this.history = new Vector<Transaction>();
-		this.history.add(new Credit(starteramount));
+		this._history.add(new Credit(starteramount));
 	}
+	
+	
 
 	public void withdraw(double amount) {
 		
@@ -55,6 +64,35 @@ public abstract class DepositAccount implements Serializable {
 	public void deposit(double amount) {
 	}
 	
+	
+	
+	/**
+	 * @return the _id
+	 */
+	public Long getId() {
+		return _id;
+	}
+	/**
+	 * @param _id the _id to set
+	 */
+	public void setId(Long _id) {
+		this._id = _id;
+	}
+
+	/**
+	 * @return the customer
+	 */
+	public Customer getCustomer() {
+		return _customer;
+	}
+
+	/**
+	 * @param customer the customer to set
+	 */
+	public void setCustomer(Customer customer) {
+		_customer = customer;
+	}
+
 	public double getBalance() {
 		return _balance;
 	}
@@ -72,35 +110,28 @@ public abstract class DepositAccount implements Serializable {
 	public void setOverdraftFacility(double overdraftFacility) {
 		_overdraftFacility = overdraftFacility;
 	}
-	public Vector<Transaction> getHistory() {
-		return history;
+	public Collection<Transaction> getHistory() {
+		return _history;
 	}
 
-	
 	
 	public double getDepositSum(){
 		double sum=0;
 		
-		for(Transaction element : history) {
+		for(Transaction element : _history) {
 			sum=+element.getDeposit();
 		}
 		
 		return sum;
-		
-		
 	}
-	
-	
+
 	public double getWithdrawSum(){
 		double sum=0;
 		
-		for(Transaction element : history) {
+		for(Transaction element : _history) {
 			sum=+element.getWithdraw();
 		}
-		
 		return sum;
-		
-		
 	}
 	
 	

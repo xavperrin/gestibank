@@ -48,5 +48,6 @@ public abstract class AbstractEntity<ID> implements Persistable<ID> {
     this.isNew = false;
   }
 
+
   // More code…
 }

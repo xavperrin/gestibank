@@ -1,5 +1,6 @@
 package fr.gestibank.entity.user;
 
+import java.util.Collection;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,19 +9,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
+import fr.gestibank.entity.account.DepositAccount;
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
 import fr.gestibank.entity.society.MaritalStatus;
 
-
-
-
 @Entity
 @PrimaryKeyJoinColumn(name="id")
 public class Customer extends User {
-	
 	/**
 	 * 
 	 */
@@ -34,12 +33,10 @@ public class Customer extends User {
 	@ManyToOne
 	@JoinColumn(name="ID_MAN")
 	private Manager _manager;
-
+	@OneToMany
+	private Collection<DepositAccount> _accounts;
 	@Column(name ="children")
 	private int _children;
-	
-
-	
 	
 	/**
 	 * @param firstname
@@ -125,6 +122,27 @@ public class Customer extends User {
 		this._manager = manager;
 	}
 
+	
+	
+	
+	/**
+	 * @return the _accounts
+	 */
+	public Collection<DepositAccount> get_accounts() {
+		return _accounts;
+	}
+
+
+
+	/**
+	 * @param _accounts the _accounts to set
+	 */
+	public void set_accounts(Collection<DepositAccount> _accounts) {
+		this._accounts = _accounts;
+	}
+
+
+
 	/**
 	 * Constructors
 	 * 
@@ -140,11 +158,12 @@ public class Customer extends User {
 				+ getGender() + "]";
 	}
 
-
+	/**
+	 * Creates an empty Customer.
+	 */
 
 	public Customer() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 

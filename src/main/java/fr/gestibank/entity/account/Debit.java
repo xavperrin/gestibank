@@ -4,17 +4,18 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@PrimaryKeyJoinColumn(name="_id")
+@PrimaryKeyJoinColumn(name="id")
 public class Debit extends Transaction {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7534687563299060222L;
-
+	/**
+	 * Creates an empty Debit.
+	 */
 	public Debit(double amount) {
 		super(amount);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
