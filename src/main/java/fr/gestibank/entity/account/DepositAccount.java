@@ -33,12 +33,12 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 	private double _balance;
 	@Column(name="overdraftFacility")
 	private double _overdraftFacility;
-	@Column(name="history")
 
 	@ManyToOne
 	@JoinColumn(name="fk_customer_id")
 	private Customer _customer;
 	@OneToMany(mappedBy="_depositaccount", fetch=FetchType.LAZY)
+	@Column(name="history")
 	private Collection<Transaction> _history;
 
 	
