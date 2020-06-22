@@ -4,8 +4,10 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -35,6 +37,13 @@ public class Manager extends User {
 	private LocalDate  _endDate;
 	@Column(length=20, name ="phoneNumber")
 	private String _phoneNumber;
+	
+	/** "mappedBy" signifie que cette association est déjà décrite dans l'autre classe, on spécifie que c'est sur l'attribut "_manager".
+	 * "FetchType.LAZY" : on spécifie à Hibernate que lorsqu'il charge un "Manager", il ne chargera pas l'attribut "_pendingSubscribes". Hibernate ne chargera "_pendingSubscribes" que "à la demande" => il faut utiliser la méthode getPendingSubscribes()
+	 *  Note : "By default no operations are cascaded."
+	 */
+	@OneToMany(mappedBy="_manager", fetch=FetchType.LAZY)		
+	private Collection<PendingSubscribe> _pendingSubscribes;
 	@OneToMany
 	private Collection<Customer> _customers;
 	
@@ -106,6 +115,14 @@ public class Manager extends User {
 		_endDate = endDate;
 	}
 	
+	public Collection<PendingSubscribe> getPendingSubscribes() {
+		return _pendingSubscribes;
+	}
+
+	public void setPendingSubscribes(Collection<PendingSubscribe> pendingSubscribes) {
+		_pendingSubscribes = pendingSubscribes;
+	}
+
 	public Manager() {
 		super();
 	}
