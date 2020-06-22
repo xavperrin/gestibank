@@ -12,11 +12,13 @@ import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
 import fr.gestibank.entity.user.Customer;
 import fr.gestibank.entity.user.Manager;
+import fr.gestibank.entity.user.SuperAdministrator;
 import fr.gestibank.entity.user.User;
 import fr.gestibank.repository.UserRepository;
 import fr.gestibank.repository.AddressRepository;
 import fr.gestibank.repository.CustomerRepository;
 import fr.gestibank.repository.ManagerRepository;
+import fr.gestibank.repository.SuperAdministratorRepository;
 
 @SpringBootTest
 class GestibankApplicationTests {
@@ -30,6 +32,9 @@ class GestibankApplicationTests {
 	
 	@Autowired
 	private ManagerRepository managerDao;
+	@Autowired
+	private SuperAdministratorRepository superadminDao;
+	
 	
 	@Test
 	void contextLoads() {
@@ -95,6 +100,20 @@ class GestibankApplicationTests {
 		assertEquals(getManagerFromDb, savedManagerInDb);
 	}
 	
+	
+	@Test
+	public void testSaveSuperAdministrator() {
+		SuperAdministrator superadmin=getSuperAdministrator();
+		Address addr=getAddress();
+		superadmin.setAddress(addr);
+	    Address savedAddressInDb=addrDao.save(addr);
+	    SuperAdministrator savedAdminInDb =superadminDao.save(superadmin);
+	    Address getAddressFromDb = addrDao.findById(savedAddressInDb.getId()).get();
+	    SuperAdministrator getSuperFromDb = superadminDao.findById(savedAdminInDb.getId()).get();
+		assertEquals(getAddressFromDb, savedAddressInDb);
+		assertEquals(getSuperFromDb, savedAdminInDb);
+	}
+	
 	/*
 	 * 
 	 * Private methods for tests
@@ -102,6 +121,17 @@ class GestibankApplicationTests {
 	 * 
 	 */
 	
+	private SuperAdministrator getSuperAdministrator() {
+		SuperAdministrator _super=new SuperAdministrator();
+		_super.setFirstname("Admin");
+		Long timestamp=Instant.now().toEpochMilli();
+		_super.setLastname("Johnson"+timestamp);
+		_super.setMail("customer.johnson+"+timestamp+"@gmail.com");
+		_super.setGender(Gender.FEMALE);
+		_super.setPassword("superwoman123");
+		return _super;
+	}
+
 	private Manager getManager() {
 		// TODO Auto-generated method stub
 		Long timestamp=Instant.now().toEpochMilli();
