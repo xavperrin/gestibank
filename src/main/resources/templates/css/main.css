@@ -1,0 +1,309 @@
+/* COMMON STYLE */
+@font-face {
+    font-family: 'bebasregular';
+    src: url('../fonts/BEBAS___-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+.block {
+    padding: 3.125rem 0;
+}
+
+.container {
+    max-width: 68.75rem;
+    padding: 0.312rem 0.625rem;
+    margin: 0 auto;
+}
+
+h2 {
+    font-family: 'bebasregular';
+    font-size: 2.25rem;
+    color: #ea222d;
+    text-align: center;
+}
+
+.element a {
+    color: #ea222d;
+    text-decoration: none;
+    border: 0.125rem solid #ea222d;
+    border-radius: 0.312rem;
+    padding: 0.312rem 0.625rem;
+}
+
+/* HEADER */
+header {
+    background-color: #ea222d;
+}
+
+header .elements {
+    justify-content: space-between;
+}
+
+/* Le sélecteur avancé > permet de ne cibler que les enfants directs ! (pratique) */
+header .elements > a {
+    font-family: 'bebasregular';
+    font-size: 2.25rem;
+    letter-spacing: -.187rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+}
+
+
+
+header small {
+    letter-spacing: normal;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-left: 0.312rem;
+}
+
+header nav ul li a {
+    color: white;
+    border-top: 0.125rem solid white;
+    border-bottom: 0.125rem solid white;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    border: 0;
+
+}
+
+
+
+ /* L'icône hamburger, en utilisant le box-shadow */
+ @media only screen and (max-width: 750px) {
+    .header__icon {
+        position: relative;
+        display: block;
+        float: right;
+        width: 50px;
+        height: 66px;
+        cursor: pointer; }
+        .header__icon:after {
+          content: '';
+          position: absolute;
+          display: block;
+          width: 1rem;
+          height: 0;
+          top: 16px;
+          left: 15px;
+          box-shadow: 0 10px 0 1px white, 0 16px 0 1px white, 0 22px 0 1px white; }
+
+          header nav ul li a{
+              display:none;
+          }
+    }
+
+
+ 
+
+/* PRESENTATION */
+#presentation {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%), url("../img/texture.jpeg");
+    background-size: cover;
+}
+
+#presentation .container {
+    padding: 6.25rem 0.625rem;
+}
+
+h1, #presentation p {
+    display: inline-block;
+    box-shadow: 0.625rem 0.625rem 1.875rem #555;
+    padding: 0.625rem;
+    margin: 0;
+}
+
+h1 {
+    font-size: 3.375rem;
+    text-transform: uppercase;
+    background-color: white;
+    color: #ea222d;
+}
+
+#presentation p {
+    font-size: 1.5rem;
+    background-color: #ea222d;
+    color: white;
+}
+
+.elements {
+    display: flex;
+}
+
+/* CHARACTERS */
+#characters .element {
+    width: 25%;
+    padding: 0.625rem;
+    text-align: center;
+}
+
+.element img {
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+}
+
+/* CINEMA */
+#cinema {
+    background-color: #ea222d;
+    color: white;
+}
+
+#cinema h2 {
+    color: white;
+}
+
+#cinema .element {
+    display: flex;
+    width: 50%;
+    padding: 0.625rem;
+}
+
+.media, .media-detail {
+    width: 50%;
+}
+
+.media iframe {
+    width: 100%;
+    padding-right: 0.625rem;
+}
+
+/* COMING SOON */
+#comingSoon {
+    position: relative;
+    max-height: 25rem;
+    overflow: hidden;
+    padding: 0;
+}
+
+#comingSoon video {
+    width: 100%;
+}
+
+#comingSoon .container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to bottom, rgba(234,34,45,1) 10%, rgba(234,34,45,0) 100%);
+    max-width: 100%;
+    min-height: 25rem;
+}
+
+#comingSoon h2 {
+    color: white;
+}
+
+#comingSoon table {
+    background-color: white;
+    border: 5px solid #ea222d;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 3.75rem;
+}
+
+#comingSoon tr {
+    padding: 0.312rem 0;
+}
+
+#comingSoon th, #comingSoon td {
+    padding: 0.312rem 0;
+}
+    
+#comingSoon th {
+    font-weight: bold;
+    border-bottom: 0.062rem solid #ea222d;
+}
+
+#comingSoon td {
+    text-align: center;
+}
+
+/* CONTACT */
+#contact .element {
+    width: 50%;
+}
+
+#contact .element iframe {
+    width: 100%;
+    min-height: 23.125rem;
+}
+
+.form-group {
+    padding: 10px 0;
+}
+
+form {
+    padding: 0 1.562rem;
+}
+
+input, select, textarea {
+    width: 100%;
+    min-height: 1.875rem;
+    padding: 0.625rem;
+    margin-top: 0.312rem;
+    border-radius: 0.312rem;
+    box-shadow: none;
+    border: 1px solid #666;
+}
+
+select {
+    height: 1.875rem;
+}
+
+input[type="submit"] {
+    color: #ea222d;
+    border: 0.062rem solid #ea222d;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #ea222d;
+    color: white;
+}
+
+/* FOOTER */
+footer {
+    background-color: #ea222d;
+    color: white;
+}
+
+footer p {
+    margin: 0;
+    padding: 1.25rem 0;
+}
+
+footer .elements {
+    justify-content: space-between;
+}
+
+.social ul li {
+    display: inline-block;
+    padding-right: 0.312rem;
+}
+
+.social ul li a {
+    color: white;
+}
+
+.social ul li a:hover {
+    color: whitesmoke;
+}
+
+

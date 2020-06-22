@@ -8,7 +8,6 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.user.Customer;
-import nl.garvelink.iban.Modulo97;
 
 @Entity
 @PrimaryKeyJoinColumn(name="id")
