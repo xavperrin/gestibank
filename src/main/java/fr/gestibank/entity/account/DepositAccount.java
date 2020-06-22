@@ -114,7 +114,7 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 	}
 	
 	public void setIBAN(String iBAN) {
-		_iBAN=iBAN;
+		_IBAN=iBAN;
 	}
 
 	

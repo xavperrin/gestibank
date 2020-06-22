@@ -98,6 +98,16 @@ public class CurrentAccountTest extends TestCase {
 	}
 	
 	
-	
+	/**
+	 * This test use each setter
+	 */
+	public void testAllSetters() {
+		_validAccount.setIBAN("FO5611798676287492");
+		_validAccount.setBalance(89.00);
+		_validAccount.setCustomer(new Customer("Ada", "Lovelace", "ada.lovelace@live.com", "password15456", new Address("890", "Vrchlického", "", "Domažlice 1", "344 01", "Czech Republic"), Gender.FEMALE, MaritalStatus.Single));
+		assertEquals("FO5611798676287492", _validAccount.getIBAN());
+		assertEquals(89.00, _validAccount.getBalance());
+		assertEquals(new Customer("Ada", "Lovelace", "ada.lovelace@live.com", "password15456", new Address("890", "Vrchlického", "", "Domažlice 1", "344 01", "Czech Republic"), Gender.FEMALE, MaritalStatus.Single), _validAccount.getCustomer());
+	}
 
 }
