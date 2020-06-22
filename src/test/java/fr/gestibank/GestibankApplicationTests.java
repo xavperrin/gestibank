@@ -82,6 +82,18 @@ class GestibankApplicationTests {
 	
 	
 
+	@Test
+	public void testSaveManager() {
+		Manager manager=getManager();
+		Address addr=getAddress();
+		manager.setAddress(addr);
+	    Address savedAddressInDb=addrDao.save(addr);
+	   Manager savedManagerInDb =managerDao.save(manager);
+	    Address getAddressFromDb = addrDao.findById(savedAddressInDb.getId()).get();
+		Manager getManagerFromDb = managerDao.findById(savedManagerInDb.getId()).get();
+		assertEquals(getAddressFromDb, savedAddressInDb);
+		assertEquals(getManagerFromDb, savedManagerInDb);
+	}
 	
 	/*
 	 * 
