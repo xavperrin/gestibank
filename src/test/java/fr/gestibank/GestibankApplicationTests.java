@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
 import fr.gestibank.entity.user.Customer;
+import fr.gestibank.entity.user.Manager;
 import fr.gestibank.entity.user.User;
 import fr.gestibank.repository.UserRepository;
 import fr.gestibank.repository.AddressRepository;
@@ -79,6 +81,8 @@ class GestibankApplicationTests {
 		assertEquals(getAddressFromDb, savedAddressInDb);
 		assertEquals(getCustomerFromDb, savedCustomerInDb);
 	}
+	
+	
 
 	
 	/*
@@ -88,6 +92,12 @@ class GestibankApplicationTests {
 	 * 
 	 */
 	
+	private Manager getManager() {
+		// TODO Auto-generated method stub
+		Long timestamp=Instant.now().toEpochMilli();
+		return new Manager("Manager"+timestamp, " Tykal", " m.anager"+timestamp+"@microsoft.fr", "passwordond", 788715, "HTGYUYG");
+	}
+
 	/**
 	 *  
 	 * @return Customer
@@ -127,11 +137,6 @@ class GestibankApplicationTests {
 		return _user;
 	}
 
-	
-	
-	
-	
-	
 	
 
 }

@@ -10,6 +10,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import fr.gestibank.entity.AbstractEntity;
 import fr.gestibank.entity.user.Customer;
 
@@ -31,6 +33,7 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 	@Column(name="overdraftFacility")
 	private double _overdraftFacility;
 	@Column(name="history")
+	@OneToMany
 	private Collection<Transaction> _history;
 	@ManyToOne
 	@JoinColumn(name="ID_CUST")
@@ -52,7 +55,6 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 		_IBAN = iBAN;
 		_balance=starteramount;
 		_overdraftFacility = 0;
-		_history.add(new Credit(starteramount));
 	}
 	
 	/**
