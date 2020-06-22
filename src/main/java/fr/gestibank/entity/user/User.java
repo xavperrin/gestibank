@@ -36,7 +36,6 @@ public class User extends AbstractEntity<Long> implements Serializable {
 	@Column(length=30, name="lastname")
 	private String _lastname;
 	@Column(length=70, name="mail")
-
 	private String _mail;
 	@Column(name = "password", columnDefinition="BLOB")
 	@ColumnTransformer(
@@ -44,12 +43,14 @@ public class User extends AbstractEntity<Long> implements Serializable {
 			write = "aes_encrypt(?, 'mysecret')"
 			)  
 	private String _password;
+	@Column(name="gender")
+	private Gender _gender;
+	
 	@ManyToOne
 	@JoinColumn(name="fk_address_id")
 	private Address _address;
-	@Column(name="gender")
-	private Gender _gender;
 
+	
 	public Long getId() {
 		return _id;
 	}
@@ -76,12 +77,25 @@ public class User extends AbstractEntity<Long> implements Serializable {
 		_mail = mail;
 	}
 	
-	
 	public String getPassword() {
 		return _password;
 	}
 	public void setPassword(String password) {
 		_password = password;
+	}
+	
+	public Gender getGender() {
+		return _gender;
+	}
+	public void setGender(Gender gender) {
+		_gender = gender;
+	}
+	
+	public Address getAddress() {
+		return _address;
+	}
+	public void setAddress(Address address) {
+		_address = address;
 	}
 	
 	
@@ -163,18 +177,7 @@ public boolean checkMail() {
 	
 	return getMail().matches(regex);
 }
-public Address getAddress() {
-	return _address;
-}
-public void setAddress(Address address) {
-	_address = address;
-}
-public Gender getGender() {
-	return _gender;
-}
-public void setGender(Gender gender) {
-	_gender = gender;
-}
+
 @Override
 public int hashCode() {
 	return Objects.hash(_address, _firstname, _gender, _id, _lastname, _mail, _password);

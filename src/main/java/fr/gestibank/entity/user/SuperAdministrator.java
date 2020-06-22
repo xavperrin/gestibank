@@ -27,7 +27,6 @@ public class SuperAdministrator extends User {
 	
 	public SuperAdministrator() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**
@@ -36,13 +35,14 @@ public class SuperAdministrator extends User {
 	 * @param lastname
 	 * @param mail
 	 * @param password
-	 * @param staffNumber
+	 * @param address
+	 * @param gender
 	 */
-	public SuperAdministrator(String firstname, String lastname,  String mail, String password, int staffNumber) {
-		super(firstname, lastname, mail, password);
-		this.setStaffNumber(staffNumber);
+	public SuperAdministrator(String firstname, String lastname, String mail, String password, Address address,
+			Gender gender) {
+		super(firstname, lastname, mail, password, address, gender);
 	}
-	
+
 	/**
 	 * 
 	 * @param firstname
@@ -54,13 +54,12 @@ public class SuperAdministrator extends User {
 	 * @param staffNumber
 	 * @param beginDate
 	 */
-	public SuperAdministrator(String firstname, String lastname,  String mail, String password, Address address, Gender gender, int staffNumber, LocalDate beginDate) {
+	public SuperAdministrator(String firstname, String lastname, String mail, String password, Address address,
+			Gender gender, int staffNumber, LocalDate beginDate) {
 		super(firstname, lastname, mail, password, address, gender);
-		this.setStaffNumber(staffNumber);
-		this.setBeginDate(beginDate);
+		_staffNumber = staffNumber;
+		_beginDate = beginDate;
 	}
-	
-
 
 	public int getStaffNumber() {
 		return _staffNumber;

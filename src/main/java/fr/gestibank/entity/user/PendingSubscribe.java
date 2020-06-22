@@ -35,6 +35,7 @@ public class PendingSubscribe implements Serializable {
 	private Gender _gender;
 	@Column(name="date")
 	private LocalDate _date;
+	
 	@ManyToOne
 	@JoinColumn(name="fk_manager_id")
 	private Manager _manager;
@@ -59,7 +60,6 @@ public class PendingSubscribe implements Serializable {
 		_gender = gender;
 	}
 	
-	
 	/**
 	 * 
 	 * @param firstname
@@ -67,19 +67,17 @@ public class PendingSubscribe implements Serializable {
 	 * @param mail
 	 * @param gender
 	 * @param date
-	 * @param manager
 	 */
-	public PendingSubscribe(String firstname, String lastname, String mail, Gender gender, LocalDate date,
-			Manager manager) {
+	public PendingSubscribe(String firstname, String lastname, String mail, Gender gender, LocalDate date) {
 		super();
 		_firstname = firstname;
 		_lastname = lastname;
 		_mail = mail;
 		_gender = gender;
 		_date = date;
-		_manager = manager;
 	}
 
+	
 	public Long getId() {
 		return _id;
 	}

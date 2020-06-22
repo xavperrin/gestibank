@@ -23,7 +23,6 @@ public class Address implements Serializable {
 
 	@Id @GeneratedValue @Column(name="id")
 	private Long _id;
-	
 	@Column(length=10, name="streetNumber")
 	private String _streetNumber;
 	@Column(length=70, name="street1")

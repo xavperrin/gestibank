@@ -10,7 +10,7 @@ import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.user.Customer;
 
 @Entity
-@PrimaryKeyJoinColumn(name="id")
+@PrimaryKeyJoinColumn(name="_id")
 public class CurrentAccount extends DepositAccount {
 
 	/**

@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -44,8 +43,10 @@ public class Manager extends User {
 	 */
 	@OneToMany(mappedBy="_manager", fetch=FetchType.LAZY)		
 	private Collection<PendingSubscribe> _pendingSubscribes;
-	@OneToMany
+	@OneToMany(mappedBy="_manager", fetch=FetchType.LAZY)
 	private Collection<Customer> _customers;
+	@OneToMany(mappedBy="_manager", fetch=FetchType.LAZY)
+	private Collection<Request> _requests;
 	
 	
 	public Long getId() {
@@ -123,6 +124,22 @@ public class Manager extends User {
 		_pendingSubscribes = pendingSubscribes;
 	}
 
+	public Collection<Customer> getCustomers() {
+		return _customers;
+	}
+
+	public void setCustomers(Collection<Customer> customers) {
+		_customers = customers;
+	}
+
+	public Collection<Request> getRequests() {
+		return _requests;
+	}
+
+	public void setRequests(Collection<Request> requests) {
+		_requests = requests;
+	}
+
 	public Manager() {
 		super();
 	}
@@ -133,13 +150,29 @@ public class Manager extends User {
 	 * @param lastname
 	 * @param mail
 	 * @param password
-	 * @param staffnumber
-	 * @param phonenumber
+	 * @param address
+	 * @param gender
 	 */
-	public Manager(String firstname, String lastname, String mail, String password, int staffnumber, String phonenumber) {
-		super(firstname, lastname, mail, password);
-		setStaffnumber(staffnumber);
-		setPhonenumber(phonenumber);
+	public Manager(String firstname, String lastname, String mail, String password, Address address, Gender gender) {
+		super(firstname, lastname, mail, password, address, gender);
+	}
+	
+	/**
+	 * 
+	 * @param firstname
+	 * @param lastname
+	 * @param mail
+	 * @param password
+	 * @param address
+	 * @param gender
+	 * @param staffNumber
+	 * @param phoneNumber
+	 */
+	public Manager(String firstname, String lastname, String mail, String password, Address address, Gender gender,
+			int staffNumber, String phoneNumber) {
+		super(firstname, lastname, mail, password, address, gender);
+		_staffNumber = staffNumber;
+		_phoneNumber = phoneNumber;
 	}
 
 	/**
@@ -150,32 +183,18 @@ public class Manager extends User {
 	 * @param password
 	 * @param address
 	 * @param gender
-	 * @param staffnumber
-	 * @param begin
+	 * @param staffNumber
+	 * @param beginDate
+	 * @param phoneNumber
 	 */
-	public Manager(String firstname, String lastname, String mail, String password, Address address,
-			Gender gender, int staffnumber, LocalDate begin) {
+	public Manager(String firstname, String lastname, String mail, String password, Address address, Gender gender,
+			int staffNumber, LocalDate beginDate, String phoneNumber) {
 		super(firstname, lastname, mail, password, address, gender);
-		this.setStaffnumber(staffnumber);
-		this.setBeginDate(begin);
+		_staffNumber = staffNumber;
+		_beginDate = beginDate;
+		_phoneNumber = phoneNumber;
 	}
-
 	
-	/**
-	 * 
-	 * @param firstname
-	 * @param lastname
-	 * @param mail
-	 * @param password
-	 * @param staffnumber
-	 */
-	public Manager(String firstname, String lastname, String mail, String password, int staffnumber) {
-		super(firstname, lastname, mail, password);
-		this._staffNumber=staffnumber;
-		
-	}
-
-
 
 	@Override
 	public int hashCode() {

@@ -29,9 +29,11 @@ public abstract class Transaction implements Serializable {
 	double _amount;
 	@Column(name="date")
 	LocalDate _date;
+	
 	@ManyToOne
-	@JoinColumn(name="ID_ACCOUNT")
+	@JoinColumn(name="fk_account_id")
 	DepositAccount _depositaccount;
+	
 	
 	public double getAmount() {
 		return _amount;
@@ -40,8 +42,11 @@ public abstract class Transaction implements Serializable {
 	public LocalDate getDate() {
 		return _date;
 	}
-
 	
+	public DepositAccount getDepositaccount() {
+		return _depositaccount;
+	}
+
 	public Transaction() {
 		super();
 	}
@@ -50,8 +55,9 @@ public abstract class Transaction implements Serializable {
 	 * 
 	 * @param amount
 	 */
-	public Transaction(double amount){
-		_amount=amount;
+	public Transaction(double amount) {
+		super();
+		_amount = amount;
 		_date=LocalDate.now();
 	}
 

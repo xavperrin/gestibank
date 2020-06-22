@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Request implements Serializable {
@@ -21,6 +23,13 @@ public class Request implements Serializable {
 	String _message;
 	@Column(length=30, name="type")
 	String _type;
+	
+	@ManyToOne
+	@JoinColumn(name="fk_customer_id")
+	private Customer _customer;
+	@ManyToOne
+	@JoinColumn(name="fk_manager_id")
+	private Manager _manager;
 	
 	
 	public Long getId() {
@@ -41,6 +50,19 @@ public class Request implements Serializable {
 	public void setType(String type) {
 		_type = type;
 	}
+
+	public Customer getCustomer() {
+		return _customer;
+	}
+	public void setCustomer(Customer customer) {
+		_customer = customer;
+	}
+	public Manager getManager() {
+		return _manager;
+	}
+	public void setManager(Manager manager) {
+		_manager = manager;
+	}
 	
 	// Constructeur sans paramètre
 	public Request() {
@@ -49,22 +71,21 @@ public class Request implements Serializable {
 	
 	/**
 	 * 
-	 * @param id
 	 * @param message
 	 * @param type
+	 * @param customer
+	 * @param manager
 	 */
-	public Request(Long id, String message, String type) {
+	public Request(String message, String type, Customer customer, Manager manager) {
 		super();
-		_id = id;
 		_message = message;
 		_type = type;
+		_customer = customer;
+		_manager = manager;
 	}
 	
 	@Override
 	public String toString() {
 		return "Request [_id=" + _id + ", _message=" + _message + ", _type=" + _type + "]";
 	}	
-	
-	
-	
 }

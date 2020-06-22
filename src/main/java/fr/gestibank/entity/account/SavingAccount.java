@@ -8,7 +8,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
  *
  */
 @Entity
-@PrimaryKeyJoinColumn(name="id")
+@PrimaryKeyJoinColumn(name="_id")
 public class SavingAccount extends DepositAccount {
 
 	/**

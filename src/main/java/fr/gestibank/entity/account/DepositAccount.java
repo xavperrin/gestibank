@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -33,12 +34,14 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 	@Column(name="overdraftFacility")
 	private double _overdraftFacility;
 	@Column(name="history")
-	@OneToMany
-	private Collection<Transaction> _history;
-	@ManyToOne
-	@JoinColumn(name="ID_CUST")
-	private Customer _customer;
 
+	@ManyToOne
+	@JoinColumn(name="fk_customer_id")
+	private Customer _customer;
+	@OneToMany(mappedBy="_depositaccount", fetch=FetchType.LAZY)
+	private Collection<Transaction> _history;
+
+	
 	/**
 	 * Creates an empty DepositAccount.
 	 */

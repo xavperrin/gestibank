@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -26,17 +27,29 @@ public class Customer extends User {
 	private static final long serialVersionUID = -3111697784484041650L;
 	@Id @GeneratedValue @Column(name="id")
 	private Long _id;
+	@Column(name ="children")
+	private int _children;
 	@Column(name ="maritalStatus")
 	private MaritalStatus _maritalStatus;	
 	@Column(length=20, name ="phoneNumber")
 	private String _phoneNumber;
+	
 	@ManyToOne
-	@JoinColumn(name="ID_MAN")
+	@JoinColumn(name="fk_manager_id")
 	private Manager _manager;
-	@OneToMany
+	@OneToMany(mappedBy="_customer", fetch=FetchType.LAZY)
 	private Collection<DepositAccount> _accounts;
-	@Column(name ="children")
-	private int _children;
+	@OneToMany(mappedBy="_customer", fetch=FetchType.LAZY)
+	private Collection<Request> _requests;
+	
+	
+	/**
+	 * Creates an empty Customer.
+	 */
+
+	public Customer() {
+		super();
+	}
 	
 	/**
 	 * @param firstname
@@ -47,8 +60,7 @@ public class Customer extends User {
 	public Customer(String firstname, String lastname, String mail, String password) {
 		super(firstname, lastname, mail, password);
 	}
-
-
+	
 
 	/**
 	 * 
@@ -56,39 +68,33 @@ public class Customer extends User {
 	 * @param lastname
 	 * @param mail
 	 * @param password
-	 * @param addr
+	 * @param address
 	 * @param gender
-	 * @param maritalstatus
 	 */
-	public  Customer(String firstname, String lastname, String  mail, String password, Address addr,
-			Gender gender, MaritalStatus maritalstatus) {
-		super(firstname, lastname, mail, password);
-		this.setAddress(addr);
-		this.setGender(gender);
-		this.setMaritalStatus(maritalstatus);
-		
+	public Customer(String firstname, String lastname, String mail, String password, Address address, Gender gender) {
+		super(firstname, lastname, mail, password, address, gender);
 	}
-	
-	
+
 	/**
 	 * 
 	 * @param firstname
 	 * @param lastname
 	 * @param mail
 	 * @param password
-	 * @param addr
+	 * @param address
 	 * @param gender
-	 * @param maritalstatus
-	 * @param manager
+	 * @param children
+	 * @param maritalStatus
+	 * @param phoneNumber
 	 */
-	public  Customer(String firstname, String lastname, String  mail, String password, Address addr,
-			Gender gender, MaritalStatus maritalstatus, Manager manager) {
-		super(firstname, lastname, mail, password);
-		this.setAddress(addr);
-		this.setGender(gender);
-		this.setMaritalStatus(maritalstatus);
-		_manager=manager;
+	public Customer(String firstname, String lastname, String mail, String password, Address address, Gender gender,
+			int children, MaritalStatus maritalStatus, String phoneNumber) {
+		super(firstname, lastname, mail, password, address, gender);
+		_children = children;
+		_maritalStatus = maritalStatus;
+		_phoneNumber = phoneNumber;
 	}
+	
 
 	public Long getId() {
 		return _id;
@@ -96,6 +102,14 @@ public class Customer extends User {
 
 	public void setId(Long id) {
 		_id = id;
+	}
+
+	public int getChildren() {
+		return _children;
+	}
+
+	public void setChildren(int children) {
+		_children = children;
 	}
 
 	public MaritalStatus getMaritalStatus() {
@@ -121,35 +135,25 @@ public class Customer extends User {
 	public void setManager(Manager manager) {
 		this._manager = manager;
 	}
-
 	
 	
-	
-	/**
-	 * @return the _accounts
-	 */
 	public Collection<DepositAccount> get_accounts() {
 		return _accounts;
 	}
 
-
-
-	/**
-	 * @param _accounts the _accounts to set
-	 */
 	public void set_accounts(Collection<DepositAccount> _accounts) {
 		this._accounts = _accounts;
 	}
 
+	public Collection<Request> getRequests() {
+		return _requests;
+	}
 
-
-	/**
-	 * Constructors
-	 * 
-	 */
-
+	public void setRequests(Collection<Request> requests) {
+		_requests = requests;
+	}
 	
-	
+
 	@Override
 	public String toString() {
 		return "Customer [_maritalStatus=" + _maritalStatus + ", _phonenumber=" + _phoneNumber + ", idManager="
@@ -157,15 +161,6 @@ public class Customer extends User {
 				+ getLastname() + ", getMail()=" + getMail() + ", getPassword()=" + getPassword() + ", getAddress()=" + getAddress() + ", getGender()="
 				+ getGender() + "]";
 	}
-
-	/**
-	 * Creates an empty Customer.
-	 */
-
-	public Customer() {
-		super();
-	}
-
 
 
 	@Override
