@@ -96,6 +96,23 @@ public class Customer extends User {
 	}
 	
 
+	
+
+	/**
+	 * @param firstname
+	 * @param lastname
+	 * @param mail
+	 * @param password
+	 * @param address
+	 * @param gender
+	 * @param maritalStatus
+	 */
+	public Customer(String firstname, String lastname, String mail, String password, Address address, Gender gender,
+			MaritalStatus maritalStatus) {
+		super(firstname, lastname, mail, password, address, gender);
+		_maritalStatus = maritalStatus;
+	}
+
 	public Long getId() {
 		return _id;
 	}
