@@ -38,8 +38,10 @@ public class Customer extends User {
 	@JoinColumn(name="fk_manager_id")
 	private Manager _manager;
 	@OneToMany(mappedBy="_customer", fetch=FetchType.LAZY)
+	@Column(name="list_accounts")
 	private Collection<DepositAccount> _accounts;
 	@OneToMany(mappedBy="_customer", fetch=FetchType.LAZY)
+	@Column(name="list_requests")
 	private Collection<Request> _requests;
 	
 	

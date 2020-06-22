@@ -40,7 +40,7 @@ public class ManagerTest extends TestCase {
 	public void setUp() throws Exception {
 		_voidManager=new Manager();
 		Address addr= new Address("3ter", "street1", "street2", "city", "zipcode", "country");
-		_validManager=new Manager("Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, 101, LocalDate.now());
+		_validManager=new Manager("Bill", "Gates", "bilou@microsoft.fr", "passwordbill001", addr, Gender.MALE, 101, LocalDate.now(), "06 77 66 43 52");
 		
 	}
 	 //==================================
@@ -52,7 +52,7 @@ public class ManagerTest extends TestCase {
   */
  public void testCreateValidManager() throws CheckException {
 
-     final Manager manager = new Manager("Bill", "Gates", "bill@gates.com", "password000", 6654);
+     final Manager manager = new Manager("Bill", "Gates", "bill@gates.com", "password000", new Address("3ter", "street1", "street2", "city", "zipcode", "country"),Gender.MALE, 1523, "06 77 66 43 52");
 		assertEquals("Bill", manager.getFirstname());
 		assertEquals("Gates", manager.getLastname());
 		manager.checkData();
@@ -62,14 +62,14 @@ public class ManagerTest extends TestCase {
 public void testCreateManagerWithInvalidValues() throws Exception{
  	
  	try {
- 		final Manager manager = new Manager("", "Gates", "bill@gates.com", "pass1234", 1523);
+ 		final Manager manager = new Manager("", "Gates", "bill@gates.com", "pass1234", new Address("3ter", "street1", "street2", "city", "zipcode", "country"),Gender.MALE, 1523, "06 77 66 43 52");
  		manager.checkData();
  		fail("Object with empty values should not be created");
  	} catch (CheckException e) {
      	assertEquals("Invalid user first name", e.getMessage());
      }
      try {
-     	final Manager manager = new Manager("Bill", "", "bill@gates.com", "pass1234", 1523);
+     	final Manager manager = new Manager("Bill", "", "bill@gates.com", "pass1234", new Address("3ter", "street1", "street2", "city", "zipcode", "country"),Gender.MALE, 1523, "06 77 66 43 52");
          manager.checkData();
          fail("Object with empty values should not be created");
      } catch (CheckException e) {
@@ -78,14 +78,14 @@ public void testCreateManagerWithInvalidValues() throws Exception{
 
      // Creates objects with null values
      try {
-     	final Manager manager = new Manager(null, "Gates", "bill@gates.com", "pass1234", 1523);
+     	final Manager manager = new Manager(null, "Gates", "bill@gates.com", "pass1234", new Address("3ter", "street1", "street2", "city", "zipcode", "country"),Gender.MALE, 1523, "06 77 66 43 52");
          manager.checkData();
          fail("Object with null values should not be created");
      } catch (CheckException e) {
      	assertEquals("Invalid user first name", e.getMessage());
      }
      try {
-     	final Manager manager = new Manager("Bill", null, "bill@gates.com", "pass1234", 1523);
+     	final Manager manager = new Manager("Bill", null, "bill@gates.com", "pass1234", new Address("3ter", "street1", "street2", "city", "zipcode", "country"),Gender.MALE, 1523, "06 77 66 43 52");
          manager.checkData();
          fail("Object with null values should not be created");
      } catch (CheckException e) {
@@ -93,7 +93,7 @@ public void testCreateManagerWithInvalidValues() throws Exception{
      }
      
      try {
-     	final Manager manager = new Manager("Bill", "Gates", null, "pass1234", 1523);
+     	final Manager manager = new Manager("Bill", "Gates", null, "pass1234", new Address("3ter", "street1", "street2", "city", "zipcode", "country"),Gender.MALE, 1523, "06 77 66 43 52");
          manager.checkData();
          fail("Object with null values should not be created");
      } catch (CheckException e) {
@@ -142,14 +142,14 @@ public void testEquals() {
 
   assertEquals( new Manager("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
 			new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
-			Gender.MALE, 101, LocalDate.now()), new Manager("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
+			Gender.MALE, 101, LocalDate.now(),"06 77 66 43 52"), new Manager("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
 					new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
-					Gender.MALE, 101, LocalDate.now())  );
+					Gender.MALE, 101, LocalDate.now(),"06 77 66 43 52")  );
   assertNotEquals( new Manager("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
 			new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
-			Gender.MALE, 101, LocalDate.now()), new Manager("Ada", "Lovelace",   "ada.lovelace@gmail.com", "passwordada", 
+			Gender.MALE, 101, LocalDate.now(),"06 77 66 43 52"), new Manager("Ada", "Lovelace",   "ada.lovelace@gmail.com", "passwordada", 
 					new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
-					Gender.FEMALE, 101, LocalDate.now()) );
+					Gender.FEMALE, 101, LocalDate.now(),"06 77 66 43 52") );
 }
 
 }

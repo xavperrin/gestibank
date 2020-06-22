@@ -93,7 +93,7 @@ class GestibankApplicationTests {
 	private Manager getManager() {
 		// TODO Auto-generated method stub
 		Long timestamp=Instant.now().toEpochMilli();
-		return new Manager("Manager"+timestamp, " Tykal", " m.anager"+timestamp+"@microsoft.fr", "passwordond", 788715, "HTGYUYG");
+		return new Manager("Manager"+timestamp, " Tykal", " m.anager"+timestamp+"@microsoft.fr", "passwordond", new Address("3ter", "street1", "street2", "city", "zipcode", "country"),Gender.MALE, 1523, "06 77 66 43 52");
 	}
 
 	/**
