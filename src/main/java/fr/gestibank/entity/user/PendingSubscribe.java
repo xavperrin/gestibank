@@ -2,11 +2,14 @@ package fr.gestibank.entity.user;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Gender;
@@ -21,18 +24,20 @@ public class PendingSubscribe implements Serializable {
 	private static final long serialVersionUID = 2754459759946458555L;
 	
 	@Id @GeneratedValue @Column(name="id")
-	Long _id;
+	private Long _id;
 	@Column(length=30, name="firstname")
-	String _firstname;
+	private String _firstname;
 	@Column(length=30, name="lastname")
-	String _lastname;
+	private String _lastname;
 	@Column(length=70, name="mail")
-	String _mail;
+	private String _mail;
 	@Column(name="gender")
-	Gender _gender;
+	private Gender _gender;
 	@Column(name="date")
-	LocalDate _date;
-
+	private LocalDate _date;
+	@ManyToOne
+	@JoinColumn(name="fk_manager_id")
+	private Manager _manager;
 	
 	
 	public PendingSubscribe() {
@@ -52,6 +57,27 @@ public class PendingSubscribe implements Serializable {
 		_lastname = lastname;
 		_mail = mail;
 		_gender = gender;
+	}
+	
+	
+	/**
+	 * 
+	 * @param firstname
+	 * @param lastname
+	 * @param mail
+	 * @param gender
+	 * @param date
+	 * @param manager
+	 */
+	public PendingSubscribe(String firstname, String lastname, String mail, Gender gender, LocalDate date,
+			Manager manager) {
+		super();
+		_firstname = firstname;
+		_lastname = lastname;
+		_mail = mail;
+		_gender = gender;
+		_date = date;
+		_manager = manager;
 	}
 
 	public Long getId() {
@@ -102,8 +128,14 @@ public class PendingSubscribe implements Serializable {
 		_date = date;
 	}
 	
-	
-	
+	public Manager getManager() {
+		return _manager;
+	}
+
+	public void setManager(Manager manager) {
+		_manager = manager;
+	}
+
 	// ======================================
     // =           check methods          =
     // ======================================
