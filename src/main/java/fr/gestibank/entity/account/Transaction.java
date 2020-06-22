@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 
@@ -27,6 +29,9 @@ public abstract class Transaction implements Serializable {
 	double _amount;
 	@Column(name="date")
 	LocalDate _date;
+	@ManyToOne
+	@JoinColumn(name="ID_ACCOUNT")
+	DepositAccount _depositaccount;
 	
 	public double getAmount() {
 		return _amount;

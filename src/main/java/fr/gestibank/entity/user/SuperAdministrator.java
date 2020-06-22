@@ -1,8 +1,6 @@
 package fr.gestibank.entity.user;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;

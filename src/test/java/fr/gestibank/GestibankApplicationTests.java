@@ -1,6 +1,10 @@
 package fr.gestibank;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
+import java.time.Instant;
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +12,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
+import fr.gestibank.entity.user.Customer;
+import fr.gestibank.entity.user.Manager;
 import fr.gestibank.entity.user.User;
 import fr.gestibank.repository.UserRepository;
 import fr.gestibank.repository.AddressRepository;
+import fr.gestibank.repository.CustomerRepository;
+import fr.gestibank.repository.ManagerRepository;
 
 @SpringBootTest
 class GestibankApplicationTests {
@@ -19,6 +27,11 @@ class GestibankApplicationTests {
 	private UserRepository userDao;
 	@Autowired
 	private AddressRepository addrDao;
+	@Autowired
+	private CustomerRepository customerDao;
+	
+	@Autowired
+	private ManagerRepository managerDao;
 	
 	@Test
 	void contextLoads() {
@@ -27,15 +40,19 @@ class GestibankApplicationTests {
 	@Test
 	public void testSaveUser() {
 		User user=getUser();
-		
 		Address addr=getAddress();
 		user.setAddress(addr);
 	    Address savedAddressInDb=addrDao.save(addr);
 	    User savedUserInDb =userDao.save(user);
 	    Address getAddressFromDb = addrDao.findById(savedAddressInDb.getId()).get();
 		User getFromDb = userDao.findById(savedUserInDb.getId()).get();
+			
 		assertEquals(getAddressFromDb, savedAddressInDb);
 		assertEquals(getFromDb, savedUserInDb);
+		
+		getFromDb.setMail(getFromDb.getMail()+Instant.now().toEpochMilli());
+		User updatedUser =userDao.save(getFromDb);
+		assertNotEquals(savedUserInDb, updatedUser);
 	}
 	
 	
@@ -52,16 +69,50 @@ class GestibankApplicationTests {
 	}
 	
 	
-	
 	@Test
-	public void testSaveUserWithAddress() {
-		User user=getUserWithAddress();
+	public void testSaveCustomer() {
+		Customer customer=getCustomer();
+		Address addr=getAddress();
+		customer.setAddress(addr);
+	    Address savedAddressInDb=addrDao.save(addr);
+	   Customer savedCustomerInDb =customerDao.save(customer);
+	    Address getAddressFromDb = addrDao.findById(savedAddressInDb.getId()).get();
+		Customer getCustomerFromDb = customerDao.findById(savedCustomerInDb.getId()).get();
+		assertEquals(getAddressFromDb, savedAddressInDb);
+		assertEquals(getCustomerFromDb, savedCustomerInDb);
+	}
+	
+	
+
+	
+	/*
+	 * 
+	 * Private methods for tests
+	 * 
+	 * 
+	 */
+	
+	private Manager getManager() {
+		// TODO Auto-generated method stub
+		Long timestamp=Instant.now().toEpochMilli();
+		return new Manager("Manager"+timestamp, " Tykal", " m.anager"+timestamp+"@microsoft.fr", "passwordond", 788715, "HTGYUYG");
+	}
+
+	/**
+	 *  
+	 * @return Customer
+	 */
+	private Customer getCustomer() {
+		Long timestamp=Instant.now().toEpochMilli();
+		Customer _customer= new Customer();
+		_customer.setFirstname("Customer");
+		_customer.setLastname("Johnson"+timestamp);
+		_customer.setMail("customer.johnson+"+timestamp+"@gmail.com");
+		_customer.setGender(Gender.FEMALE);
+		_customer.setPassword("superwoman123");
 		
 		
-	    User savedUserInDb =userDao.save(user);
-	    User getFromDb = userDao.findById(savedUserInDb.getId()).get();
-		
-		assertEquals(getFromDb, savedUserInDb);
+		return _customer;
 	}
 
 	private Address getAddress() {
@@ -76,32 +127,16 @@ class GestibankApplicationTests {
 	}
 
 	private User getUser() {
+		Long timestamp=Instant.now().toEpochMilli();
 		User _user= new User();
-		_user.setFirstname("Katherine");
+		_user.setFirstname("User"+timestamp);
 		_user.setLastname("Johnson");
-		_user.setMail("katherine.johnson@gmail.com");
+		_user.setMail("user.johnson"+timestamp+"@gmail.com");
 		_user.setGender(Gender.FEMALE);
 		_user.setPassword("superwoman123");
 		return _user;
 	}
-	
-	
-	
-	private User getUserWithAddress() {
-		User _user= new User();
-		_user.setFirstname("Katherine");
-		_user.setLastname("Johnson");
-		_user.setMail("katherine.johnson@gmail.com");
-		_user.setGender(Gender.FEMALE);
-		_user.setPassword("superwoman123");
-		_user.setAddress(new Address("72", "Sömmeringstr.", "Straße 27", "Elchingen", "89270", "Germany"));
-		return _user;
-	}
-	
-	
-	
-	
-	
+
 	
 
 }

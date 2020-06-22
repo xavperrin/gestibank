@@ -1,5 +1,7 @@
 package test;
 
+import static org.junit.Assert.assertNotEquals;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.util.SerializationUtils;
 
@@ -220,6 +222,22 @@ public final class UserTest extends TestCase {
 	    final byte[] serializedValidUser = SerializationUtils.serialize(_validUser);
 	    final SuperAdministrator deserializedValidUser = (SuperAdministrator) SerializationUtils.deserialize(serializedValidUser);
 	    assertEquals(_validUser, deserializedValidUser);
+	}
+
+	
+	@Test
+	public void testEquals() {
+
+	  assertEquals( new User("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
+				new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
+				Gender.MALE), new User("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
+						new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
+						Gender.MALE) );
+	  assertNotEquals( new User("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
+				new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
+				Gender.MALE), new User("Ada", "Lovelace",   "ada.lovelace@gmail.com", "passwordada", 
+						new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
+						Gender.FEMALE) );
 	}
 
 }

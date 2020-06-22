@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ColumnTransformer;
 
+import fr.gestibank.entity.AbstractEntity;
 import fr.gestibank.entity.exception.CheckException;
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
@@ -21,7 +22,7 @@ import fr.gestibank.entity.society.Gender;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User implements Serializable {
+public class User extends AbstractEntity<Long> implements Serializable {
 	
 	/**
 	 * 
@@ -188,7 +189,7 @@ public boolean equals(Object obj) {
 	}
 	User other = (User) obj;
 	return Objects.equals(_address, other._address) && Objects.equals(_firstname, other._firstname)
-			&& _gender == other._gender && Objects.equals(_id, other._id) && Objects.equals(_lastname, other._lastname)
+			&& _gender == other._gender && Objects.equals(_lastname, other._lastname)
 			&& Objects.equals(_mail, other._mail) && Objects.equals(_password, other._password);
 }
 
