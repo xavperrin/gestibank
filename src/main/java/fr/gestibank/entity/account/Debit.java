@@ -11,6 +11,7 @@ public class Debit extends Transaction {
 	 * 
 	 */
 	private static final long serialVersionUID = -7534687563299060222L;
+	
 	/**
 	 * Creates an empty Debit.
 	 */

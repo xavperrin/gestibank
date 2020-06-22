@@ -47,7 +47,7 @@ public class SuperAdministratorTest extends TestCase {
 	 */
 	@Test
 	public void testCreateValidSuperAdmin() {
-		final SuperAdministrator finalsuperadmin = new SuperAdministrator("Bill", "Gates", "bill@gates.com", "password000", 6654);
+		final SuperAdministrator finalsuperadmin = new SuperAdministrator("Bill", "Gates", "bill@gates.com", "password000", new Address("23", "Mackie Street", "1st floor", "KIANGA", "2546", "Australia"),Gender.MALE);
 		assertEquals("Bill", finalsuperadmin.getFirstname());
 		assertEquals("Gates", finalsuperadmin.getLastname());
 		try {
@@ -63,14 +63,14 @@ public class SuperAdministratorTest extends TestCase {
 	public void testCreateSuperAdminWithInvalidValues() throws Exception{
 	 	
 	 	try {
-	 		final SuperAdministrator finalsuperadmin = new SuperAdministrator("", "Gates", "bill@gates.com", "pass1234", 1523);
+	 		final SuperAdministrator finalsuperadmin = new SuperAdministrator("", "Gates", "bill@gates.com", "pass1234", new Address("23", "Mackie Street", "1st floor", "KIANGA", "2546", "Australia"),Gender.MALE);
 	 		finalsuperadmin.checkData();
 	 		fail("Object with empty values should not be created");
 	 	} catch (CheckException e) {
 	     	assertEquals("Invalid user first name", e.getMessage());
 	     }
 	     try {
-	     	final SuperAdministrator finalsuperadmin = new SuperAdministrator("Bill", "", "bill@gates.com", "pass1234", 1523);
+	     	final SuperAdministrator finalsuperadmin = new SuperAdministrator("Bill", "", "bill@gates.com", "pass1234", new Address("23", "Mackie Street", "1st floor", "KIANGA", "2546", "Australia"),Gender.MALE);
 	     	finalsuperadmin.checkData();
 	         fail("Object with empty values should not be created");
 	     } catch (CheckException e) {
@@ -79,14 +79,14 @@ public class SuperAdministratorTest extends TestCase {
 
 	     // Creates objects with null values
 	     try {
-	     	final SuperAdministrator finalsuperadmin = new SuperAdministrator(null, "Gates", "bill@gates.com", "pass1234", 1523);
+	     	final SuperAdministrator finalsuperadmin = new SuperAdministrator(null, "Gates", "bill@gates.com", "pass1234", new Address("23", "Mackie Street", "1st floor", "KIANGA", "2546", "Australia"),Gender.MALE);
 	     	finalsuperadmin.checkData();
 	         fail("Object with null values should not be created");
 	     } catch (CheckException e) {
 	     	assertEquals("Invalid user first name", e.getMessage());
 	     }
 	     try {
-	     	final SuperAdministrator finalsuperadmin = new SuperAdministrator("Bill", null, "bill@gates.com", "pass1234", 1523);
+	     	final SuperAdministrator finalsuperadmin = new SuperAdministrator("Bill", null, "bill@gates.com", "pass1234", new Address("23", "Mackie Street", "1st floor", "KIANGA", "2546", "Australia"),Gender.MALE);
 	     	finalsuperadmin.checkData();
 	         fail("Object with null values should not be created");
 	     } catch (CheckException e) {
@@ -94,7 +94,7 @@ public class SuperAdministratorTest extends TestCase {
 	     }
 	     
 	     try {
-	     	final SuperAdministrator finalsuperadmin = new SuperAdministrator("Bill", "Gates", null, "pass1234", 1523);
+	     	final SuperAdministrator finalsuperadmin = new SuperAdministrator("Bill", "Gates", null, "pass1234", new Address("23", "Mackie Street", "1st floor", "KIANGA", "2546", "Australia"),Gender.MALE);
 	     	finalsuperadmin.checkData();
 	         fail("Object with null values should not be created");
 	     } catch (CheckException e) {

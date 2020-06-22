@@ -3,10 +3,6 @@ package fr.gestibank.entity.account;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
-/**
- * @author 
- *
- */
 @Entity
 @PrimaryKeyJoinColumn(name="_id")
 public class SavingAccount extends DepositAccount {

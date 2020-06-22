@@ -1,9 +1,8 @@
 package fr.gestibank.entity.account;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
 import javax.persistence.PrimaryKeyJoinColumn;
 
 import fr.gestibank.entity.exception.CheckException;
@@ -17,9 +16,11 @@ public class CurrentAccount extends DepositAccount {
 	 * 
 	 */
 	private static final long serialVersionUID = -5518770430839873116L;
-
-	@Id @GeneratedValue @Column(name="id")
-	private Long _id;
+	
+	public CurrentAccount() {
+		super();
+		// le contr vide nous permet d'appeler les méthodes afin d'instancer des nouveaux "account"
+	}
 	
 	public CurrentAccount(String iBAN, double starter, Customer customer) {
 		super(iBAN, starter, customer);
@@ -30,22 +31,7 @@ public class CurrentAccount extends DepositAccount {
 		setOverdraftFacility(0);
 	}
 
-	public CurrentAccount() {
-		super();
-		// le contr vide nous permet d'appeler les méthodes afin d'instancer des nouveaux "account"
-	}
 
-	@Override
-	public void setId(Long id) {
-		// TODO Auto-generated method stub
-		_id=id;
-	}
-	
-	@Override
-	public Long getId() {
-		return _id;
-	}
-	
 	public void checkData() throws CheckException{
 		if(this.getIBAN()==null)
 			throw new CheckException("Current account with null values should not be created");

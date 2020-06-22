@@ -41,11 +41,14 @@ public class Manager extends User {
 	 * "FetchType.LAZY" : on spécifie à Hibernate que lorsqu'il charge un "Manager", il ne chargera pas l'attribut "_pendingSubscribes". Hibernate ne chargera "_pendingSubscribes" que "à la demande" => il faut utiliser la méthode getPendingSubscribes()
 	 *  Note : "By default no operations are cascaded."
 	 */
-	@OneToMany(mappedBy="_manager", fetch=FetchType.LAZY)		
+	@OneToMany(mappedBy="_manager", fetch=FetchType.LAZY)
+	@Column(name="list_pending_subscribes")
 	private Collection<PendingSubscribe> _pendingSubscribes;
 	@OneToMany(mappedBy="_manager", fetch=FetchType.LAZY)
+	@Column(name="list_customers")
 	private Collection<Customer> _customers;
 	@OneToMany(mappedBy="_manager", fetch=FetchType.LAZY)
+	@Column(name="list_requests")
 	private Collection<Request> _requests;
 	
 	
