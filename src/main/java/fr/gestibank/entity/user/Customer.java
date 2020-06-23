@@ -19,7 +19,7 @@ import fr.gestibank.entity.society.Gender;
 import fr.gestibank.entity.society.MaritalStatus;
 
 @Entity
-@PrimaryKeyJoinColumn(name="id")
+@PrimaryKeyJoinColumn(name="fk_id_user")
 public class Customer extends User {
 	/**
 	 * 

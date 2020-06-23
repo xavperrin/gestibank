@@ -19,7 +19,7 @@ import fr.gestibank.entity.society.Gender;
 
 
 @Entity
-@PrimaryKeyJoinColumn(name="id")
+@PrimaryKeyJoinColumn(name="fk_id_user")
 public class Manager extends User {
 	
 	/**
@@ -28,11 +28,11 @@ public class Manager extends User {
 	private static final long serialVersionUID = -4533222629834744029L;
 	@Id @GeneratedValue @Column(name="id")
 	private Long _id;
-	@Column(name ="staffNumber")
+	@Column(name ="staff_number")
 	private int _staffNumber;
-	@Column(name ="beginDate")
+	@Column(name ="begin_date")
 	private LocalDate  _beginDate;
-	@Column(name ="endDate")
+	@Column(name ="end_date")
 	private LocalDate  _endDate;
 	@Column(length=20, name ="phoneNumber")
 	private String _phoneNumber;

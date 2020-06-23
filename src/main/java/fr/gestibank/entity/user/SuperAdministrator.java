@@ -11,7 +11,7 @@ import fr.gestibank.entity.society.Gender;
 
 
 @Entity
-@PrimaryKeyJoinColumn(name="_id")
+@PrimaryKeyJoinColumn(name="fk_id_user")
 public class SuperAdministrator extends User {
 	
 	/**

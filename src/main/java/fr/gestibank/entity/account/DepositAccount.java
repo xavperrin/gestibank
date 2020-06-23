@@ -31,7 +31,7 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 	private String _IBAN;
 	@Column(name="balance")
 	private double _balance;
-	@Column(name="overdraftFacility")
+	@Column(name="overdraft_facility")
 	private double _overdraftFacility;
 
 	@ManyToOne
