@@ -19,7 +19,7 @@ import fr.gestibank.entity.society.Gender;
 import fr.gestibank.entity.society.MaritalStatus;
 
 @Entity
-@PrimaryKeyJoinColumn(name="fk_id_user")
+@PrimaryKeyJoinColumn(name="fk_user_id")
 public class Customer extends User {
 	/**
 	 * 
@@ -31,7 +31,7 @@ public class Customer extends User {
 	private int _children;
 	@Column(name ="maritalStatus")
 	private MaritalStatus _maritalStatus;	
-	@Column(length=20, name ="phoneNumber")
+	@Column(length=20, name ="phone_number")
 	private String _phoneNumber;
 	
 	@ManyToOne

@@ -19,7 +19,7 @@ import fr.gestibank.entity.society.Gender;
 
 
 @Entity
-@PrimaryKeyJoinColumn(name="fk_id_user")
+@PrimaryKeyJoinColumn(name="fk_user_id")
 public class Manager extends User {
 	
 	/**
@@ -34,7 +34,7 @@ public class Manager extends User {
 	private LocalDate  _beginDate;
 	@Column(name ="end_date")
 	private LocalDate  _endDate;
-	@Column(length=20, name ="phoneNumber")
+	@Column(length=20, name ="phone_number")
 	private String _phoneNumber;
 	
 	/** "mappedBy" signifie que cette association est déjà décrite dans l'autre classe, on spécifie que c'est sur l'attribut "_manager".

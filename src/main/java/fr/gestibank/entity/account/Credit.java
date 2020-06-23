@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@PrimaryKeyJoinColumn(name="fk_id_transaction")
+@PrimaryKeyJoinColumn(name="fk_transaction_id")
 public class Credit extends Transaction {
 
 	/**

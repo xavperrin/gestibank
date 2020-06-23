@@ -31,7 +31,7 @@ public abstract class Transaction implements Serializable {
 	LocalDate _date;
 	
 	@ManyToOne
-	@JoinColumn(name="fk_account_id")
+	@JoinColumn(name="fk_depositaccount_id")
 	DepositAccount _depositaccount;
 	
 	

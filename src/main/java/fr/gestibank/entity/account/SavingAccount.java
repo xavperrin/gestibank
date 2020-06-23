@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@PrimaryKeyJoinColumn(name="fk_id_deposit_account")
+@PrimaryKeyJoinColumn(name="fk_depositaccount_id")
 public class SavingAccount extends DepositAccount {
 
 	/**
