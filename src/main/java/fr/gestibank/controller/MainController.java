@@ -8,13 +8,40 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MainController {
 
-	@RequestMapping(value= {"/","/index"}, method = RequestMethod.GET)
-public String index(Model model) {
-	String message = "Hello Spring Boot";
-	model.addAttribute("message", message);
-	return "index";
+	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+	public String index(Model model) {
+		return "index";
+	}
 	
-}
-}
+	@RequestMapping(value = { "/create" }, method = RequestMethod.GET)
+	public String create(Model model) {
+		return "create";
+	}
+	
+	@RequestMapping(value = { "/errorlogin" }, method = RequestMethod.GET)
+	public String errorlogin(Model model) {
+		return "errorlogin";
+	}
+	
+	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+	public String login(Model model) {
+		return "login";
+	}
+	
+	@RequestMapping(value = { "/pageloggedOK" }, method = RequestMethod.GET)
+	public String pageloggedOK(Model model) {
+		return "pageloggedOK";
+	}
+	
+	@RequestMapping(value = { "/pageprincipale" }, method = RequestMethod.GET)
+	public String pageprincipale(Model model) {
+		return "pageprincipale";
+	}
+	
+	@RequestMapping(value = { "/subscription" }, method = RequestMethod.GET)
+	public String subscription(Model model) {
+		return "subscription";
+	}
+	
 
-
+}
