@@ -244,9 +244,10 @@ public void testEquals() {
 					new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
 					Gender.MALE, 2, MaritalStatus.Married, "06 77 66 43 52") );
   
-  assertNotEquals( new Customer("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
+  assertEquals( new Customer("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
 			new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
-			Gender.MALE, 2, MaritalStatus.Married, "06 77 66 43 52"), new Customer("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
+			Gender.MALE, 2, MaritalStatus.Married, "06 77 66 43 52"), 
+		  new Customer("Bill", "Gates",   "bilou@microsoft.fr", "passwordbill001", 
 					new Address("3ter", "street1", "street2", "city", "zipcode", "country"),
 					Gender.MALE, 2, MaritalStatus.Married, "06 77 66 43 52") );
   
