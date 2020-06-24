@@ -1,7 +1,10 @@
 package fr.gestibank.entity.account;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,8 +34,7 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 	private String _IBAN;
 	@Column(name="balance")
 	private double _balance;
-	@Column(name="overdraft_facility")
-	private double _overdraftFacility;
+
 
 	@ManyToOne
 	@JoinColumn(name="fk_customer_id")
@@ -40,6 +42,8 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 	@OneToMany(mappedBy="_depositaccount", fetch=FetchType.LAZY)
 	@Column(name="history")
 	private Collection<Transaction> _history;
+	@Column(name ="creation_date")
+	private LocalDate _creation_date;
 
 	
 	/**
@@ -57,7 +61,7 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 		super();
 		_IBAN = iBAN;
 		_balance=starteramount;
-		_overdraftFacility = 0;
+		
 	}
 	
 	/**
@@ -69,7 +73,7 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 		_customer=customer;
 		_IBAN = iBAN;
 		_balance=starteramount;
-		_overdraftFacility = 0;
+		
 	
 	}
 
@@ -123,17 +127,7 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 	}
 
 	
-	public double getOverdraftFacility() {
-		return _overdraftFacility;
-	}
-	public void setOverdraftFacility(double overdraftFacility) {
-		_overdraftFacility = overdraftFacility;
-	}
-	public Collection<Transaction> getHistory() {
-		return _history;
-	}
-
-	
+		
 	public double getDepositSum(){
 		double sum=0;
 		
@@ -152,6 +146,28 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 		}
 		return sum;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(_IBAN, _balance, _customer, _history, _id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof DepositAccount)) {
+			return false;
+		}
+		DepositAccount other = (DepositAccount) obj;
+		return Objects.equals(_IBAN, other._IBAN)
+				&& Double.doubleToLongBits(_balance) == Double.doubleToLongBits(other._balance)
+				&& Objects.equals(_customer, other._customer) && Objects.equals(_history, other._history)
+				&& Objects.equals(_id, other._id);
+	}
+	
+	
 	
 	
 }

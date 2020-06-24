@@ -1,11 +1,15 @@
 package fr.gestibank;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import fr.gestibank.entity.account.DepositAccount;
+import fr.gestibank.service.DepositAccountService;
 import fr.gestibank.service.ManagerService;
 
 @Controller
@@ -21,6 +25,8 @@ public class AppController {
 	 */
 	@Autowired
 	private ManagerService manager;
+	@Autowired
+	private DepositAccountService depositaccountservice; 
 	
 	@RequestMapping("/manager")
 	public String adminManager() {
@@ -76,5 +82,14 @@ public class AppController {
 	public String subscribe() {
 		return "subscribe";
 	}
+	
+	@RequestMapping("/accounts")
+	String accounts(Model model){
+		
+		List<DepositAccount> list = depositaccountservice.listAll();
+		model.addAttribute("list", list);
+		return "accounts";
+	}
+	
 
 }

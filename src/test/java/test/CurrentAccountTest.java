@@ -63,14 +63,14 @@ public class CurrentAccountTest extends TestCase {
 	    	 current.checkData();
 	         fail("Object with empty values should not be created");
 	     } catch (CheckException e) {
-	     	assertEquals("Current account with null values should not be created", e.getMessage());
+	     	assertEquals("Current account with null IBAN values should not be created", e.getMessage());
 	     }
 	     try {
 		 		final CurrentAccount current = new CurrentAccount("FR9814508000402374632743K44", 200.00, null);
 		 		current.checkData();
 		 		fail("Object with empty values should not be created");
 		 	} catch (CheckException e) {
-		     	assertEquals("Current account with null customer linked should not be created", e.getMessage());
+		     	assertEquals("Current account with null or empty customer linked should not be created", e.getMessage());
 		     }
 	     
 	     
@@ -79,7 +79,7 @@ public class CurrentAccountTest extends TestCase {
 		 		current.checkData();
 		 		fail("Object with empty values should not be created");
 		 	} catch (CheckException e) {
-		     	assertEquals("Current account with an empty customer linked should not be created", e.getMessage());
+		     	assertEquals("Current account with null or empty customer linked should not be created", e.getMessage());
 		     }
 	 }
 	

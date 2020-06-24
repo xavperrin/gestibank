@@ -24,6 +24,8 @@ package fr.gestibank.entity;
  */
 
 
+import java.util.Objects;
+
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PostLoad;
 import javax.persistence.PrePersist;
@@ -47,6 +49,23 @@ public abstract class AbstractEntity<ID> implements Persistable<ID> {
   void markNotNew() {
     this.isNew = false;
   }
+
+@Override
+public int hashCode() {
+	return Objects.hash(isNew);
+}
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj) {
+		return true;
+	}
+	if (!(obj instanceof AbstractEntity)) {
+		return false;
+	}
+	AbstractEntity other = (AbstractEntity) obj;
+	return isNew == other.isNew;
+}
 
 
   // More code…

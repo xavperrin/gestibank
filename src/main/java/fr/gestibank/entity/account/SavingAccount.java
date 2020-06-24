@@ -26,8 +26,8 @@ public class SavingAccount extends DepositAccount {
 	 * @param starter
 	 */
 	public SavingAccount(String iBAN, double starter) {
-		super();
-		setOverdraftFacility(0);
+		super(iBAN, starter);
+		
 	}
 
 

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import fr.gestibank.entity.account.CurrentAccount;
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
 import fr.gestibank.entity.user.Customer;
@@ -16,6 +17,7 @@ import fr.gestibank.entity.user.SuperAdministrator;
 import fr.gestibank.entity.user.User;
 import fr.gestibank.repository.UserRepository;
 import fr.gestibank.repository.AddressRepository;
+import fr.gestibank.repository.CurrentAccountRepository;
 import fr.gestibank.repository.CustomerRepository;
 import fr.gestibank.repository.ManagerRepository;
 import fr.gestibank.repository.SuperAdministratorRepository;
@@ -29,6 +31,9 @@ class GestibankApplicationTests {
 	private AddressRepository addrDao;
 	@Autowired
 	private CustomerRepository customerDao;
+	
+	@Autowired
+	private CurrentAccountRepository currentaccountDao;
 	
 	@Autowired
 	private ManagerRepository managerDao;
@@ -114,6 +119,35 @@ class GestibankApplicationTests {
 		assertEquals(getSuperFromDb, savedAdminInDb);
 	}
 	
+	
+	@Test
+	public void testSaveAccounts() {
+		Customer customer=getCustomer();
+		Address addr=getAddress();
+		customer.setAddress(addr);
+	    Address savedAddressInDb=addrDao.save(addr);
+	   Customer savedCustomerInDb =customerDao.save(customer);
+	    Address getAddressFromDb = addrDao.findById(savedAddressInDb.getId()).get();
+		Customer getCustomerFromDb = customerDao.findById(savedCustomerInDb.getId()).get();
+		assertEquals(getAddressFromDb, savedAddressInDb);
+		assertEquals(getCustomerFromDb, savedCustomerInDb);
+		
+		CurrentAccount currentaccount=getCurrentAccount();
+		currentaccount.setCustomer(getCustomerFromDb);
+		currentaccount.setBalance(1000.00);
+		
+		
+		
+		
+		CurrentAccount savedcurrentAccountfromDB=currentaccountDao.save(currentaccount);
+		CurrentAccount currentAccountgetFromDb = currentaccountDao.findById(savedcurrentAccountfromDB.getId()).get();
+		
+		
+		assertEquals(savedcurrentAccountfromDB, currentAccountgetFromDb);
+		
+		
+	}
+	
 	/*
 	 * 
 	 * Private methods for tests
@@ -121,6 +155,17 @@ class GestibankApplicationTests {
 	 * 
 	 */
 	
+	private CurrentAccount getCurrentAccount() {
+		CurrentAccount ca=new CurrentAccount();
+		ca.setIBAN(getIBAN());
+		return ca;
+		
+	}
+
+	private String getIBAN() {
+		return new String("NL67ABNA"+Math.floor(100000 + Math.random() * 900000));
+	}
+
 	private SuperAdministrator getSuperAdministrator() {
 		SuperAdministrator _super=new SuperAdministrator();
 		_super.setFirstname("Admin");
@@ -177,6 +222,8 @@ class GestibankApplicationTests {
 		return _user;
 	}
 
+	
+	
 	
 
 }
