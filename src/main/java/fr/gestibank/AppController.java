@@ -1,9 +1,12 @@
 package fr.gestibank;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import fr.gestibank.service.ManagerService;
 
 @Controller
 public class AppController {
@@ -11,6 +14,17 @@ public class AppController {
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
 	public String index(Model model) {
 		return "index";
+	}
+
+	/**
+	 * Manager
+	 */
+	@Autowired
+	private ManagerService manager;
+	
+	@RequestMapping("/manager")
+	public String adminManager() {
+		return "manager";
 	}
 
 	@RequestMapping(value = { "/create" }, method = RequestMethod.GET)
@@ -52,17 +66,15 @@ public class AppController {
 	private String about() {
 		return "about";
 	}
-	
+
 	@RequestMapping("/hello")
 	private String hello() {
 		return "hello";
 	}
-	
-	
+
 	@RequestMapping("/subscribe")
 	public String subscribe() {
 		return "subscribe";
 	}
-	
 
 }
