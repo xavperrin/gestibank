@@ -98,6 +98,29 @@ public class User extends AbstractEntity<Long> implements Serializable {
 		_address = address;
 	}
 	
+	// Getters nécessaire pour thymeleaf (thymeleaf fait appel aux getters pour récupérer les données, mais ne peux pas se servir de ceux ci-dessus)
+	public Long get_id() {
+		return _id;
+	}
+	public String get_firstname() {
+		return _firstname;
+	}
+	public String get_lastname() {
+		return _lastname;
+	}
+	public String get_mail() {
+		return _mail;
+	}
+	public String get_password() {
+		return _password;
+	}
+	public Gender get_gender() {
+		return _gender;
+	}
+	public Address get_address() {
+		return _address;
+	}
+	
 	
 	// Constructeur sans paramètre
 	public User() {

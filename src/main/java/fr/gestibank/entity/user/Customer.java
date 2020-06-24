@@ -25,8 +25,8 @@ public class Customer extends User {
 	 * 
 	 */
 	private static final long serialVersionUID = -3111697784484041650L;
-	@Id @GeneratedValue @Column(name="id")
-	private Long _id;
+
+				  
 	@Column(name ="children")
 	private int _children;
 	@Column(name ="maritalStatus")
@@ -115,13 +115,13 @@ public class Customer extends User {
 		_maritalStatus = maritalStatus;
 	}
 
-	public Long getId() {
-		return _id;
-	}
+					  
+			 
+  
 
-	public void setId(Long id) {
-		_id = id;
-	}
+							 
+		   
+  
 
 	public int getChildren() {
 		return _children;
@@ -173,6 +173,21 @@ public class Customer extends User {
 	}
 	
 
+	// Getters nécessaire pour thymeleaf (thymeleaf fait appel aux getters pour récupérer les données, mais ne peux pas se servir de ceux ci-dessus)
+	public int get_children() {
+		return _children;
+	}
+	public MaritalStatus get_maritalStatus() {
+		return _maritalStatus;
+	}
+	public String get_phoneNumber() {
+		return _phoneNumber;
+	}
+	public Manager get_manager() {
+		return _manager;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Customer [_maritalStatus=" + _maritalStatus + ", _phonenumber=" + _phoneNumber + ", idManager="
@@ -186,7 +201,9 @@ public class Customer extends User {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(_children, _id, _manager, _maritalStatus, _phoneNumber);
+		result = prime * result + _children;
+		result = prime * result + ((_maritalStatus == null) ? 0 : _maritalStatus.hashCode());
+		result = prime * result + ((_phoneNumber == null) ? 0 : _phoneNumber.hashCode());
 		return result;
 	}
 
@@ -194,22 +211,29 @@ public class Customer extends User {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (!super.equals(obj)) {
+   
+		if (!super.equals(obj))
 			return false;
-		}
-		if (!(obj instanceof Customer)) {
+		if (getClass() != obj.getClass())
+								   
 			return false;
-		}
+   
 		Customer other = (Customer) obj;
-		return _children == other._children && Objects.equals(_id, other._id)
-				&& Objects.equals(_manager, other._manager) && _maritalStatus == other._maritalStatus
-				&& Objects.equals(_phoneNumber, other._phoneNumber);
+		if (_children != other._children)
+			return false;
+		if (_maritalStatus != other._maritalStatus)
+			return false;
+		if (_phoneNumber == null) {
+			if (other._phoneNumber != null)
+				return false;
+		} else if (!_phoneNumber.equals(other._phoneNumber))
+			return false;
+		return true;
 	}
 	
-	
+ 
 }	
 	
 	
