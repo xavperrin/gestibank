@@ -36,9 +36,8 @@ public class GestibankApplication {
 		customerDao.save(new Customer("Johnny","Hallyday","aquecoucou@gmail.com","allumélefe", adr2 , Gender.MALE));
 	}
 
-/*
- * Internationalisation ??
- * https://stackoverflow.com/questions/46659679/spring-boot-application-and-messagesource	
+
+//  https://stackoverflow.com/questions/46659679/spring-boot-application-and-messagesource	
 	@Bean                 
     public LocaleResolver localeResolver() {
 
@@ -53,5 +52,4 @@ public class GestibankApplication {
         messageBundleResrc.setBasename("msg.message");
         return messageBundleResrc;
     }
-*/
 }
