@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="product : ${listAccounts}">
+            <tr th:each="account : ${list}">
                 <td th:text="${account.id}">Product ID</td>
                 <td th:text="${account.IBAN}">Name</td>
                 <td th:text="${account.balance}">Brand</td>

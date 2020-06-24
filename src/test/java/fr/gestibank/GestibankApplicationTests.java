@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 import java.time.Instant;
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -121,7 +123,7 @@ class GestibankApplicationTests {
 	
 	
 	@Test
-	public void testSaveAccounts() {
+	public void testSaveCurrentAccounts()  {
 		Customer customer=getCustomer();
 		Address addr=getAddress();
 		customer.setAddress(addr);
@@ -135,6 +137,8 @@ class GestibankApplicationTests {
 		CurrentAccount currentaccount=getCurrentAccount();
 		currentaccount.setCustomer(getCustomerFromDb);
 		currentaccount.setBalance(1000.00);
+		currentaccount.setCreation_date(LocalDate.EPOCH);
+		
 		
 		
 		
@@ -157,13 +161,13 @@ class GestibankApplicationTests {
 	
 	private CurrentAccount getCurrentAccount() {
 		CurrentAccount ca=new CurrentAccount();
-		ca.setIBAN(getIBAN());
+		ca.setIBAN(getGeneratedIBAN());
 		return ca;
 		
 	}
 
-	private String getIBAN() {
-		return new String("NL67ABNA"+Math.floor(100000 + Math.random() * 900000));
+	private String getGeneratedIBAN() {
+		return new String("NL67ABNA"+(int)Math.floor(100000 + Math.random() * 900000));
 	}
 
 	private SuperAdministrator getSuperAdministrator() {

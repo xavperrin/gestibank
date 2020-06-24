@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -91,5 +92,12 @@ public class AppController {
 		return "accounts";
 	}
 	
+	/*
+	 * @RequestMapping("/accounts/{id}") String accounts(Model
+	 * model, @PathVariable(name = "id") Long id){
+	 * 
+	 * List<DepositAccount> list = depositaccountservice.get(id);
+	 * model.addAttribute("list", list); return "accounts_user"; }
+	 */
 
 }

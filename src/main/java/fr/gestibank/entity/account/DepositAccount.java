@@ -76,6 +76,22 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 		
 	
 	}
+	
+	
+
+	/**
+	 * @return the creation_date
+	 */
+	public LocalDate getCreation_date() {
+		return _creation_date;
+	}
+
+	/**
+	 * @param creation_date the creation_date to set
+	 */
+	public void setCreation_date(LocalDate creation_date) {
+		_creation_date = creation_date;
+	}
 
 	public void withdraw(double amount) {
 		
@@ -163,8 +179,7 @@ public abstract class DepositAccount extends AbstractEntity<Long> implements Ser
 		DepositAccount other = (DepositAccount) obj;
 		return Objects.equals(_IBAN, other._IBAN)
 				&& Double.doubleToLongBits(_balance) == Double.doubleToLongBits(other._balance)
-				&& Objects.equals(_customer, other._customer) && Objects.equals(_history, other._history)
-				&& Objects.equals(_id, other._id);
+				&& Objects.equals(_customer, other._customer) && Objects.equals(_id, other._id);
 	}
 	
 	
