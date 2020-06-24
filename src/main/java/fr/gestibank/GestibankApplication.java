@@ -38,18 +38,17 @@ public class GestibankApplication {
 
 
 //  https://stackoverflow.com/questions/46659679/spring-boot-application-and-messagesource	
-	@Bean                 
-    public LocaleResolver localeResolver() {
-
-        SessionLocaleResolver localResolver=new SessionLocaleResolver();
-        localResolver.setDefaultLocale(Locale.US);
-        return localResolver;
-    }
-
-    @Bean(name = "messageResourceSB")
-    public MessageSource messageResource() {
-        ResourceBundleMessageSource messageBundleResrc=new ResourceBundleMessageSource();
-        messageBundleResrc.setBasename("msg.message");
-        return messageBundleResrc;
-    }
+	/*
+	  @Bean public LocaleResolver localeResolver() {
+	  
+	  SessionLocaleResolver localResolver=new SessionLocaleResolver();
+	  localResolver.setDefaultLocale(Locale.US); return localResolver; }
+	  
+	  */
+	 /* 
+	 * @Bean(name = "messageResourceSB") public MessageSource messageResource() {
+	 * ResourceBundleMessageSource messageBundleResrc=new
+	 * ResourceBundleMessageSource();
+	 * messageBundleResrc.setBasename("i18n/messages"); return messageBundleResrc; }
+	 */
 }
