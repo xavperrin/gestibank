@@ -52,5 +52,17 @@ public class AppController {
 	private String about() {
 		return "about";
 	}
+	
+	@RequestMapping("/hello")
+	private String hello() {
+		return "hello";
+	}
+	
+	
+	@RequestMapping("/subscribe")
+	public String subscribe() {
+		return "subscribe";
+	}
+	
 
 }

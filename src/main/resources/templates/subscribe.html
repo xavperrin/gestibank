@@ -11,7 +11,7 @@
         <!-- Chargement Police FontAwesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <!-- Chargement Feuille de style principale -->
-             <link th:href="@{/styles/main.css}" rel="stylesheet" />
+        <link th:href="@{/styles/main.css}" rel="stylesheet" />
     </head>
 
     <body>
@@ -24,7 +24,7 @@
                     <nav>
                         <ul>
                             <li><a href="/disconnect">Connexion</a></li>
-                            <li><a href="/connect">D&eacuteconnexion</a></li>
+                            <li><a href="/connect">D&eacute;connexion</a></li>
                         </ul>
                     </nav>
                     <a href="#" class="header__icon" id="header__icon"></a>
@@ -33,24 +33,44 @@
         </header>
         
         <main>
-            
             <div class="block" id="presentation">
                 <div class="container">
                     <h1>Gestibank</h1>
-                    <p>Connectez vous à votre compte en ligne depuis chez vous ou sur votre mobile.</p>
+                    <p>Connectez vous &acgrave; votre compte en ligne depuis chez vous ou sur votre mobile.</p>
                 </div>
             </div>
-            
             <div class="block" id="characters">
-                
                 <div class="container">
-                    
                     <h2>Creez votre compte</h2>
-                        <form method="post" action="subscribe">
+                        <form method="post" action="subscribe.jsp">
+                            <div class="form-group">
+                                <label for="labelFirstname">Votre pr&eacute;nom : </label>
+                                <input type="text" name="firstname" id="labelFirstname">
+                            </div>
+                            <div class="form-group">
+                                <label for="labelLaststname">Votre nom de famille : </label>
+                                <input type="text" name="lastname" id="labelLaststname">
+                            </div>
                             <div class="form-group">
                                 <label for="labelEmail">Votre email : </label>
                                 <input type="email" name="email" id="labelEmail">
                             </div>
+
+                            <div class="form-group">
+                                <label for="labelFileId2Upload">Votre pi&egrave;ce d'identit&eacute; </label>
+                                <input type="file" name="fileId2Upload" id="labelFileId2Upload">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="labelFileSalary2Upload">Votre pi&eacute;ce justificative de salaire</label>
+                                <input type="file" name="fileSalary2Upload" id="labelFileSalary2Upload">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="labelFileProofOfAddress2Upload">Votre pi&eacute;ce justificative de domicile</label>
+                                <input type="file" name="fileProofOfAddress2Upload" id="labelFileProofOfAddress2Upload">
+                            </div>
+
                             <input type="submit" value="Envoyer"/>
                         </form>
 
