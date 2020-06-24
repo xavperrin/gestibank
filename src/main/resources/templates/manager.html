@@ -5,7 +5,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<title><ui:insert name="title">Administration Agent </ui:insert></title>
+<title> Administration Agent </title>
 <!-- Chargement Police Roboto -->
 <link href="https://fonts.googleapis.com/css?family=Roboto"
 	rel="stylesheet">
@@ -27,7 +27,7 @@
 			<nav>
 			<ul>
 				<li>Bienvenue</li>
-				<li><a href="/connect">D&eacuteconnexion</a></li>
+				<li><a href="/disconnect">D&eacuteconnexion</a></li>
 			</ul>
 			</nav>
 			<a href="#" class="header__icon" id="header__icon"></a>
@@ -36,8 +36,37 @@
 	</header>
 
 	<main>
-	<div class="block">TEST</div>
-
+	<div class="block">
+		Liste des clients qui vous sont attribués :
+		<table border="1">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Sexe</th>
+					<th>Situation de famille</th>
+					<th>Nombre d'enfants</th>
+					<th>Email</th>
+					<th>Numéro de tél.</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="customer : ${listCustomers}">
+				 	<td th:text=" ${customer._id} "></td>
+					<td th:text=" ${customer._lastname} "></td>
+					<td th:text=" ${customer._firstname} "></td>
+					<td th:text=" ${customer._gender} "></td>
+					<td th:text=" ${customer._maritalStatus} "></td>
+					<td th:text=" ${customer._children} "></td>
+					<td th:text=" ${customer._mail} "></td>
+					<td th:text=" ${customer._phoneNumber} "></td>
+				</tr>
+			</tbody>
+			<tr>
+			</tr>
+		</table>
+	</div>
 	</main>
 
 

@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.gestibank.entity.account.DepositAccount;
+import fr.gestibank.entity.user.Customer;
 import fr.gestibank.service.DepositAccountService;
 import fr.gestibank.service.ManagerService;
 
@@ -23,13 +25,18 @@ public class AppController {
 	/**
 	 * Manager
 	 */
-	@Autowired
-	private ManagerService manager;
+
 	@Autowired
 	private DepositAccountService depositaccountservice; 
 	
+	@Autowired
+	private ManagerService managerService;
+	
 	@RequestMapping("/manager")
-	public String adminManager() {
+	public String adminManager(@RequestParam("id") Long id, Model model) {
+		List<Customer> listCustomers = managerService.assignedCustomers(id);
+		model.addAttribute("listCustomers", listCustomers);		
+				
 		return "manager";
 	}
 

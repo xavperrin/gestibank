@@ -7,8 +7,6 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -26,8 +24,8 @@ public class Manager extends User {
 	 * 
 	 */
 	private static final long serialVersionUID = -4533222629834744029L;
-	@Id @GeneratedValue @Column(name="id")
-	private Long _id;
+
+				  
 	@Column(name ="staff_number")
 	private int _staffNumber;
 	@Column(name ="begin_date")
@@ -52,14 +50,14 @@ public class Manager extends User {
 	private Collection<Request> _requests;
 	
 	
-	public Long getId() {
-		return _id;
-	}
+					  
+			 
+  
 
-	public void setId(Long id) {
-		_id = id;
-	}
-	
+							 
+		   
+  
+ 
 	/**
 	 * @return the staffnumber
 	 */
