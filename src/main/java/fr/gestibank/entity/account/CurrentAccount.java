@@ -57,17 +57,16 @@ public class CurrentAccount extends DepositAccount {
 		_overdraftFacility = overdraftFacility;
 	}
 
-	public boolean checkData() throws CheckException {
-			if (getCustomer() == null || getCustomer().equals(new Customer() ))
-	            throw new CheckException("Current account with null or empty customer linked should not be created");
-	        if (_overdraftFacility == null || _overdraftFacility<0)
-	            throw new CheckException("Invalid overdraft facility");
-	        if (getIBAN()=="")
-	            throw new CheckException("Current account with empty IBAN values should not be created");
-	        if (getIBAN() == null)
-	        	throw new CheckException("Current account with null IBAN values should not be created");
-			return true;
-		}
+	public void checkData() throws CheckException{
+		if(this.getIBAN()==null)
+			throw new CheckException("Current account with null values should not be created");
+		if(this.getIBAN().equals(""))
+			throw new CheckException("Current account with empty IBAN values should not be created");
+		if(this.getCustomer()==null)
+			throw new CheckException("Current account with null customer linked should not be created");
+		if(this.getCustomer().getFirstname()==null||this.getCustomer().getLastname()==null)
+			throw new CheckException("Current account with an empty customer linked should not be created");
+	}
 
 	@Override
 	public int hashCode() {
