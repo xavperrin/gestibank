@@ -1,16 +1,45 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8"/>
-<title>Account viewer</title>
+<meta charset="utf-8">
+<title> Administration Agent </title>
+<!-- Chargement Police Roboto -->
+<link href="https://fonts.googleapis.com/css?family=Roboto"
+	rel="stylesheet">
+	<!-- Chargement Police FontAwesome -->
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+		integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+		crossorigin="anonymous">
+		<!-- Chargement Feuille de style principale -->
+		<link th:href="@{/styles/main.css}" rel="stylesheet" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
+
 <body>
-<div align="center">
-    <h1>Account list</h1>
-    <a href="/request">request</a>
-    <br/><br/>
-    <table border="1" cellpadding="10">
+	<header>
+	<div class="container">
+		<div class="elements">
+			<a href="index.html">Gesti<small> Bank</small></a>
+
+			<nav>
+			<ul>
+				<li>Bienvenue</li>
+				<li><a href="/disconnect">D&eacuteconnexion</a></li>
+			</ul>
+			</nav>
+			<a href="#" class="header__icon" id="header__icon"></a>
+		</div>
+	</div>
+	</header>
+    <main>
+	<div class="block" id="presentation">
+		 <div class="container" >
+		<p>Liste des comptes bancaires.</p>
+		<table class="table" style="background-color: white; box-shadow: 0.625rem 0.625rem 1.875rem #555;">
         <thead>
             <tr>
                 <th>Account ID</th>
@@ -26,6 +55,30 @@
             </tr>
         </tbody>
     </table>
-</div>   
+</div>
+	</div>
+	</main>
+
+
+	<footer>
+	<div class="container">
+
+		<div class="elements">
+			<p>Copyright 2020</p>
+
+			<div class="social">
+				<ul>
+					<li><a href="https://www.facebook.com/GestiBank/"
+						target="_blank"><i class="fab fa-facebook fa-2x"></i></a></li>
+					<li><a href="https://www.youtube.com/Gestibank/"
+						target="_blank"><i class="fab fa-youtube fa-2x"></i></a></li>
+					<li><a href="https://twitter.com/gestibank/" target="_blank"><i
+							class="fab fa-twitter fa-2x"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	</footer>   
 </body>
 </html>
