@@ -49,7 +49,7 @@ header .elements {
     justify-content: space-between;
 }
 
-/* Le selecteur avance > permet de ne cibler que les enfants directs ! (pratique) */
+/* Le sÃ©lecteur avancÃ© > permet de ne cibler que les enfants directs ! (pratique) */
 header .elements > a {
     font-family: 'bebasregular';
     font-size: 2.25rem;
@@ -84,7 +84,7 @@ header nav ul li a:hover {
 
 
 
- /* L'icone hamburger, en utilisant le box-shadow */
+ /* L'icÃ´ne hamburger, en utilisant le box-shadow */
  @media only screen and (max-width: 750px) {
     .header__icon {
         position: relative;
@@ -108,28 +108,8 @@ header nav ul li a:hover {
           }
     }
 
-    /* Le menu collé a  gauche est masqué grace a un transform */
-  .menu {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    background-color: #2a378b;
-    width: 450px;
-    transform: translateX(450px); 
-  }
-    /* Un lien par ligne */
-    .menu a {
-      display: block;
-      height: 40px;
-      text-align: center;
-      line-height: 40px;
-      border-bottom: 1px solid #303f9f; 
-    }
 
-
+ 
 
 /* PRESENTATION */
 #presentation {
@@ -159,6 +139,10 @@ h1 {
     font-size: 1.5rem;
     background-color: #ea222d;
     color: white;
+}
+
+#presentation table {
+    background-color: white;
 }
 
 .elements {

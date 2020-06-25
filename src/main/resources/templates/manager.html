@@ -16,6 +16,7 @@
 		crossorigin="anonymous">
 		<!-- Chargement Feuille de style principale -->
 		<link th:href="@{/styles/main.css}" rel="stylesheet" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 
 <body>
@@ -34,14 +35,14 @@
 		</div>
 	</div>
 	</header>
-
 	<main>
-	<div class="block">
-		Liste des clients qui vous sont attribués :
-		<table border="1">
+	<div class="block" id="presentation">
+		 <div class="container" >
+		<p>Liste des clients qui vous sont attribués.</p>
+		<table class="table" style="background-color: white; box-shadow: 0.625rem 0.625rem 1.875rem #555;">
 			<thead>
 				<tr>
-					<th>ID</th>
+					<th>#</th>
 					<th>Nom</th>
 					<th>Prénom</th>
 					<th>Sexe</th>
@@ -66,6 +67,7 @@
 			<tr>
 			</tr>
 		</table>
+		</div>
 	</div>
 	</main>
 
