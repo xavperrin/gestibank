@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.gestibank.entity.account.DepositAccount;
 import fr.gestibank.entity.user.Customer;
+import fr.gestibank.entity.user.Manager;
 import fr.gestibank.entity.user.PendingSubscribe;
 import fr.gestibank.service.DepositAccountService;
 import fr.gestibank.service.ManagerService;
@@ -41,6 +42,12 @@ public class AppController {
 
 	@RequestMapping("/manager")
 	public String adminManager(@RequestParam("id") Long id, Model model) {
+		
+		String managerFirstname = managerService.get(id).get_firstname();
+		String managerLastname = managerService.get(id).get_lastname();
+		model.addAttribute ("managerFirstname", managerFirstname);
+		model.addAttribute ("managerLastname", managerLastname);
+		
 		List<Customer> listCustomers = managerService.assignedCustomers(id);
 		model.addAttribute("listCustomers", listCustomers);
 

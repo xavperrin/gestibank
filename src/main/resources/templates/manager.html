@@ -27,7 +27,7 @@
 
 			<nav>
 			<ul>
-				<li>Bienvenue</li>
+				<li>Bienvenue <span th:utext="${managerFirstname}"></span> <span th:utext="${managerLastname}"></span></li>
 				<li><a href="/disconnect">D&eacuteconnexion</a></li>
 			</ul>
 			</nav>
@@ -62,6 +62,8 @@
 					<td th:text=" ${customer._children} "></td>
 					<td th:text=" ${customer._mail} "></td>
 					<td th:text=" ${customer._phoneNumber} "></td>
+					<td><input type="submit" value="Editer" /></td>
+					<td><input type="submit" value="Supprimer" /></td>
 				</tr>
 			</tbody>
 			<tr>
