@@ -1,114 +1,132 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8">
-        <title>Gestibank</title>
-        <meta name="description" content="Gestion de compte bancaire en ligne">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
-        <!-- Chargement Police Roboto -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <!-- Chargement Police FontAwesome -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-        <!-- Chargement Feuille de style principale -->
-        <link th:href="@{/styles/main.css}" rel="stylesheet" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-     <script src="@{/js/menu.js"></script>
-    </head>
+<head>
+<meta charset="utf-8">
+<title>Gestibank Inscription</title>
+<meta name="description" content="Gestion de compte bancaire en ligne">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <body>
-        
-        <header>
-            <div class="container">
-                <div class="elements">
-                    <a href="index.html">Gesti<small> Bank</small></a>
-                    
-                    <nav>
-                        <ul>
-                            <li><a href="/disconnect">Connexion</a></li>
-                            <li><a href="/connect">D&eacute;connexion</a></li>
-                        </ul>
-                    </nav>
-                    <a href="#" class="header__icon" id="header__icon"></a>
-                </div>
-            </div>
-        </header>
-        
-        <main>
-            <div class="block" id="presentation">
-                <div class="container">
-                    <h1>Gestibank</h1>
-                    <p>Connectez vous &agrave; votre compte en ligne depuis chez vous ou sur votre mobile.</p>
-                </div>
-            </div>
-            <div class="block" id="characters">
-                <div class="container">
-                    <h2>Creez votre compte</h2>
-                        <form method="post" action="subscribe.jsp">
-                            <div class="form-group">
-                                <label for="labelFirstname">Votre pr&eacute;nom : </label>
-                                <input type="text" name="firstname" id="labelFirstname">
-                            </div>
-                            <div class="form-group">
-                                <label for="labelLaststname">Votre nom de famille : </label>
-                                <input type="text" name="lastname" id="labelLaststname">
-                            </div>
-                            <div class="form-group">
-                                <label for="labelEmail">Votre email : </label>
-                                <input type="email" name="email" id="labelEmail">
-                            </div>
+<!-- Chargement Police Roboto -->
+<link href="https://fonts.googleapis.com/css?family=Roboto"
+	rel="stylesheet">
+<!-- Chargement Police FontAwesome -->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+	crossorigin="anonymous">
+<!-- Chargement Feuille de style principale -->
+<link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
 
-                            <div class="form-group">
-                                <label for="labelFileId2Upload">Votre pi&egrave;ce d'identit&eacute; </label>
-                                <input type="file" name="fileId2Upload" id="labelFileId2Upload">
-                            </div>
+<body>
 
-                            <div class="form-group">
-                                <label for="labelFileSalary2Upload">Votre pi&eacute;ce justificative de salaire</label>
-                                <input type="file" name="fileSalary2Upload" id="labelFileSalary2Upload">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="labelFileProofOfAddress2Upload">Votre pi&eacute;ce justificative de domicile</label>
-                                <input type="file" name="fileProofOfAddress2Upload" id="labelFileProofOfAddress2Upload">
-                            </div>
+	<header>
+		<div class="container">
+			<div class="elements">
+				<a href="index.html">Gesti<small> Bank</small></a>
 
-                            <input type="submit" value="Envoyer"/>
-                        </form>
+				<nav>
+					<ul>
+						<li><a href="/connect">Connexion</a></li>
+						<li><a href="/disconnect">D&eacute;connexion</a></li>
+					</ul>
+				</nav>
+				<a href="#" class="header__icon" id="header__icon"></a>
+			</div>
+		</div>
+	</header>
 
-                    
-                </div>
-                
-            </div>
-            
-            
-            
-        </main>
-        
-        
-        <footer>
-            <div class="container">
+	<main>
+		<div class="block" id="presentation">
+			<div class="container">
+				<h1>Gestibank</h1>
+				<p>Connectez vous &acgrave; votre compte en ligne depuis chez
+					vous ou sur votre mobile.</p>
+			</div>
+		</div>
+		<div class="block" id="characters">
+			<div class="container">
+				<h2>Creez votre compte</h2>
+				<form method="post" action="#" th:action="@{/save}" th:object="${pendingsubscribe}">
+">
+					<div class="form-group">
+						<label for="labelFirstname">Votre pr&eacute;nom : </label> <input
+							type="text" th:field="*{firstname}" name="firstname" id="labelFirstname">
+					</div>
+					<div class="form-group">
+						<label for="labelLastname">Votre nom : </label> <input
+							type="text" th:field="*{lastname}" name="lastname" id="labelLastname">
+					</div>
+					<div class="form-group">
+						<label for="labelMail">Votre mail : </label> <input
+							type="text" th:field="*{mail}" name="mail" id="labelMail">
+					</div>
+					<div class="form-group">
+						<label for="labelDate">Date : </label> <input
+							type="text" th:field="*{date}" name="date" id="labelDate">
+					</div>
+					<!-- <div class="form-group">
+						<label for="labelLaststname">Votre nom de famille : </label> <input
+							type="text" name="lastname" id="labelLaststname">
+					</div>
+					<div class="form-group">
+						<label for="labelEmail">Votre email : </label> <input type="email"
+							name="email" id="labelEmail">
+					</div>
 
-                <div class="elements">
-                    <p>Copyright 2018 ...</p>
+					<div class="form-group">
+						<label for="labelFileId2Upload">Votre pi&egrave;ce
+							d'identit&eacute; </label> <input type="file" name="fileId2Upload"
+							id="labelFileId2Upload">
+					</div>
 
-                    <div class="social">
-                        <ul>
-                            <li>
-                                <a href="https://www.facebook.com/GestiBank/" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://www.youtube.com/Gestibank/" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/gestibank/" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+					<div class="form-group">
+						<label for="labelFileSalary2Upload">Votre pi&eacute;ce
+							justificative de salaire</label> <input type="file"
+							name="fileSalary2Upload" id="labelFileSalary2Upload">
+					</div> -->
 
-            </div>
-        </footer>
-    </body>
+					<!-- <div class="form-group">
+						<label for="labelFileProofOfAddress2Upload">Votre
+							pi&eacute;ce justificative de domicile</label> <input type="file"
+							name="fileProofOfAddress2Upload"
+							id="labelFileProofOfAddress2Upload">
+					</div> -->
+
+					<input type="submit" value="Envoyer" />
+				</form>
+
+
+			</div>
+
+		</div>
+
+
+
+	</main>
+
+
+	<footer>
+		<div class="container">
+
+			<div class="elements">
+				<p>Copyright 2020</p>
+
+				<div class="social">
+					<ul>
+						<li><a href="https://www.facebook.com/GestiBank/"
+							target="_blank"><i class="fab fa-facebook fa-2x"></i></a></li>
+						<li><a href="https://www.youtube.com/Gestibank/"
+							target="_blank"><i class="fab fa-youtube fa-2x"></i></a></li>
+						<li><a href="https://twitter.com/gestibank/" target="_blank"><i
+								class="fab fa-twitter fa-2x"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+</body>
 
 </html>

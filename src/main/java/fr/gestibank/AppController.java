@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.gestibank.entity.account.DepositAccount;
 import fr.gestibank.entity.user.Customer;
+import fr.gestibank.entity.user.PendingSubscribe;
 import fr.gestibank.service.DepositAccountService;
 import fr.gestibank.service.ManagerService;
+import fr.gestibank.service.PendingSubscribeService;
 
 @Controller
 public class AppController {
@@ -28,16 +31,19 @@ public class AppController {
 	 */
 
 	@Autowired
-	private DepositAccountService depositaccountservice; 
-	
+	private DepositAccountService depositaccountservice;
+
+	@Autowired
+	private PendingSubscribeService pendingSubService;
+
 	@Autowired
 	private ManagerService managerService;
-	
+
 	@RequestMapping("/manager")
 	public String adminManager(@RequestParam("id") Long id, Model model) {
 		List<Customer> listCustomers = managerService.assignedCustomers(id);
-		model.addAttribute("listCustomers", listCustomers);		
-				
+		model.addAttribute("listCustomers", listCustomers);
+
 		return "manager";
 	}
 
@@ -56,16 +62,6 @@ public class AppController {
 		return "login";
 	}
 
-	@RequestMapping(value = { "/pageloggedOK" }, method = RequestMethod.GET)
-	public String pageloggedOK(Model model) {
-		return "pageloggedOK";
-	}
-
-	@RequestMapping(value = { "/pageprincipale" }, method = RequestMethod.GET)
-	public String pageprincipale(Model model) {
-		return "pageprincipale";
-	}
-
 	@RequestMapping(value = { "/subscription" }, method = RequestMethod.GET)
 	public String subscription(Model model) {
 		return "subscription";
@@ -81,31 +77,37 @@ public class AppController {
 		return "about";
 	}
 
-	@RequestMapping("/hello")
-	private String hello() {
-		return "hello";
-	}
-
-	@RequestMapping("/subscribe")
-	public String subscribe() {
-		return "subscribe";
-	}
-	
 	@RequestMapping("/accounts")
-	String accounts(Model model){
-		
+	String accounts(Model model) {
+
 		List<DepositAccount> list = depositaccountservice.listAll();
 		model.addAttribute("list", list);
 		return "accounts";
 	}
-	
-	
-	  @RequestMapping("/accounts/{id}") String accounts(Model model, @PathVariable(name = "id") Long id){
-	  List<DepositAccount> list = depositaccountservice.get(id);
-	  
-	  model.addAttribute("list", list);
-	  
-	  return "accounts_user";
-	  
-	  }
+
+	@RequestMapping("/accounts/{id}")
+	String accounts(Model model, @PathVariable(name = "id") Long id) {
+		List<DepositAccount> list = depositaccountservice.get(id);
+
+		model.addAttribute("list", list);
+
+		return "accounts_user";
+
+	}
+
+	// ici on utilise le chemin subscribe afin d'istancier nos différents champs
+	@RequestMapping("/subscribe")
+	public String subscribe(Model model) {
+		PendingSubscribe pds = new PendingSubscribe();
+		model.addAttribute("pendingsubscribe", pds);
+		return "subscribe.html";
+	}
+
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String savePendingSubscripe(@ModelAttribute("pendingsubscribe") PendingSubscribe pds) {
+		pendingSubService.save(pds);
+
+		return "redirect:/";
+	}
+
 }
