@@ -1,14 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<title> Administration Agent </title>
+<title> liste de tous les comptes </title>
 <!-- Chargement Police Roboto -->
-<link href="https://fonts.googleapis.com/css?family=Roboto"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto"	rel="stylesheet">
 	<!-- Chargement Police FontAwesome -->
 	<link rel="stylesheet"
 		href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
@@ -42,9 +38,9 @@
 		<table class="table" style="background-color: white; box-shadow: 0.625rem 0.625rem 1.875rem #555;">
         <thead>
             <tr>
-                <th>Account ID</th>
+                <th th:text="#{label.accountid}"></th>
                 <th>IBAN</th>
-                <th>balance</th>
+                <th th:text="#{label.balance}"></th>
             </tr>
         </thead>
         <tbody>

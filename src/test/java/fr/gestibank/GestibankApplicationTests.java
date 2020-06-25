@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotEquals;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,7 +127,7 @@ class GestibankApplicationTests {
 	
 	
 	@Test
-	public void testSaveCurrentAccounts()  {
+	public void testSaveCurrentAccount()  {
 		Customer customer=getCustomer();
 		Address addr=getAddress();
 		customer.setAddress(addr);
@@ -139,7 +140,7 @@ class GestibankApplicationTests {
 		
 		CurrentAccount currentaccount=getCurrentAccount();
 		currentaccount.setCustomer(getCustomerFromDb);
-		currentaccount.setBalance(1000.00);
+		currentaccount.setBalance(getRandomBalance());
 		currentaccount.setCreation_date(LocalDate.EPOCH);
 		
 		
@@ -171,6 +172,10 @@ class GestibankApplicationTests {
 
 	private String getGeneratedIBAN() {
 		return new String("NL67ABNA"+(int)Math.floor(100000 + Math.random() * 900000));
+	}
+	
+	private double getRandomBalance() {
+		return   Math.floor(ThreadLocalRandom.current().nextDouble(100,10000)*100)/100;
 	}
 
 	private SuperAdministrator getSuperAdministrator() {
