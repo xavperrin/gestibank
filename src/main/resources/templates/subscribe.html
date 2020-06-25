@@ -29,7 +29,7 @@
 				<nav>
 					<ul>
 						<li><a href="/connect">Connexion</a></li>
-						<li><a href="/disconnect">D&eacute;connexion</a></li>
+						<li><a href="/disconnect">D&eacuteconnexion</a></li>
 					</ul>
 				</nav>
 				<a href="#" class="header__icon" id="header__icon"></a>
@@ -41,7 +41,7 @@
 		<div class="block" id="presentation">
 			<div class="container">
 				<h1>Gestibank</h1>
-				<p>Connectez vous &acgrave; votre compte en ligne depuis chez
+				<p>Connectez vous &agrave votre compte en ligne depuis chez
 					vous ou sur votre mobile.</p>
 			</div>
 		</div>
@@ -49,9 +49,9 @@
 			<div class="container">
 				<h2>Creez votre compte</h2>
 				<form method="post" action="#" th:action="@{/save}" th:object="${pendingsubscribe}">
-">
+
 					<div class="form-group">
-						<label for="labelFirstname">Votre pr&eacute;nom : </label> <input
+						<label for="labelFirstname">Votre pr&eacutenom : </label> <input
 							type="text" th:field="*{firstname}" name="firstname" id="labelFirstname">
 					</div>
 					<div class="form-group">
@@ -62,11 +62,11 @@
 						<label for="labelMail">Votre mail : </label> <input
 							type="text" th:field="*{mail}" name="mail" id="labelMail">
 					</div>
-					<div class="form-group">
+					<!--<div class="form-group">
 						<label for="labelDate">Date : </label> <input
 							type="text" th:field="*{date}" name="date" id="labelDate">
 					</div>
-					<!-- <div class="form-group">
+					 <div class="form-group">
 						<label for="labelLaststname">Votre nom de famille : </label> <input
 							type="text" name="lastname" id="labelLaststname">
 					</div>

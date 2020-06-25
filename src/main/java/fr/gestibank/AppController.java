@@ -1,5 +1,6 @@
 package fr.gestibank;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -132,6 +133,7 @@ public class AppController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String savePendingSubscripe(@ModelAttribute("pendingsubscribe") PendingSubscribe pds) {
+		pds.setDate(LocalDate.now());
 		pendingSubService.save(pds);
 
 		return "redirect:/";
