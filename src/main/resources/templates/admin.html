@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title> Panneau Super Administrateur </title>
+<!-- Chargement Police Roboto -->
+<link href="https://fonts.googleapis.com/css?family=Roboto"
+	rel="stylesheet">
+	<!-- Chargement Police FontAwesome -->
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+		integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+		crossorigin="anonymous">
+		<!-- Chargement Feuille de style principale -->
+		<link th:href="@{/styles/main.css}" rel="stylesheet" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+	<header>
+	<div class="container">
+		<div class="elements">
+			<a href="index.html">Gesti<small> Bank</small></a>
+
+			<nav>
+			<ul>
+				<li>Bienvenue <span th:utext="${adminFirstname}"></span> <span th:utext="${adminLastname}"></span></li>
+				<li><a href="/disconnect">D&eacuteconnexion</a></li>
+			</ul>
+			</nav>
+			<a href="#" class="header__icon" id="header__icon"></a>
+		</div>
+	</div>
+	</header>
+	<main>
+	<div class="block" id="presentation">
+		 <div class="container" >
+		<p>Liste des agents GestiBank :</p>
+		<table class="table" style="background-color: white; box-shadow: 0.625rem 0.625rem 1.875rem #555;">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Numéro d'employé</th>					
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Sexe</th>
+					<th>Email</th>
+					<th>Numéro de tél.</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="manager : ${listManagers}">
+				 	<td th:text=" ${manager._id} "></td>
+				 	<td th:text=" ${manager._staffNumber} "></td>
+					<td th:text=" ${manager._lastname} "></td>
+					<td th:text=" ${manager._firstname} "></td>
+					<td th:text=" ${manager._gender} "></td>
+					<td th:text=" ${manager._mail} "></td>
+					<td th:text=" ${manager._phoneNumber} "></td>
+					<td><input type="submit" value="Editer" /></td>
+					<td><input type="submit" value="Supprimer" /></td>
+				</tr>
+			</tbody>
+			<tr>
+			</tr>
+		</table>
+		</div>
+	</div>
+	</main>
+
+
+	<footer>
+	<div class="container">
+
+		<div class="elements">
+			<p>Copyright 2020</p>
+
+			<div class="social">
+				<ul>
+					<li><a href="https://www.facebook.com/GestiBank/"
+						target="_blank"><i class="fab fa-facebook fa-2x"></i></a></li>
+					<li><a href="https://www.youtube.com/Gestibank/"
+						target="_blank"><i class="fab fa-youtube fa-2x"></i></a></li>
+					<li><a href="https://twitter.com/gestibank/" target="_blank"><i
+							class="fab fa-twitter fa-2x"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	</footer>
+</body>
+
+</html>

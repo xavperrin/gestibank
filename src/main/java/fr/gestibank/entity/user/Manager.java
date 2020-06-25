@@ -140,6 +140,18 @@ public class Manager extends User {
 	public void setRequests(Collection<Request> requests) {
 		_requests = requests;
 	}
+	
+	
+	// Getters nécessaire pour thymeleaf (thymeleaf fait appel aux getters pour récupérer les données, mais ne peux pas se servir de ceux ci-dessus)
+	public int get_staffNumber() {
+		return _staffNumber;
+	}
+	
+	public String get_phoneNumber() {
+		return _phoneNumber;
+	}
+	
+	
 
 	public Manager() {
 		super();

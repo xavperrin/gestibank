@@ -1,6 +1,7 @@
 package fr.gestibank;
 
 
+import java.time.LocalDate;
 import java.util.Locale;
 
 import org.springframework.boot.SpringApplication;
@@ -61,15 +62,18 @@ public class GestibankApplication {
 		// Ajout de manager Test
 		Address adr3 = new Address("890", "Rue du cimetière", "Dedans", "Bruxelles", "344 01", "Belgique");
 		addressDao.save(adr3);
-		Manager mana1 = new Manager("Elodie", "Bouchard", "elobouch@gmail.com", "123456", adr3, Gender.FEMALE);
+		Manager mana1 = new Manager("Elodie", "Bouchard", "elobouch@gmail.com", "123456", adr3, Gender.FEMALE,2,"05 54 87 41 44");
 		managerDao.save(mana1);
 		
 		
 		Address adr4 = new Address("890", "Rue du cimetière", "Dedans", "Bruxelles", "344 01", "Belgique");
 		addressDao.save(adr4);
-		Manager mana2 = new Manager("Luc", "Martin", "lumart1@lycos.fr", "987654", adr4, Gender.MALE);
+		Manager mana2 = new Manager("Luc", "Martin", "lumart1@lycos.fr", "987654", adr4, Gender.MALE,3,"08 87 45 24 85");
 		managerDao.save(mana2);
 		
+		
+		SuperAdministrator supa = new SuperAdministrator("Chuck","Norris","TheOnlyOne@gmail.com","123", adr3, Gender.MALE,1,LocalDate.now());
+		superAdminDao.save(supa);
 		// System.out.println("id : "+mana2.getId()+" Prenom : "+mana2.getFirstname());
 	}
 
