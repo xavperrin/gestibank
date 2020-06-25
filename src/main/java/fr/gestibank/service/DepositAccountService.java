@@ -20,9 +20,9 @@ public class DepositAccountService {
 	}
 		
 	
-	/*public List<DepositAccount> get(Long id)
+	public List<DepositAccount> get(Long id)
 	{
 		return repo.findByCustomerId(id);
-	}*/
+	}
 	
 }

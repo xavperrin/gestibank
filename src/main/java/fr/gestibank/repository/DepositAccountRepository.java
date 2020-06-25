@@ -11,6 +11,8 @@ import fr.gestibank.entity.account.DepositAccount;
 public interface DepositAccountRepository extends JpaRepository<DepositAccount, Long>{
 
 	
-	/*@Query ("FROM deposit_account WHERE fk_customer_id = :x")
-	  List<DepositAccount> findByCustomerId(@Param("x") Long id);*/
+	@Query ("FROM DepositAccount WHERE fk_customer_id = :x")
+	List<DepositAccount> findByCustomerId(@Param("x") Long id);
+	
+
 }

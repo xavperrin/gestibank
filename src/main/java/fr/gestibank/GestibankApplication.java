@@ -10,6 +10,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import fr.gestibank.entity.society.Address;
@@ -26,6 +27,14 @@ import fr.gestibank.repository.SuperAdministratorRepository;
 @SpringBootApplication
 public class GestibankApplication {
 
+	@Bean
+	public LocaleChangeInterceptor localeChangeInterceptor() {
+	    LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+	    lci.setParamName("lang");
+	    return lci;
+	}
+	
+	
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(GestibankApplication.class, args);
 		
@@ -33,6 +42,8 @@ public class GestibankApplication {
 		ManagerRepository managerDao = ctx.getBean(ManagerRepository.class);
 		CustomerRepository customerDao = ctx.getBean(CustomerRepository.class);
 		AddressRepository addressDao = ctx.getBean(AddressRepository.class);
+		
+		
 		
 		
 		// Ajout de customer Test

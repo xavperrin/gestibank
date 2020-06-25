@@ -99,12 +99,13 @@ public class AppController {
 		return "accounts";
 	}
 	
-	/*
-	 * @RequestMapping("/accounts/{id}") String accounts(Model
-	 * model, @PathVariable(name = "id") Long id){
-	 * 
-	 * List<DepositAccount> list = depositaccountservice.get(id);
-	 * model.addAttribute("list", list); return "accounts_user"; }
-	 */
-
+	
+	  @RequestMapping("/accounts/{id}") String accounts(Model model, @PathVariable(name = "id") Long id){
+	  List<DepositAccount> list = depositaccountservice.get(id);
+	  
+	  model.addAttribute("list", list);
+	  
+	  return "accounts_user";
+	  
+	  }
 }
