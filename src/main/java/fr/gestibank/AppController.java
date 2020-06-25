@@ -22,7 +22,7 @@ import fr.gestibank.service.PendingSubscribeService;
 @Controller
 public class AppController {
 
-	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/index.html" }, method = RequestMethod.GET)
 	public String index(Model model) {
 		return "index";
 	}
