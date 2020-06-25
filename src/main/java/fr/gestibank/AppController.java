@@ -18,6 +18,7 @@ import fr.gestibank.entity.user.PendingSubscribe;
 import fr.gestibank.service.DepositAccountService;
 import fr.gestibank.service.ManagerService;
 import fr.gestibank.service.PendingSubscribeService;
+import fr.gestibank.service.SuperAdministratorService;
 
 @Controller
 public class AppController {
@@ -39,6 +40,9 @@ public class AppController {
 
 	@Autowired
 	private ManagerService managerService;
+	
+	@Autowired
+	private SuperAdministratorService adminService;
 
 	@RequestMapping("/manager")
 	public String adminManager(@RequestParam("id") Long id, Model model) {
@@ -52,6 +56,22 @@ public class AppController {
 		model.addAttribute("listCustomers", listCustomers);
 
 		return "manager";
+	}
+	
+	@RequestMapping("/admin")
+	public String superAdmin(Model model) {
+		
+		// On récupére le nom et prénom du Super Admin qui est l'employé avec le _staffnumber = 1
+		Long staff1 = new Long(1);
+		String adminFirstname = adminService.getAdmin(staff1).get_firstname();
+		String adminLastname = adminService.getAdmin(staff1).get_lastname();
+		model.addAttribute ("adminFirstname", adminFirstname);
+		model.addAttribute ("adminLastname", adminLastname);
+		
+		List<Manager> listManagers = managerService.listAll();
+		model.addAttribute("listManagers",listManagers);
+		
+		return "admin";
 	}
 
 	@RequestMapping(value = { "/create" }, method = RequestMethod.GET)
