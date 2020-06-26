@@ -21,7 +21,7 @@ import fr.gestibank.entity.user.Customer;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class DepositAccount extends AbstractEntity<Long> implements Serializable {
+public class DepositAccount extends AbstractEntity<Long> implements Serializable {
 		
 	/**
 	 * 

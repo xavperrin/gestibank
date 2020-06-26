@@ -14,6 +14,7 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+import fr.gestibank.entity.account.DepositAccount;
 import fr.gestibank.entity.society.Address;
 import fr.gestibank.entity.society.Gender;
 import fr.gestibank.entity.society.MaritalStatus;
@@ -22,6 +23,7 @@ import fr.gestibank.entity.user.Manager;
 import fr.gestibank.entity.user.SuperAdministrator;
 import fr.gestibank.repository.AddressRepository;
 import fr.gestibank.repository.CustomerRepository;
+import fr.gestibank.repository.DepositAccountRepository;
 import fr.gestibank.repository.ManagerRepository;
 import fr.gestibank.repository.SuperAdministratorRepository;
 
@@ -43,7 +45,7 @@ public class GestibankApplication {
 		ManagerRepository managerDao = ctx.getBean(ManagerRepository.class);
 		CustomerRepository customerDao = ctx.getBean(CustomerRepository.class);
 		AddressRepository addressDao = ctx.getBean(AddressRepository.class);
-		
+		DepositAccountRepository depoDao = ctx.getBean(DepositAccountRepository.class);
 		
 
 		
@@ -90,6 +92,22 @@ public class GestibankApplication {
 		Customer cust5 = new Customer("Auda ","Chicoine","LangleyCarignan@rhyta.com ","erreur", adr1 , Gender.FEMALE,0,MaritalStatus.Divorced,"01.73.88.77.84");
 		cust5.setManager(mana1);
 		customerDao.save(cust5);
+		
+		DepositAccount acc1 = new DepositAccount("FR7630001007941234567890185",1545.32,cust1);
+		depoDao.save(acc1);
+		
+		DepositAccount acc2 = new DepositAccount("FR7630004000031234567890143",10452.48,cust1);
+		depoDao.save(acc2);
+		
+		DepositAccount acc3 = new DepositAccount("FR7630006000011234567890189",7402.21,cust1);
+		depoDao.save(acc3);
+		
+		DepositAccount acc4 = new DepositAccount("FR7610107001011234567890129",124.88,cust2);
+		depoDao.save(acc4);
+		
+		DepositAccount acc5 = new DepositAccount("FR7611315000011234567890138",0.54,cust2);
+		depoDao.save(acc5);
+		
 
 	}
 
